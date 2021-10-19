@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk Config.compileSdk
+
+    defaultConfig {
+        applicationId Config.applicationId
+        minSdk Config.minSdk
+        targetSdk Config.targetSdk
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // default
+    implementation( Dependencies.appUis )
+    implementation( Dependencies.testLibs )
+
+    // module
+    implementation project (Modules.domain)
+    implementation project (Modules.data)
+
+    // coroutine
+    implementation( Dependencies.COROUTINES_CORE )
+    // hilt
+    implementation( Dependencies.HILT_ANDROID )
+    kapt(Dependencies.KAPT_HILT)
+
+
+}

@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk Config.compileSdk
+
+    defaultConfig {
+        minSdk Config.minSdk
+        targetSdk Config.targetSdk
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+        consumerProguardFiles Config.consumerProguardFiles
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // default
+    implementation ( Dependencies.coreKtx )
+    implementation ( Dependencies.appcompat )
+    testImplementation ( Dependencies.junit )
+    androidTestImplementation ( Dependencies.etxJunit )
+    androidTestImplementation ( Dependencies.espressoCore )
+
+    // module
+    implementation project( Modules.domain )
+
+    // coroutine
+    implementation( Dependencies.COROUTINES_CORE )
+
+    // hilt
+    implementation( Dependencies.HILT_ANDROID )
+    kapt(Dependencies.KAPT_HILT)
+
+    // room
+    implementation( Dependencies.ROOM )
+    annotationProcessor( Dependencies.ANNOTATION_PROCESSOR )
+    kapt( Dependencies.KAPT_ROOM )
+    implementation( Dependencies.COROUTINES_ROOM )
+}

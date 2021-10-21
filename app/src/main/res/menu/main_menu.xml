@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/app_home"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/targetFragment"
+        android:title="@string/app_target"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/statisticFragment"
+        android:title="@string/app_statistic"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/youFragment"
+        android:title="@string/app_you"
+        android:enabled="true"/>
+
+</menu>

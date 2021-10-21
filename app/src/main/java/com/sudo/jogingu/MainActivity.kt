@@ -19,4 +19,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
     }
+    fun add() {
+
+    }
 }

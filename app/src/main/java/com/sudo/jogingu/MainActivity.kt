@@ -17,4 +17,9 @@ class MainActivity : AppCompatActivity() {
     fun sad(){
         print("fdsfds")
     }
+
+    fun duong(){
+        print("duong ne")
+    }
+
 }

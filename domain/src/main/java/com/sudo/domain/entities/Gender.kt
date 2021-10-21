@@ -1,5 +1,7 @@
-package com.sudo.domain.common
+package com.sudo.domain.entities
 
 enum class Gender {
-    MALE, FEMALE, OTHER
+    MALE,
+    FEMALE,
+    OTHER
 }

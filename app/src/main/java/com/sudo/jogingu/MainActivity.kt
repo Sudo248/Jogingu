@@ -9,8 +9,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         sayHi()
+        sad()
     }
     fun sayHi(){
         print("hello")
+    }
+    fun sad(){
+        print("fdsfds")
     }
 }

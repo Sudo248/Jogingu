@@ -11,13 +11,13 @@ object Converter {
     private val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     @TypeConverter
-    fun fromTimestamp(value: String?): Date? {
-        return value?.let { format.parse(value) }
+    fun fromTimestamp(value: Long?): Date? {
+        return value?.let { Date(it) }
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: Date?): String? {
-        return date?.let { format.format(it) }
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
     }
 
     @TypeConverter

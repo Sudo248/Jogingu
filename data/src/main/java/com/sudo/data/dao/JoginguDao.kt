@@ -1,5 +1,5 @@
 package com.sudo.data.dao
 
-interface JoginguDAO {
+interface JoginguDao {
 
 }

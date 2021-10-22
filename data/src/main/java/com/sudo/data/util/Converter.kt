@@ -6,7 +6,7 @@ import com.sudo.domain.entities.Gender
 import java.text.SimpleDateFormat
 import java.util.Date
 
-object Converter {
+internal object Converter {
     @SuppressLint("SimpleDateFormat")
     private val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 

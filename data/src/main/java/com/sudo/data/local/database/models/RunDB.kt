@@ -1,4 +1,4 @@
-package com.sudo.data.models
+package com.sudo.data.local.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,9 +7,9 @@ import java.util.Date
 
 @Entity(tableName = "runs")
 data class RunDB(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "run_id")
-    val runId: Int,
+    val runId: String,
     val name: String,
     val distance: Int,
     val pace: Float,

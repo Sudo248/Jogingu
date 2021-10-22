@@ -1,4 +1,4 @@
-package com.sudo.data.models
+package com.sudo.data.local.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "targets")
 data class TargetDB(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "target_id")
-    val targetId: Int,
+    val targetId: String,
     val distance: Int,
     val calo: Int,
     @ColumnInfo(name = "is_done")

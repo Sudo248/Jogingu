@@ -1,4 +1,4 @@
-package com.sudo.data.models
+package com.sudo.data.local.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,9 +7,9 @@ import java.util.Date
 
 @Entity(tableName = "notifications")
 data class NotificationDB(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "notification_id")
-    val notificationId: Int,
+    val notificationId: String,
     @ColumnInfo(name = "time_notify")
     val timeNotify: Date,
     val note: String,

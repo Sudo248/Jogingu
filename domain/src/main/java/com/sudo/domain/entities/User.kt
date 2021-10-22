@@ -3,7 +3,7 @@ package com.sudo.domain.entities
 import java.util.Date
 
 data class User(
-    val userId: Int,
+    val userId: String,
     val firstName: String,
     val lastName: String,
     val city: String,

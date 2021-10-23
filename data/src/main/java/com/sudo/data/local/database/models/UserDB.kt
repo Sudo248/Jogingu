@@ -1,15 +1,16 @@
-package com.sudo.data.models
+package com.sudo.data.local.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.sudo.domain.entities.Gender
+import java.util.Date
 
-@Entity(tableName = "users")
+@Entity(tableName = "user")
 data class UserDB(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "user_id")
-    val userId: Long,
+    val userId: String,
     @ColumnInfo(name = "first_name")
     val firstName: String,
     @ColumnInfo(name = "last_name")
@@ -20,8 +21,8 @@ data class UserDB(
     val primarySport: String,
     val gender: Gender,
     @ColumnInfo(name = "date_of_birth")
-    val dateOfBirth: Long,
+    val birthday: Date,
     val height: Short,
     val wight: Short,
-    val image: String
+    val imageUrl: String
 )

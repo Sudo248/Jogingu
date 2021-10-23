@@ -20,4 +20,5 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
 
     }
+
 }

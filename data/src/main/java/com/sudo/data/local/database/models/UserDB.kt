@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.sudo.domain.entities.Gender
 import java.util.Date
 
-@Entity(tableName = "users")
+@Entity(tableName = "user")
 data class UserDB(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "user_id")

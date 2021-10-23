@@ -1,8 +1,9 @@
 package com.sudo.domain.entities
 
+import java.util.Date
+
 data class Target(
-    val targetId: String,
     val distance: Int,
     val calo: Int,
-    val isDone: Boolean
+    val recursive: Date?
 )

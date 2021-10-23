@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
     app:startDestination="@id/homeFragment">
-
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.sudo.jogingu.HomeFragment"
+        android:name="com.sudo.jogingu.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/targetFragment"
-        android:name="com.sudo.jogingu.TargetFragment"
+        android:name="com.sudo.jogingu.ui.fragments.target.TargetFragment"
         android:label="fragment_target"
         tools:layout="@layout/fragment_target" />
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.sudo.jogingu.StatisticFragment"
+        android:name="com.sudo.jogingu.ui.fragments.statistic.StatisticFragment"
         android:label="fragment_statistic"
         tools:layout="@layout/fragment_statistic" />
     <fragment
         android:id="@+id/youFragment"
-        android:name="com.sudo.jogingu.YouFragment"
+        android:name="com.sudo.jogingu.ui.fragments.you.YouFragment"
         android:label="fragment_you"
         tools:layout="@layout/fragment_you" />
+
 </navigation>

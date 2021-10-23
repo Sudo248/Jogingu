@@ -14,7 +14,6 @@ import com.sudo.data.util.Converter
 @Database(
     entities = [
         UserDB::class,
-        TargetDB::class,
         RunDB::class,
         NotificationDB::class
     ],

@@ -70,4 +70,7 @@ object Dependencies {
     const val LEGACY_SUPPORT =
         "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
 
+    const val TIMBER =
+        "com.jakewharton.timber:timber:${Versions.TIMBER}"
+
 }

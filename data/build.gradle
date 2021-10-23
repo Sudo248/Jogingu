@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -55,4 +56,7 @@ dependencies {
     annotationProcessor( Dependencies.ANNOTATION_PROCESSOR )
     kapt( Dependencies.KAPT_ROOM )
     implementation( Dependencies.COROUTINES_ROOM )
+
+    // timber
+    implementation( Dependencies.TIMBER )
 }

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun duong(){
-        print("duong ne")
+        print("duong ne ahihihi")
     }
 
 }

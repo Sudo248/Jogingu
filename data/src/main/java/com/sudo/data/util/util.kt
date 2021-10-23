@@ -1,13 +1,18 @@
 package com.sudo.data.util
 
-import com.sudo.data.models.UserDB
-import com.sudo.domain.entities.User
+import java.util.Date
+import java.util.Calendar
+import java.util.UUID
 
-fun UserDB.toUser(){
-//    return User(
-//
-//    )
-    print("aaaaaa")
-    print("bbbbbb")
-    print("cccccc")
+fun genId(prefix: String = ""): String{
+    return prefix + UUID.randomUUID()
 }
+
+fun calculateDate(date: Date): Int{
+    val now = Calendar.getInstance().get(Calendar.YEAR)
+    val born = Calendar.getInstance()
+    born.time = date
+    return now - born.get(Calendar.YEAR)
+}
+
+

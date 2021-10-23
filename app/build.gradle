@@ -45,6 +45,9 @@ dependencies {
     implementation( Dependencies.COROUTINES_CORE )
     // hilt
     implementation( Dependencies.HILT_ANDROID )
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Dependencies.KAPT_HILT)
 
 

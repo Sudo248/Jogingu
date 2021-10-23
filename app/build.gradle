@@ -43,6 +43,7 @@ dependencies {
 
     // coroutine
     implementation( Dependencies.COROUTINES_CORE )
+
     // hilt
     implementation( Dependencies.HILT_ANDROID )
     kapt(Dependencies.KAPT_HILT)

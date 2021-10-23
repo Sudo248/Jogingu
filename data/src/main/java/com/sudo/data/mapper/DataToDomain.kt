@@ -2,7 +2,6 @@ package com.sudo.data.mapper
 
 import com.sudo.data.local.database.models.NotificationDB
 import com.sudo.data.local.database.models.RunDB
-import com.sudo.data.local.database.models.TargetDB
 import com.sudo.data.local.database.models.UserDB
 import com.sudo.data.util.calculateDate
 import com.sudo.domain.entities.Notification
@@ -24,15 +23,6 @@ internal fun UserDB.toUser(): User {
         height = this.height,
         wight = this.wight,
         imageUrl = this.imageUrl
-    )
-}
-
-internal fun TargetDB.toTarget(): Target {
-    return Target(
-        targetId = this.targetId,
-        distance = this.distance,
-        calo = this.calo,
-        isDone = this.isDone
     )
 }
 

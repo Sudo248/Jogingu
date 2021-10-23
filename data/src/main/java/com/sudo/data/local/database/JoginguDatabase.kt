@@ -8,7 +8,6 @@ import androidx.room.TypeConverters
 import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.local.database.models.NotificationDB
 import com.sudo.data.local.database.models.RunDB
-import com.sudo.data.local.database.models.TargetDB
 import com.sudo.data.local.database.models.UserDB
 import com.sudo.data.util.Converter
 

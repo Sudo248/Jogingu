@@ -1,18 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragments"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/app_navigation"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:contentInsetStart="0dp"
+                app:elevation="10dp"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="8dp"
+                app:fabCradleRoundedCornerRadius="20dp">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:elevation="0dp"
+                    android:background="@android:color/transparent"
+                    app:itemIconTint="@drawable/item_selector"
+                    app:itemTextColor="@drawable/item_selector"
+                    app:menu="@menu/main_menu" />
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabCustomSize="70dp"
+                app:srcCompat="@drawable/ic_trainers_32px"
+                app:tint="@color/white"
+                app:backgroundTint="@color/main_color_normal"
+                app:layout_anchor="@+id/bottom_appbar"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </FrameLayout>
+
+
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -50,10 +51,14 @@ dependencies {
     // hilt
     implementation( Dependencies.HILT_ANDROID )
     kapt(Dependencies.KAPT_HILT)
-    
+
+    // ui
     implementation ( Dependencies.NAVIGATION_FRAGMENT )
     implementation ( Dependencies.NAVIGATION_UI )
     implementation ( Dependencies.LEGACY_SUPPORT )
+
+    // timber
+    implementation( Dependencies.TIMBER )
 
 
 

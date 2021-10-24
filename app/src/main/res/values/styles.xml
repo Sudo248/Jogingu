@@ -8,4 +8,13 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
+    <style name="MyTimePickerDark" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:textColor">@color/main_color_normal</item>
+        <item name="colorOnPrimary">@color/main_color_normal</item>
+        <item name="colorAccent">@color/main_color_normal</item>
+        <item name="colorControlNormal">@color/main_color_normal</item>
+
+    </style>
+
 </resources>

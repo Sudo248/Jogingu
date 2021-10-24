@@ -10,4 +10,30 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+<!--    profile-->
+    <string name="title_profile">Profile</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="set_new_photo">Set new photo</string>
+    <string name="delete_photo">Delete Photo</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="primary_sport">Primary sport</string>
+    <string name="birthday">Birthday</string>
+    <string name="height">Height (cm)</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="other">Other</string>
+
+    <!-- target fragment -->
+    <string name="target_view_tab">Target</string>
+    <string name="target_set_tab">Set target</string>
+    <string name="target_content_distance">Distance / km</string>
+    <string name="target_content_calo">Calo</string>
+    <string name="target_content_time_start">Time start</string>
+    <string name="target_content_place">Place</string>
+    <string name="target_content_recurring">Recurring / days</string>
+    <string name="target_content_notification_before">Notification</string>
 </resources>

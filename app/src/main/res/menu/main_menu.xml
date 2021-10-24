@@ -20,7 +20,7 @@
         android:icon="@drawable/ic_bar_chart_24"
         android:enabled="true"/>
     <item
-        android:id="@+id/youFragment"
+        android:id="@+id/profileFragment"
         android:title="@string/app_you"
         android:icon="@drawable/ic_account_24px"
         android:enabled="true"/>

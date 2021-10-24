@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="profile_title_txt">24sp</dimen>
+    <dimen name="profile_content_txt">24sp</dimen>
+</resources>

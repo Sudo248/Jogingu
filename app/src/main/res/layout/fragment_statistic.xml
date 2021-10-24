@@ -111,7 +111,7 @@
             app:cardCornerRadius="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cv_time"
+            app:layout_constraintStart_toEndOf="@+id/statistic_cv_time"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
@@ -131,7 +131,7 @@
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:id="@+id/tv_calories"
+                    android:id="@+id/statistic_tv_calories"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
@@ -143,7 +143,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_time"
+            android:id="@+id/statistic_cv_time"
             android:layout_width="133dp"
             android:layout_height="85dp"
             android:background="@color/green_text"
@@ -193,7 +193,7 @@
             app:cardCornerRadius="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cv_time"
+            app:layout_constraintStart_toEndOf="@id/statistic_cv_time"
             app:layout_constraintTop_toBottomOf="@id/statistic_cv_calories">
 
             <LinearLayout
@@ -206,7 +206,7 @@
                 app:circularflow_radiusInDP="17">
 
                 <TextView
-                    android:id="@+id/tv_km"
+                    android:id="@+id/statistic_tv_km"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"

@@ -18,12 +18,7 @@ class MainRepositoryImpl @Inject constructor(
     private val pref: SharedPref
 ) : MainRepository{
 
-    companion object{
-        const val TAG = "MainRepositoryImp"
-    }
-
     override suspend fun setUser(user: User) {
-
         dao.insertUserDB(userDB = user.toUserDB())
     }
 

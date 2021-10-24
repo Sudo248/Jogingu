@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 internal object Converter {
-    @SuppressLint("SimpleDateFormat")
-    private val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {

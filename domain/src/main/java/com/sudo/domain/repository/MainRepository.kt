@@ -25,8 +25,4 @@ interface MainRepository {
     suspend fun addNewNotification(notification: Notification)
     suspend fun deleteNotification(vararg notifications: Notification)
 
-
-
-
-
 }

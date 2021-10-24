@@ -12,7 +12,6 @@ class SharedPref(private val context: Context) {
     private val caloTarget = "calo_target"
     private val recursiveTarget = "recursive_target"
 
-
     private val prefs: SharedPreferences by lazy {
         context.getSharedPreferences(namePrefs, Context.MODE_PRIVATE)
     }

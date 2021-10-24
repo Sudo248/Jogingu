@@ -29,7 +29,7 @@
             app:contentScrim="@color/main_color_normal"
             app:statusBarScrim="@color/main_color_light"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-
+            android:background="@android:color/transparent"
             app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
             app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed">
 
@@ -65,7 +65,8 @@
         app:layout_anchorGravity="bottom|right"
         android:layout_marginEnd="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="add photo" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/profile_nested_scroll"

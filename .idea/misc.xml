@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/drawable/item_ingredient_target.xml" value="0.37864583333333335" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/drawable/item_selector.xml" value="0.29635416666666664" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/activity_splash.xml" value="0.3484375" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_home.xml" value="0.19479166666666667" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_set_target.xml" value="0.2" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_statistic.xml" value="0.3625" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_target.xml" value="0.25" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_view_target.xml" value="0.25" />
+        <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/layout/fragment_you.xml" value="0.3625" />
+>>>>>>> alpha
         <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/menu/main_menu.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5" />
@@ -13,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

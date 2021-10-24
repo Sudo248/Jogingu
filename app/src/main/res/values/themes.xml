@@ -38,4 +38,18 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/main_color_normal</item>
+        <item name="colorControlActivated">@color/main_color_dark</item>
+        <item name="colorControlHighlight">@color/main_color_light</item>
+    </style>
+
+    <style name="counterText">
+        <item name="android:textColor">@color/main_color_dark</item>
+    </style>
+
+    <style name="counterOverride">
+        <item name="android:textColor">#ff0000</item>
+    </style>
+
 </resources>

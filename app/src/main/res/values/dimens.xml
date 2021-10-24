@@ -2,4 +2,10 @@
 <resources>
     <dimen name="profile_title_txt">24sp</dimen>
     <dimen name="profile_content_txt">24sp</dimen>
+
+    <!-- target view and set -->
+    <dimen name="target_rectangle_x">150dp</dimen>
+
+    <dimen name="target_view_text_size1">20sp</dimen>
+    <dimen name="target_view_text_size2">15sp</dimen>
 </resources>

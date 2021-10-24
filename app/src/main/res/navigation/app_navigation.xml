@@ -20,9 +20,26 @@
         android:label="fragment_statistic"
         tools:layout="@layout/fragment_statistic" />
     <fragment
+<<<<<<< HEAD
         android:id="@+id/profileFragment"
         android:name="com.sudo.jogingu.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+=======
+        android:id="@+id/youFragment"
+        android:name="com.sudo.jogingu.ui.fragments.you.YouFragment"
+        android:label="fragment_you"
+        tools:layout="@layout/fragment_you" />
+    <fragment
+        android:id="@+id/viewTargetFragment"
+        android:name="com.sudo.jogingu.ViewTargetFragment"
+        android:label="fragment_view_target"
+        tools:layout="@layout/fragment_view_target" />
+    <fragment
+        android:id="@+id/setTargetFragment"
+        android:name="com.sudo.jogingu.SetTargetFragment"
+        android:label="fragment_set_target"
+        tools:layout="@layout/fragment_set_target" />
+>>>>>>> alpha
 
 </navigation>

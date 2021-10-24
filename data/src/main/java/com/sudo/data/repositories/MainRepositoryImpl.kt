@@ -1,4 +1,4 @@
-package com.sudo.data.repository
+package com.sudo.data.repositories
 
 import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.mapper.*
@@ -8,7 +8,7 @@ import com.sudo.domain.entities.Notification
 import com.sudo.domain.entities.Run
 import com.sudo.domain.entities.Target
 import com.sudo.domain.entities.User
-import com.sudo.domain.repository.MainRepository
+import com.sudo.domain.repositories.MainRepository
 import kotlinx.coroutines.flow.*
 import java.io.IOException
 import javax.inject.Inject

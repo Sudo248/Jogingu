@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:background="@color/green"
-        android:id="@+id/homebar"
-        />
+        android:id="@+id/homebar" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        />
+        android:layout_marginBottom="10dp"/>
 
 </FrameLayout>

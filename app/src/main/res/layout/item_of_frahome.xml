@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="375dp"
+        android:layout_height="389dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="20dp"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="375dp"
+            android:layout_height="389dp"
+            android:id="@+id/itempro"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imgAva"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:background="@drawable/img_avatar"
+                app:layout_constraintTop_toTopOf="@+id/itempro"
+                app:layout_constraintLeft_toLeftOf="@+id/itempro"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/textUser"
+                android:layout_width="62dp"
+                android:layout_height="24dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgAva"
+                app:layout_constraintTop_toTopOf="@+id/itempro"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Dương"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+
+            />
+            <TextView
+                android:id="@+id/textLocation"
+                android:layout_width="290dp"
+                android:layout_height="24dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgAva"
+                app:layout_constraintTop_toTopOf="@+id/textUser"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="26dp"
+                android:text="October 14,2021 at 6:24 PM - Phường Đại Mỗ, Hanoi"
+                android:textSize="12dp"
+                />
+            <TextView
+                android:id="@+id/textRun"
+                android:layout_width="100dp"
+                android:layout_height="24dp"
+                app:layout_constraintLeft_toLeftOf="@+id/itempro"
+                app:layout_constraintTop_toBottomOf="@+id/imgAva"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:text="Evening Run"
+                android:textStyle="bold"
+
+                android:textSize="16dp"
+                />
+            <TextView
+                android:id="@+id/textDistance"
+                android:layout_width="60dp"
+                android:layout_height="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/itempro"
+                app:layout_constraintTop_toBottomOf="@+id/textRun"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
+                android:text="Distance"
+                android:textSize="10dp"
+                />
+            <TextView
+                android:id="@+id/textPace"
+                android:layout_width="70dp"
+                android:layout_height="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/textDistance"
+                app:layout_constraintTop_toBottomOf="@+id/textRun"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="9dp"
+                android:text="Pace"
+                android:textSize="10dp"
+                />
+            <TextView
+                android:id="@+id/textTimerun"
+                android:layout_width="60dp"
+                android:layout_height="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/textPace"
+                app:layout_constraintTop_toBottomOf="@+id/textRun"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="9dp"
+                android:text="Time"
+                android:textSize="10dp"
+                />
+            <TextView
+                android:id="@+id/textDistanceView"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                app:layout_constraintLeft_toLeftOf="@+id/itempro"
+                app:layout_constraintTop_toBottomOf="@+id/textDistance"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:text="4.00 km"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+            <TextView
+                android:id="@+id/textPaceView"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/textDistanceView"
+                app:layout_constraintTop_toBottomOf="@+id/textPace"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:text="7:07 /km"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+            <TextView
+                android:id="@+id/textTimerunVIew"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/textPaceView"
+                app:layout_constraintTop_toBottomOf="@+id/textTimerun"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:text="28m 29s"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+
+            <ImageView
+                android:id="@+id/imgMap"
+                android:layout_width="match_parent"
+                android:layout_height="224dp"
+                android:background="@drawable/img_mapbox"
+                app:layout_constraintTop_toBottomOf="@+id/textDistanceView"
+                app:layout_constraintLeft_toLeftOf="@+id/itempro"
+
+                android:layout_marginTop="16dp"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

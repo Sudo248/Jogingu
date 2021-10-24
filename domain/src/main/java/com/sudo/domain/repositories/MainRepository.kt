@@ -1,4 +1,4 @@
-package com.sudo.domain.repository
+package com.sudo.domain.repositories
 
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.Notification

@@ -4,7 +4,8 @@ import java.util.Date
 
 
 data class Notification(
-    val notificationId: Int,
-    val time: Date,
-    val note: String
+    val notificationId: String,
+    val timeNotify: Date,
+    val note: String,
+    val timeToRun: String
 )

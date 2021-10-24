@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -30,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -43,9 +47,21 @@ dependencies {
 
     // coroutine
     implementation( Dependencies.COROUTINES_CORE )
+
     // hilt
     implementation( Dependencies.HILT_ANDROID )
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     kapt(Dependencies.KAPT_HILT)
+
+    // ui
+    implementation ( Dependencies.NAVIGATION_FRAGMENT )
+    implementation ( Dependencies.NAVIGATION_UI )
+    implementation ( Dependencies.LEGACY_SUPPORT )
+
+    // timber
+    implementation( Dependencies.TIMBER )
+
 
 
 }

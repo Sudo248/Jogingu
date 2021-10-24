@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'kotlin-kapt'
 }
 
 java {
@@ -9,5 +10,10 @@ java {
 }
 
 dependencies {
+    // coroutine
     implementation( Dependencies.COROUTINES_CORE )
+
+    // timber
+    implementation( Dependencies.TIMBER )
+
 }

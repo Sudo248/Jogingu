@@ -61,4 +61,16 @@ object Dependencies {
 
     /******************************************************/
 
+    const val NAVIGATION_FRAGMENT =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
+
+    const val NAVIGATION_UI =
+        "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
+
+    const val LEGACY_SUPPORT =
+        "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
+
+    const val TIMBER =
+        "com.jakewharton.timber:timber:${Versions.TIMBER}"
+
 }

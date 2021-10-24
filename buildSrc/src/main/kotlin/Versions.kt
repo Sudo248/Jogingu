@@ -18,5 +18,8 @@ object Versions {
     const val COROUTINES = "1.3.9"
     const val HILT = "2.38.1"
     const val ROOM = "2.3.0"
+    const val NAVIGATION = "2.3.5"
+    const val LEGACY = "1.0.0"
+    const val TIMBER = "4.7.1"
 
 }

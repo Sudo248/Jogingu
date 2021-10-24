@@ -21,8 +21,7 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bottom_appbar"
@@ -50,11 +49,13 @@
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:backgroundTint="@color/main_color_normal"
                 app:fabCustomSize="70dp"
+                app:layout_anchor="@+id/bottom_appbar"
                 app:srcCompat="@drawable/ic_trainers_32px"
                 app:tint="@color/white"
-                app:backgroundTint="@color/main_color_normal"
-                app:layout_anchor="@+id/bottom_appbar"/>
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+                android:contentDescription="TODO" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </FrameLayout>

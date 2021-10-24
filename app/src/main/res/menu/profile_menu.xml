@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/edit_profile"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_outline_edit_24"
+        android:title="@string/edit_profile"/>
+    <item
+        android:id="@+id/set_new_photo"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_outline_add_a_photo_24"
+        android:title="@string/set_new_photo"
+        />
+    <item
+        android:id="@+id/delete_photo"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_outline_delete_outline_24"
+        android:title="@string/delete_photo"
+        />
+
+</menu>

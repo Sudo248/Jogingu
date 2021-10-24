@@ -50,6 +50,7 @@ dependencies {
 
     // hilt
     implementation( Dependencies.HILT_ANDROID )
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Dependencies.KAPT_HILT)
 
     // ui

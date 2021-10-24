@@ -1,17 +1,18 @@
 package com.sudo.jogingu.ui.fragments.target
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.google.android.material.tabs.TabLayoutMediator
 import com.sudo.jogingu.R
+import com.sudo.jogingu.databinding.FragmentTargetBinding
+import com.sudo.jogingu.ui.fragments.target.adapter.TargetPageAdapter
 
 class TargetFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding: FragmentTargetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +22,22 @@ class TargetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Toast.makeText(activity, "Target",Toast.LENGTH_LONG).show()
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_target, container, false)
+        binding = FragmentTargetBinding.inflate(inflater, container, false)
+
+        val adapter = TargetPageAdapter(childFragmentManager, lifecycle)
+        binding.vp2ContainFragment.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayoutTarget, binding.vp2ContainFragment) { tab, position ->
+            when(position) {
+                0->{
+                    tab.text = getString(R.string.target_view_tab)
+                }
+                1->{
+                    tab.text = getString(R.string.target_set_tab)
+                }
+            }
+        }.attach()
+
+        return binding.root
     }
 }

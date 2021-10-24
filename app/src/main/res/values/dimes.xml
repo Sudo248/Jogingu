@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- target view and set -->
+    <dimen name="target_rectangle_x">150dp</dimen>
+
+    <dimen name="target_view_text_size1">20sp</dimen>
+    <dimen name="target_view_text_size2">15sp</dimen>
+
+</resources>

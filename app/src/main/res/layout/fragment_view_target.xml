@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.target.view_target.ViewTargetFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_view_target_title_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_distance"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_amount_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="100 km"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                >
+                <TextView
+                    android:id="@+id/tv_view_target_title_calo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_calo"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_amount_calo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="5000 c"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_view_target_title_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_time_start"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_time_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="07:30 AM"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                >
+                <TextView
+                    android:id="@+id/tv_view_target_title_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_place"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_specific_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="Hồ Văn Quán"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_view_target_title_recurring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_recurring"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_number_days_recurring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="30 days"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:layout_width="@dimen/target_rectangle_x"
+                android:layout_height="@dimen/target_rectangle_x"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/item_ingredient_target"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                >
+                <TextView
+                    android:id="@+id/tv_view_target_title_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/target_content_notification_before"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size1"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_target_minutes_notification_earlier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center_horizontal"
+                    android:text="10 minutes earlier"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/target_view_text_size2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

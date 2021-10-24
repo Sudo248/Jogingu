@@ -10,4 +10,15 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+    <!-- target fragment -->
+    <string name="target_view_tab">Target</string>
+    <string name="target_set_tab">Set target</string>
+    <string name="target_content_distance">Distance / km</string>
+    <string name="target_content_calo">Calo</string>
+    <string name="target_content_time_start">Time start</string>
+    <string name="target_content_place">Place</string>
+    <string name="target_content_recurring">Recurring / days</string>
+    <string name="target_content_notification_before">Notification</string>
 </resources>

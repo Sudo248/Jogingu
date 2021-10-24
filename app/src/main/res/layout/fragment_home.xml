@@ -3,12 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@color/green"
+        android:id="@+id/homebar"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_rcv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="HOME NE" />
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        />
 
 </FrameLayout>

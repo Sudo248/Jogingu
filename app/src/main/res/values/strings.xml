@@ -11,7 +11,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
-<!--    profile-->
+    <!--    profile-->
     <string name="title_profile">Profile</string>
     <string name="edit_profile">Edit profile</string>
     <string name="set_new_photo">Set new photo</string>
@@ -36,4 +36,13 @@
     <string name="target_content_place">Place</string>
     <string name="target_content_recurring">Recurring / days</string>
     <string name="target_content_notification_before">Notification</string>
+
+<!--    running activity-->
+    <string name="request_permission">You need to accept location permission to use this app</string>
+    <string name="title_notification_running">Running</string>
+    <string name="map_access_token">AIzaSyABgcb4CSiVPAkAcBpG8lQHcC7MnC7-q0I</string>
+    <string name="start">Start</string>
+    <string name="resume">Resume</string>
+    <string name="finish">Finish</string>
+
 </resources>

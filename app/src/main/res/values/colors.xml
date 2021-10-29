@@ -2,7 +2,7 @@
 <resources>
     <color name="main_color_dark">#006130</color>
     <color name="main_color_normal">#2E7C31</color>
-    <color name="main_color_light">#60AC5D</color>
+    <color name="main_color_light">#2E7C31</color>
 
     <color name="gray_dark">#373737</color>
     <color name="gray_normal">#616161</color>
@@ -19,4 +19,5 @@
     <color name="black_overlay">#66000000</color>
     <color name="green">#2E7D32</color>
 
+    <color name="green_text">#2E7D32</color>
 </resources>

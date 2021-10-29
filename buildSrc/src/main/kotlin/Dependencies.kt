@@ -70,8 +70,26 @@ object Dependencies {
     const val LEGACY_SUPPORT =
         "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
 
+//    timber
     const val TIMBER =
         "com.jakewharton.timber:timber:${Versions.TIMBER}"
+
+    // google map
+    const val SERVICE_MAP =
+        "com.google.android.gms:play-services-maps:${Versions.MAP}"
+
+    const val SERVICE_LOCATION =
+        "com.google.android.gms:play-services-location:${Versions.LOCATION}"
+
+    // easy permission
+
+    const val EASY_PERMISSION =
+        "pub.devrel:easypermissions:${Versions.EASY_PERMISSION}"
+
+    // for lifecycle service
+    const val LIFECYCLE_EXTENSION =
+        "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE_EXTENSION}"
+
 
 
 

@@ -13,7 +13,7 @@ import com.sudo.jogingu.helper.GeneralHelper
 import com.sudo.jogingu.service.StepService
 import timber.log.Timber
 
-class RunningActivity : AppCompatActivity(), StepCallback {
+class RunActivity : AppCompatActivity(), StepCallback {
     lateinit var binding: ActivityRunningBinding
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {

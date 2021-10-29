@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jogingu">
         <activity
-            android:name=".ui.activities.RunningActivity"
+            android:name=".ui.activities.RunActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activities.SplashActivity"

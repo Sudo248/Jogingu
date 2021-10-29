@@ -8,7 +8,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.sudo.jogingu.R
-import com.sudo.jogingu.ui.activities.MainActivity
+import com.sudo.jogingu.ui.activities.main.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,4 +1,4 @@
-package com.sudo.jogingu.ui.activities
+package com.sudo.jogingu.ui.activities.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.ActivityMainBinding
-import com.sudo.jogingu.ui.activities.run.RunningActivity
-import timber.log.Timber
+import com.sudo.jogingu.ui.activities.run.RunActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

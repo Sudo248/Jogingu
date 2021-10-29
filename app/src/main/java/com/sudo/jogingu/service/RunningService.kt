@@ -3,7 +3,12 @@ package com.sudo.jogingu.service
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager.IMPORTANCE_LOW
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.os.Build
 import android.os.Looper
@@ -29,15 +34,19 @@ import com.sudo.jogingu.common.Constant.NOTIFICATION_CHANNEL_NAME
 import com.sudo.jogingu.common.Constant.NOTIFICATION_ID
 import com.sudo.jogingu.common.Polylines
 import com.sudo.jogingu.common.RunState
+import com.sudo.jogingu.helper.GeneralHelper
 import com.sudo.jogingu.util.TrackingPermission
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.*
 
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class RunningService : LifecycleService() {
+class RunningService : LifecycleService(), SensorEventListener {
 
     @Inject
     lateinit var notificationManager: NotificationManagerCompat
@@ -45,14 +54,21 @@ class RunningService : LifecycleService() {
     lateinit var notificationBuilder: NotificationCompat.Builder
     @Inject
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    @Inject
+    lateinit var sensorManager: SensorManager
+
+    private lateinit var sensor: Sensor
 
     private val timer = Timer()
     private lateinit var timerTask: TimerTask
     private var startTime = 0L
     private var runningTimeInSeconds = 0L
+    private var magnitudePrevious = 0.0
+    private var stepCounts = 0
 
     companion object{
         val runningTime = MutableLiveData<Long>()
+        val stepCounter = MutableLiveData<Int>()
         val runState = MutableLiveData<RunState>()
         val pathPoints = MutableLiveData<Polylines>()
     }
@@ -61,9 +77,6 @@ class RunningService : LifecycleService() {
         super.onCreate()
         // init
         pathPoints.postValue(mutableListOf(mutableListOf()))
-        runState.observe(this){
-            updateLocationTracking(it)
-        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -72,6 +85,8 @@ class RunningService : LifecycleService() {
                 ACTION_START -> {
                     Timber.d("Start")
                     runState.postValue(RunState.START)
+                    registerUpdatePosition()
+                    registerSensorListener()
                 }
                 ACTION_RUNNING -> {
                     Timber.d("Running")
@@ -79,15 +94,19 @@ class RunningService : LifecycleService() {
                         startTime = System.currentTimeMillis()
                     }
                     runState.postValue(RunState.RUNNING)
+                    startTimeCounter()
                     startForegroundService()
                 }
                 ACTION_PAUSE -> {
                     Timber.d("Pause")
                     runState.postValue(RunState.PAUSE)
+                    cancelTimeCounter()
                 }
                 ACTION_FINISH -> {
                     Timber.d("Finish")
                     runState.postValue(RunState.FINISH)
+                    unregisterUpdatePosition()
+                    unregisterSensorListener()
                     TODO("snapshot and save running")
                 }
                 else -> {
@@ -98,7 +117,7 @@ class RunningService : LifecycleService() {
         return super.onStartCommand(intent, flags, startId)
     }
 
-    private fun startTime(){
+    private fun startTimeCounter(){
         timerTask = object : TimerTask(){
             override fun run() {
                 runningTimeInSeconds++
@@ -108,24 +127,18 @@ class RunningService : LifecycleService() {
         timer.scheduleAtFixedRate(timerTask,0,1000)
     }
 
+    private fun cancelTimeCounter(){
+        timerTask.cancel()
+    }
+
     private fun addEmptyPolyline() = pathPoints.value?.apply {
         add(mutableListOf())
         pathPoints.postValue(this)
     } ?: pathPoints.postValue(mutableListOf(mutableListOf()))
 
-    @SuppressLint("MissingPermission")
-    private fun updateLocationTracking(runState: RunState){
-        when(runState){
-            RunState.START, RunState.RUNNING -> {
-                registerUpdatePosition()
-            }
-            RunState.FINISH -> {
-                unregisterUpdatePosition()
-            }
-            else -> {
-
-            }
-        }
+    private fun registerSensorListener(){
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     @SuppressLint("MissingPermission")
@@ -146,6 +159,10 @@ class RunningService : LifecycleService() {
 
     private fun unregisterUpdatePosition(){
         fusedLocationProviderClient.removeLocationUpdates(locationCallBack)
+    }
+
+    private fun unregisterSensorListener(){
+        sensorManager.unregisterListener(this)
     }
 
     private val locationCallBack = object : LocationCallback(){
@@ -186,6 +203,27 @@ class RunningService : LifecycleService() {
             IMPORTANCE_LOW
         )
         notificationManager.createNotificationChannel(channel)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        CoroutineScope(Dispatchers.Default).launch {
+            if (runState.value == RunState.RUNNING && event != null) {
+                val x = event.values[0]
+                val y = event.values[1]
+                val z = event.values[2]
+                val magnitude = kotlin.math.sqrt(x * x + y * y + z * z)
+                val magnitudeDelta = magnitude - magnitudePrevious
+                magnitudePrevious = magnitude.toDouble()
+                if (magnitudeDelta > 6.5) {
+                    stepCounts++
+                    stepCounter.postValue(stepCounts)
+                }
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
     }
 
 }

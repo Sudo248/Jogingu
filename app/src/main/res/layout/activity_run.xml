@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.run.RunningActivity">
+    tools:context=".ui.activities.run.RunActivity">
 
     <com.google.android.gms.maps.MapView
         xmlns:map="http://schemas.android.com/apk/res-auto"

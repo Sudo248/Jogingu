@@ -19,21 +19,21 @@ import com.sudo.jogingu.common.Constant.POLYLINE_COLOR
 import com.sudo.jogingu.common.Constant.POLYLINE_WIDTH_DEFAULT
 import com.sudo.jogingu.common.Polylines
 import com.sudo.jogingu.common.RunState
-import com.sudo.jogingu.databinding.ActivityRunningBinding
+import com.sudo.jogingu.databinding.ActivityRunBinding
 import com.sudo.jogingu.service.RunningService
 import com.sudo.jogingu.util.TrackingPermission
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
-class RunningActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
-    private lateinit var binding: ActivityRunningBinding
+class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
+    private lateinit var binding: ActivityRunBinding
     private lateinit var map: GoogleMap
     private var runState: RunState = RunState.START
     private var pathPoints: Polylines = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRunningBinding.inflate(layoutInflater)
+        binding = ActivityRunBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // check permission for location

@@ -14,14 +14,19 @@ import android.widget.Toast
 import com.sudo.jogingu.callback.StepCallback
 import com.sudo.jogingu.helper.GeneralHelper
 import timber.log.Timber
+import javax.inject.Inject
 import kotlin.math.roundToInt
 
 class StepService : Service(), SensorEventListener {
+    @Inject
+    lateinit var sensorManager: SensorManager
 
-    private var sensorManager: SensorManager? = null
     private lateinit var sensor: Sensor
+
     private var running = true
+
     private var magnitudePrevious = 0.0
+
     private var stepCount = 0
 
     companion object {
@@ -84,7 +89,7 @@ class StepService : Service(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        sensorManager?.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private fun resetStep() {

@@ -4,14 +4,14 @@ import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.hardware.SensorManager
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.sudo.jogingu.R
-import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.Constant.NOTIFICATION_CHANNEL_ID
-import com.sudo.jogingu.ui.activities.run.RunningActivity
+import com.sudo.jogingu.ui.activities.run.RunActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,7 +53,7 @@ object RunningServiceModule {
     : PendingIntent = PendingIntent.getActivity(
         context,
         0,
-        Intent(context, RunningActivity::class.java).apply {
+        Intent(context, RunActivity::class.java).apply {
             this.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         },
         PendingIntent.FLAG_UPDATE_CURRENT
@@ -65,5 +65,11 @@ object RunningServiceModule {
     fun provideFusedLocationProviderClient(
         @ApplicationContext context: Context
     ): FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+
+    @Provides
+    @ServiceScoped
+    fun provideSensorManager(
+        @ApplicationContext context: Context
+    ): SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
 }

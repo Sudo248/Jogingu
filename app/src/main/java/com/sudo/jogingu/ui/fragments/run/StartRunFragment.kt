@@ -27,10 +27,10 @@ class StartRunFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.fabStart.setOnClickListener {
-            activity?.findNavController(R.id.fc_run)?.navigate(R.id.action_startRunFragment_to_runningFragment)
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        binding.fabStart.setOnClickListener {
+//            activity?.findNavController(R.id.fc_run)?.navigate(R.id.action_startRunFragment_to_runningFragment)
+//        }
+//    }
 }

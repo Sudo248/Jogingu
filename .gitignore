@@ -16,3 +16,6 @@ local.properties
 /buildSrc/build
 !gradle-wrapper.jar
 .gradletasknamecache
+/buildSrc/build
+!gradle-wrapper.jar
+.gradletasknamecache

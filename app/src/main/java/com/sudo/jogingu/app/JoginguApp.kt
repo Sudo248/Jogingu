@@ -8,6 +8,8 @@ import timber.log.Timber
 class JoginguApp : Application() {
     override fun onCreate() {
         super.onCreate()
+        Timber.plant(Timber.DebugTree())
+        Timber.d("Init Timber")
 
     }
 

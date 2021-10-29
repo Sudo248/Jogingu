@@ -1,4 +1,4 @@
-package com.sudo.jogingu.ui.activities.main
+package com.sudo.jogingu.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun moveToRunningActivity(){
-        val intent = Intent(this, RunningActivity::class.java)
+        val intent = Intent(this, RunActivity::class.java)
         startActivity(intent)
     }
 

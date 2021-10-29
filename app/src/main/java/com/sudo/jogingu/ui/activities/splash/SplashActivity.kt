@@ -1,10 +1,11 @@
-package com.sudo.jogingu.ui.activities
+package com.sudo.jogingu.ui.activities.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.sudo.jogingu.R
+import com.sudo.jogingu.ui.activities.main.MainActivity
 import kotlinx.coroutines.delay
 
 class SplashActivity : AppCompatActivity() {

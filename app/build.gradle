@@ -64,6 +64,16 @@ dependencies {
     // timber
     implementation( Dependencies.TIMBER )
 
+    // google map
+    implementation( Dependencies.SERVICE_MAP )
+    implementation( Dependencies.SERVICE_LOCATION )
+
+    // easy permission
+    implementation ( Dependencies.EASY_PERMISSION )
+
+    // lifecycle extension
+    implementation ( Dependencies.LIFECYCLE_EXTENSION )
+
 
 
 }

@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/menu/main_menu.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/drawable/bg_blue_triangle.xml" value="0.30527752502274796" />
+        <entry key="app/src/main/res/drawable/bg_green_circle_button.xml" value="0.3106481481481482" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_running.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23014586709886548" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_statistic.xml" value="0.29259259259259257" />

@@ -3,7 +3,7 @@ package com.sudo.jogingu.service
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager.IMPORTANCE_LOW
-import android.content.Context
+import android.app.PendingIntent
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -23,6 +23,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.maps.model.LatLng
+import com.sudo.jogingu.R
 import com.sudo.jogingu.common.Constant.ACTION_FINISH
 import com.sudo.jogingu.common.Constant.ACTION_PAUSE
 import com.sudo.jogingu.common.Constant.ACTION_RUNNING
@@ -34,7 +35,7 @@ import com.sudo.jogingu.common.Constant.NOTIFICATION_CHANNEL_NAME
 import com.sudo.jogingu.common.Constant.NOTIFICATION_ID
 import com.sudo.jogingu.common.Polylines
 import com.sudo.jogingu.common.RunState
-import com.sudo.jogingu.helper.GeneralHelper
+import com.sudo.jogingu.util.TimeUtil
 import com.sudo.jogingu.util.TrackingPermission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -44,10 +45,11 @@ import timber.log.Timber
 import java.util.*
 
 import javax.inject.Inject
+import javax.inject.Named
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class RunningService : LifecycleService(), SensorEventListener {
-
     @Inject
     lateinit var notificationManager: NotificationManagerCompat
     @Inject
@@ -56,8 +58,14 @@ class RunningService : LifecycleService(), SensorEventListener {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     @Inject
     lateinit var sensorManager: SensorManager
+    @Inject
+    @Named("PauseService") lateinit var pendingIntentPauseService: PendingIntent
+    @Inject
+    @Named("RunningService") lateinit var pendingIntentRunningService: PendingIntent
+
 
     private lateinit var sensor: Sensor
+    private lateinit var currentNotificationBuilder: NotificationCompat.Builder
 
     private val timer = Timer()
     private lateinit var timerTask: TimerTask
@@ -65,6 +73,7 @@ class RunningService : LifecycleService(), SensorEventListener {
     private var runningTimeInSeconds = 0L
     private var magnitudePrevious = 0.0
     private var stepCounts = 0
+    private var distances = 0.0
 
     companion object{
         val runningTime = MutableLiveData<Long>()
@@ -75,8 +84,14 @@ class RunningService : LifecycleService(), SensorEventListener {
 
     override fun onCreate() {
         super.onCreate()
+        currentNotificationBuilder = notificationBuilder
         // init
         pathPoints.postValue(mutableListOf(mutableListOf()))
+        runState.observe(this){
+            updateRunState(it)
+            updateNotification(it)
+        }
+
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -85,8 +100,6 @@ class RunningService : LifecycleService(), SensorEventListener {
                 ACTION_START -> {
                     Timber.d("Start")
                     runState.postValue(RunState.START)
-                    registerUpdatePosition()
-                    registerSensorListener()
                 }
                 ACTION_RUNNING -> {
                     Timber.d("Running")
@@ -94,20 +107,15 @@ class RunningService : LifecycleService(), SensorEventListener {
                         startTime = System.currentTimeMillis()
                     }
                     runState.postValue(RunState.RUNNING)
-                    startTimeCounter()
-                    startForegroundService()
                 }
                 ACTION_PAUSE -> {
                     Timber.d("Pause")
                     runState.postValue(RunState.PAUSE)
-                    cancelTimeCounter()
+
                 }
                 ACTION_FINISH -> {
                     Timber.d("Finish")
                     runState.postValue(RunState.FINISH)
-                    unregisterUpdatePosition()
-                    unregisterSensorListener()
-                    TODO("snapshot and save running")
                 }
                 else -> {
                     Timber.d("Stop service")
@@ -115,6 +123,27 @@ class RunningService : LifecycleService(), SensorEventListener {
             }
         }
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun updateRunState(state: RunState){
+        when(state){
+            RunState.START -> {
+                registerUpdatePosition()
+                registerSensorListener()
+            }
+            RunState.RUNNING -> {
+                startTimeCounter()
+                startForegroundService()
+            }
+            RunState.PAUSE -> {
+                cancelTimeCounter()
+            }
+            RunState.FINISH -> {
+                unregisterUpdatePosition()
+                unregisterSensorListener()
+                TODO("snapshot and save running")
+            }
+        }
     }
 
     private fun startTimeCounter(){
@@ -129,6 +158,26 @@ class RunningService : LifecycleService(), SensorEventListener {
 
     private fun cancelTimeCounter(){
         timerTask.cancel()
+    }
+
+    private fun updateNotification(state: RunState){
+        var notificationActionText = "Pause"
+        var pendingIntent = pendingIntentPauseService
+        if(state == RunState.PAUSE){
+            notificationActionText = "Resume"
+            pendingIntent = pendingIntentRunningService
+        }
+        // remove all action
+        currentNotificationBuilder.javaClass.getDeclaredField("mActions").apply {
+            isAccessible = true
+            set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
+        }
+
+        currentNotificationBuilder = notificationBuilder
+            .addAction(R.drawable.ic_pause_24, notificationActionText, pendingIntent)
+
+        notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
+
     }
 
     private fun addEmptyPolyline() = pathPoints.value?.apply {
@@ -191,7 +240,14 @@ class RunningService : LifecycleService(), SensorEventListener {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createNotification()
         }
-        startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        startForeground(NOTIFICATION_ID, currentNotificationBuilder.build())
+
+        runningTime.observe(this){
+            val notification = currentNotificationBuilder
+                .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distances/1000))
+                .setContentText("running")
+            notificationManager.notify(NOTIFICATION_ID, notification.build())
+        }
     }
 
 

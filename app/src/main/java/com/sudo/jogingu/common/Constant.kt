@@ -23,4 +23,9 @@ object Constant {
     const val NOTIFICATION_CHANNEL_ID  = "tracking-channel"
     const val NOTIFICATION_CHANNEL_NAME = "Tracking"
     const val NOTIFICATION_ID = 1
+
+    const val SECOND_DURATION = 1000
+    const val MINUTE_DURATION = 60000
+    const val HOUR_DURATION = 3600000
+
 }

@@ -4,20 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.run.StartRunFragment">
+    tools:context=".ui.activities.run.RunActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_start_run"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mapType="terrain" />
 
+    <FrameLayout
+        android:id="@+id/frame_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="@color/main_color_light"
+        app:layout_constraintTop_toBottomOf="@id/gl_start_run"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_start"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:elevation="10dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/start"
+        app:backgroundTint="@color/main_color_dark"
+        app:iconSize="100dp"
+        app:iconTint="@color/white"
+        app:layout_anchor="@+id/frame_rectangle"
+        app:layout_anchorGravity="top|center"
+        app:layout_constraintBottom_toTopOf="@+id/gl_start_run"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gl_start_run"
+         />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/gl_start_run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
-
+        app:layout_constraintGuide_percent="0.8888" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

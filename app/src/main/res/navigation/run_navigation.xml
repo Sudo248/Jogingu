@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:id="@+id/run_navigation"
+    app:startDestination="@id/startRunFragment">
+
+    <fragment
+        android:id="@+id/startRunFragment"
+        android:name="com.sudo.jogingu.ui.fragments.run.StartRunFragment"
+        android:label="StartRunFragment" >
+        <action
+            android:id="@+id/action_startRunFragment_to_runningFragment"
+            app:destination="@id/runningFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/runningFragment"
+        android:name="com.sudo.jogingu.ui.fragments.run.RunningFragment"
+        android:label="RunningFragment" >
+        <action
+            android:id="@+id/action_runningFragment_to_startRunFragment"
+            app:destination="@id/startRunFragment" />
+    </fragment>
+</navigation>

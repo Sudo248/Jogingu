@@ -2,7 +2,6 @@ package com.sudo.jogingu.ui.fragments.target.set_target
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
-import android.app.TimePickerDialog.OnTimeSetListener
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,10 +10,7 @@ import android.view.ViewGroup
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentSetTargetBinding
 import java.util.*
-import android.widget.TimePicker
 
-import com.sudo.jogingu.ui.activities.MainActivity
-import java.lang.String.format
 import kotlin.text.*
 
 

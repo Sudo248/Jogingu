@@ -1,13 +1,13 @@
-package com.sudo.jogingu.ui.activities
+package com.sudo.jogingu.ui.activities.main
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.ActivityMainBinding
-
+import com.sudo.jogingu.ui.activities.run.RunActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -20,10 +20,15 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragments) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
 
-        binding.fab.setOnClickListener{
-            val intent = Intent(this, RunActivity::class.java)
-            startActivity(intent)
+        binding.fabRun.setOnClickListener {
+            moveToRunningActivity()
         }
+
+    }
+
+    private fun moveToRunningActivity(){
+        val intent = Intent(this, RunActivity::class.java)
+        startActivity(intent)
     }
 
 }

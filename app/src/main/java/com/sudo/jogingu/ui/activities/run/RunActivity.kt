@@ -27,6 +27,7 @@ import com.sudo.jogingu.common.Polylines
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.databinding.ActivityRunBinding
 import com.sudo.jogingu.service.RunningService
+import com.sudo.jogingu.util.TimeUtil
 import com.sudo.jogingu.util.TrackingPermission
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
@@ -87,6 +88,7 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
             sendCommandToService(ACTION_FINISH)
         }
 
+
     }
 
     private fun subscribeObserver(){
@@ -106,6 +108,14 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                 moveCameraToUser(MAP_ZOOM_DEFAULT)
             }
         }
+        RunningService.runningTime.observe(this) {
+            binding.tvTimeValue.text = TimeUtil.parseTime(it)
+        }
+
+        RunningService.stepCounter.observe(this) {
+            binding.tvStepValue.text = it.toString()
+        }
+
 
     }
 

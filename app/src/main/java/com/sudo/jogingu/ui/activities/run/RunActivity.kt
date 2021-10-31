@@ -38,8 +38,6 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         super.onCreate(savedInstanceState)
         binding = ActivityRunBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         // check permission for location
         TrackingPermission.requestPermission(this)
 
@@ -235,6 +233,4 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
     }
-
-
 }

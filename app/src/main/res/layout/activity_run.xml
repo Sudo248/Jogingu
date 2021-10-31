@@ -10,6 +10,7 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.60" />
+        app:layout_constraintGuide_percent="0.80" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_before_start"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,13 +80,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_after_start"
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_start_run_main" >
+        app:layout_constraintTop_toBottomOf="@id/gl_start_run_main">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_running_secondary"
@@ -100,6 +101,7 @@
             android:layout_height="0dp"
             android:layout_gravity="bottom"
             android:background="@color/main_color_normal"
+            android:focusable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -137,9 +139,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="--"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
 
@@ -158,8 +160,8 @@
                 android:id="@+id/lnl_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginBottom="30dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/lnl_count_step"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -178,9 +180,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="00:00:00"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
 
@@ -218,9 +220,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="10"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
 
@@ -241,25 +243,24 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_finish"
+            android:visibility="gone"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:elevation="10dp"
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
+            android:text="@string/finish"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:text="@string/finish"
             app:backgroundTint="@color/main_color_dark"
-            app:layout_anchor="@+id/frame_rectangle_second"
-            app:layout_anchorGravity="top|center"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintEnd_toStartOf="@+id/fl_display_distance"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintVertical_bias="0.5"/>
+            app:layout_constraintVertical_bias="0.5" />
 
         <FrameLayout
             android:id="@+id/fl_display_distance"
@@ -267,13 +268,12 @@
             android:layout_height="150dp"
             android:background="@drawable/bg_running_distance_display"
             android:elevation="10dp"
-            app:layout_anchor="@+id/frame_rectangle_second"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fab_resume_continue"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fab_finish"
             app:layout_constraintTop_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintVertical_bias="0.506">
+            app:layout_constraintVertical_bias="0.5">
 
             <TextView
                 android:id="@+id/tv_distance"
@@ -294,23 +294,25 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </FrameLayout>
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_resume_continue"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:elevation="10dp"
             app:backgroundTint="@color/main_color_dark"
+            app:icon="@drawable/ic_pause_24"
             app:iconSize="40dp"
             app:iconTint="@color/white"
+            app:collapsedSize="70dp"
             app:layout_anchor="@+id/frame_rectangle_second"
             app:layout_anchorGravity="top|center"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fl_display_distance"
             app:layout_constraintTop_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintVertical_bias="0.571"
-            app:icon="@drawable/ic_pause_24"/>
+            app:layout_constraintVertical_bias="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

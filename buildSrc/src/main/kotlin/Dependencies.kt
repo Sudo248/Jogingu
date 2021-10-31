@@ -73,6 +73,7 @@ object Dependencies {
     const val TIMBER =
         "com.jakewharton.timber:timber:${Versions.TIMBER}"
 
-
+    const val STATISTIC_CHART =
+    "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
 
 }

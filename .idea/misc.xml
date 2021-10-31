@@ -4,6 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/3. KOTLIN PROJECT/Jogingu/app/src/main/res/menu/main_menu.xml" value="0.24114583333333334" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/activity_splash.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_home.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_profile.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_set_target.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_statistic.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_target.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/fragment_view_target.xml" value="0.2" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/layout/item_of_frahome.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/DemoAndroid/Jogingu/app/src/main/res/menu/profile_menu.xml" value="0.22592592592592592" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_day.xml" value="0.2101851851851852" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_month_chart.xml" value="0.2101851851851852" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_profile.xml" value="0.12268518518518519" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_statistic.xml" value="0.264" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_target.xml" value="0.22268518518518518" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_view_target.xml" value="0.22268518518518518" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_week_chart.xml" value="0.22268518518518518" />
+        <entry key="..\:/Android/Jogingu/app/src/main/res/layout/item_of_frahome.xml" value="0.22268518518518518" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23014586709886548" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2" />

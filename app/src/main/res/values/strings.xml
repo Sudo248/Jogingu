@@ -36,4 +36,14 @@
     <string name="target_content_place">Place</string>
     <string name="target_content_recurring">Recurring / days</string>
     <string name="target_content_notification_before">Notification</string>
+
+    <!-- statistic fragment -->
+    <string name="statistic_content_step">Steps</string>
+    <string name="statistic_content_calories">Calories</string>
+    <string name="statistic_content_time">Time</string>
+    <string name="statistic_content_km">Km</string>
+    <string name="statistic_content_description_chart">The chart below shows your training progress over time.</string>
+    <string name="statistic_content_greeting">Hi, </string>
+    <string name="statistic_content_date">Today</string>
+    <string name="statistic_title_fragment">Statistic</string>
 </resources>

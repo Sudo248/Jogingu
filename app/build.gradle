@@ -64,6 +64,7 @@ dependencies {
     // timber
     implementation( Dependencies.TIMBER )
 
-
+    // statistic chart
+    implementation( Dependencies.STATISTIC_CHART)
 
 }

@@ -22,4 +22,8 @@ object Versions {
     const val LEGACY = "1.0.0"
     const val TIMBER = "4.7.1"
 
+    //statistic chart
+
+    const val STATISTIC_CHART = "v3.1.0"
+
 }

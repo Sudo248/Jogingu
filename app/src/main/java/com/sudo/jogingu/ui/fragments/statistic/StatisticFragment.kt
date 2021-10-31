@@ -2,12 +2,14 @@ package com.sudo.jogingu.ui.fragments.statistic
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -40,6 +42,7 @@ class StatisticFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,6 +67,7 @@ class StatisticFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         runList = getFakeRunList(7)
@@ -71,6 +75,7 @@ class StatisticFragment : Fragment() {
     }
 
     //up chart
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun setUpBarChart(){
 
 
@@ -79,20 +84,20 @@ class StatisticFragment : Fragment() {
 
         val entries: ArrayList<BarEntry> = ArrayList()
 
-    // -------------------Can replace thí data object with the custom object-----------------
+    // Can replace thí data object with the custom object
         for( i in runList.indices){
             val runningday = runList[i]
             entries.add(BarEntry(i.toFloat(),runningday.distance.toFloat(),"${i%4}"))
         }
-    // ------------------------------set show data distance-------------------------------
+    // set show data distance
         val barDataSet = BarDataSet(entries,"Distance")
 
 
-    // ------------------------------------set color--------------------------------------
-        barDataSet.setColors(R.color.main_color_light)
-
+    // set color
+        barDataSet.setColors(resources.getColor(R.color.main_color_normal, null))
+        barDataSet.setDrawValues(false)
         val data = BarData(barDataSet)
-    //----------------------------------- add data to chart----------------------------------
+    // add data to chart
         binding.barChart.data = data
 
         binding.barChart.invalidate()
@@ -101,28 +106,28 @@ class StatisticFragment : Fragment() {
 
     @SuppressLint("ResourceAsColor")
     private fun initBarChart() {
-    //------------------------------------- hide grid lines-----------------------------
+    // hide grid lines
         binding.barChart.axisLeft.setDrawGridLines(false)
         val xAxis: XAxis = binding.barChart.xAxis
         xAxis.setDrawGridLines(false)
         xAxis.setDrawAxisLine(false)
 
-    //----------------------------------- remove right y-axis-----------------------------------
+    // remove right y-axis
         binding.barChart.axisRight.isEnabled = false
 
-    //-----------------------------------remove legend-----------------------------------
+    // remove legend
         binding.barChart.legend.isEnabled = false
 
-    //----------------------------------- set background color-----------------------------------
+    // set background color
         //binding.barChart.setBackgroundColor(R.color.main_color_light)
 
-    //----------------------------------- remove description label-----------------------------------
+    // remove description label
         binding.barChart.description.isEnabled = false
 
-    //----------------------------------- add animation-----------------------------------
-    //    binding.barChart.animateY(1000)
+    // add animation
+        binding.barChart.animateY(1000)
 
-    //----------------------------------- draw label on x Axis-----------------------------------
+    // draw label on x Axis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 //        xAxis.valueFormatter = MyAxisFormatter()
 
@@ -132,7 +137,7 @@ class StatisticFragment : Fragment() {
         xAxis.labelRotationAngle = +0f
     }
 
-    //----------------------------------- set format for column-----------------------------------
+    // set format for column
     inner class MyAxisFormatter : IndexAxisValueFormatter() {
 
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {

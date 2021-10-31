@@ -10,8 +10,9 @@ object Constant {
     const val ACTION_FINISH = "ACTION_FINISH"
     const val ACTION_SHOW_RUNNING_ACTIVITY = "ACTION_SHOW_RUNNING_ACTIVITY"
 
-    const val LOCATION_UPDATE_INTERVAL = 1000L
-    const val FASTEST_LOCATION_INTERVAL = 1000L
+    const val LOCATION_UPDATE_INTERVAL = 5000L
+    const val FASTEST_LOCATION_INTERVAL = 2000L
+
     const val POLYLINE_COLOR = Color.GREEN
     const val POLYLINE_WIDTH_DEFAULT = 8f
     const val MAP_ZOOM_DEFAULT = 19f
@@ -24,8 +25,7 @@ object Constant {
     const val NOTIFICATION_CHANNEL_NAME = "Tracking"
     const val NOTIFICATION_ID = 1
 
-    const val SECOND_DURATION = 1000
-    const val MINUTE_DURATION = 60000
-    const val HOUR_DURATION = 3600000
+    const val MINUTE_DURATION = 60
+    const val HOUR_DURATION = 3600
 
 }

@@ -1,6 +1,7 @@
 package com.sudo.jogingu.di
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
@@ -45,8 +46,7 @@ object RunningServiceModule {
             .setAutoCancel(false)
             .setOngoing(true)
             .setSmallIcon(R.drawable.ic_directions_run_24)
-            .setContentTitle(context.getString(R.string.title_notification_running) + " - " + TimeUtil.parseTime(0L) + " - "+"0 km")
-            .setContentText("running")
+            .setContentTitle(TimeUtil.parseTime(0L) + " - "+"0 km")
             .setContentIntent(pendingIntent)
 
 

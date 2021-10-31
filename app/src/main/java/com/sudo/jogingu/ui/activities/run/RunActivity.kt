@@ -8,12 +8,15 @@ import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolylineOptions
 import com.sudo.jogingu.R
 import com.sudo.jogingu.common.Constant.ACTION_FINISH
 import com.sudo.jogingu.common.Constant.ACTION_PAUSE
 import com.sudo.jogingu.common.Constant.ACTION_RUNNING
 import com.sudo.jogingu.common.Constant.ACTION_START
+import com.sudo.jogingu.common.Constant.LATITUDE_DEFAULT
+import com.sudo.jogingu.common.Constant.LONGITUDE_DEFAULT
 import com.sudo.jogingu.common.Constant.MAP_ZOOM_DEFAULT
 import com.sudo.jogingu.common.Constant.POLYLINE_COLOR
 import com.sudo.jogingu.common.Constant.POLYLINE_WIDTH_DEFAULT

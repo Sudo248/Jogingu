@@ -63,7 +63,6 @@ class RunningService : LifecycleService(), SensorEventListener {
     @Inject
     @Named("RunningService") lateinit var pendingIntentRunningService: PendingIntent
 
-
     private lateinit var sensor: Sensor
     private lateinit var currentNotificationBuilder: NotificationCompat.Builder
 
@@ -87,6 +86,7 @@ class RunningService : LifecycleService(), SensorEventListener {
         currentNotificationBuilder = notificationBuilder
         // init
         pathPoints.postValue(mutableListOf(mutableListOf()))
+
         runState.observe(this){
             updateRunState(it)
             updateNotification(it)
@@ -240,16 +240,15 @@ class RunningService : LifecycleService(), SensorEventListener {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createNotification()
         }
-        startForeground(NOTIFICATION_ID, currentNotificationBuilder.build())
+        startForeground(NOTIFICATION_ID, notificationBuilder.build())
 
         runningTime.observe(this){
+            Timber.d("time running: $it")
             val notification = currentNotificationBuilder
                 .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distances/1000))
-                .setContentText("running")
             notificationManager.notify(NOTIFICATION_ID, notification.build())
         }
     }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotification(){

@@ -8,7 +8,7 @@ import timber.log.Timber
 class JoginguApp : Application() {
     override fun onCreate() {
         super.onCreate()
-
+        Timber.plant(Timber.DebugTree())
     }
 
 //    private fun createNotificationChannel() {

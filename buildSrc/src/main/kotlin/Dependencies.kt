@@ -70,7 +70,6 @@ object Dependencies {
     const val LEGACY_SUPPORT =
         "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
 
-//    timber
     const val TIMBER =
         "com.jakewharton.timber:timber:${Versions.TIMBER}"
 
@@ -92,5 +91,7 @@ object Dependencies {
 
 
 
+    const val STATISTIC_CHART =
+    "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
 
 }

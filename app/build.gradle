@@ -75,5 +75,7 @@ dependencies {
     implementation ( Dependencies.LIFECYCLE_EXTENSION )
 
 
+    // statistic chart
+    implementation( Dependencies.STATISTIC_CHART)
 
 }

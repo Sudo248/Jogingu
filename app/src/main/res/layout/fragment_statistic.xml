@@ -7,6 +7,12 @@
     tools:context=".ui.fragments.statistic.StatisticFragment"
     android:orientation="vertical"
     android:weightSum="15">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/statistic_title_fragment"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +25,7 @@
             android:paddingLeft="8dp"
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
-            android:text="Hi, "
+            android:text="@string/statistic_content_greeting"
             android:textSize="20dp"
             android:textColor="@color/black"/>
         <TextView
@@ -33,24 +39,67 @@
             android:textSize="23dp"
             android:textColor="@color/green_text"/>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingLeft="16dp"
-        android:text="The chart below shows your training progress over time."
+        android:text="@string/statistic_content_description_chart"
         android:textSize="14dp"/>
-    <ImageView
-        android:id="@+id/statistic_chart"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/img_barchart"
-        android:layout_weight="6"/>
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_weight="0.8">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/black"
+            android:layout_weight="3.2"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/statistic_btn_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="D"
+            android:textColor="@color/main_color_dark"
+            android:backgroundTint="@color/main_color_pale"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/statistic_btn_week"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="W"
+            android:textColor="@color/main_color_dark"
+            android:backgroundTint="@color/main_color_pale"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/statistic_btn_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="M"
+            android:textColor="@color/main_color_dark"
+            android:backgroundTint="@color/main_color_pale"/>
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_margin="16dp"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.3"
-        android:text="To day"
+        android:layout_weight="1"
+        android:text="@string/statistic_content_date"
         android:gravity="center"
         android:textColor="@color/green_text"
         android:textSize="36dp"/>
@@ -86,7 +135,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.5"
                     android:gravity="center"
-                    android:text="Steps"
+                    android:text="@string/statistic_content_step"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -126,7 +175,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.5"
                     android:gravity="center"
-                    android:text="Calories"
+                    android:text="@string/statistic_content_calories"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -177,7 +226,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_weight="0.5"
                     android:gravity="center"
-                    android:text="Time"
+                    android:text="@string/statistic_content_time"
                     android:textColor="@color/white" />
 
 
@@ -220,7 +269,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_weight="0.5"
                     android:gravity="center"
-                    android:text="Km"
+                    android:text="@string/statistic_content_km"
                     android:textColor="@color/white" />
 
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sudo.jogingu">
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:name=".app.JoginguApp"
         android:allowBackup="true"
@@ -25,6 +27,19 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true"></activity>
+        <service android:name=".service.NotificationService" />
+        <service
+            android:name=".service.TestJobService"
+            android:label="Word service"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+
+        </service>
+        <receiver android:name=".service.NotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

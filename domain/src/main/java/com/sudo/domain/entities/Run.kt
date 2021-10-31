@@ -11,4 +11,5 @@ data class Run(
     val caloBurned: Int,
     val timeStart: Date,
     val location: String
+
 )

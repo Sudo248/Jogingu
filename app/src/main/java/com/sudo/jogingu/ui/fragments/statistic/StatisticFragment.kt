@@ -70,12 +70,12 @@ class StatisticFragment : Fragment() {
         setUpBarChart()
     }
 
-    // -------------------------------set up chart-----------------------------
+    //up chart
     private fun setUpBarChart(){
 
 
         initBarChart()
-    // --------------------------draw bar chart with dynamic data---------------------------
+    // draw bar chart with dynamic data
 
         val entries: ArrayList<BarEntry> = ArrayList()
 
@@ -89,7 +89,7 @@ class StatisticFragment : Fragment() {
 
 
     // ------------------------------------set color--------------------------------------
-        barDataSet.setColors(getResources().getColor(R.color.main_color_light))
+        barDataSet.setColors(R.color.main_color_light)
 
         val data = BarData(barDataSet)
     //----------------------------------- add data to chart----------------------------------

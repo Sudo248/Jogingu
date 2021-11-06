@@ -1,10 +1,13 @@
 package com.sudo.jogingu.ui.activities.run
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.location.LocationListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
@@ -24,6 +27,7 @@ import com.sudo.jogingu.common.Polylines
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.databinding.ActivityRunBinding
 import com.sudo.jogingu.service.RunningService
+import com.sudo.jogingu.util.TimeUtil
 import com.sudo.jogingu.util.TrackingPermission
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
@@ -38,7 +42,6 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         super.onCreate(savedInstanceState)
         binding = ActivityRunBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         // check permission for location
         TrackingPermission.requestPermission(this)
 
@@ -67,8 +70,25 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     private fun subscribeUi(){
         binding.fabStart.setOnClickListener {
-            onClickButtonStart()
+            binding.glStartRunMain.setGuidelinePercent(0.6F)
+            binding.ctlBeforeStart.visibility = View.GONE
+            binding.ctlAfterStart.visibility = View.VISIBLE
+            sendCommandToService(ACTION_RUNNING)
         }
+
+        binding.fabResumeContinue.setOnClickListener {
+            if(runState == RunState.RUNNING){
+                sendCommandToService(ACTION_PAUSE)
+            }else{
+                sendCommandToService(ACTION_RUNNING)
+            }
+        }
+
+        binding.fabFinish.setOnClickListener {
+            sendCommandToService(ACTION_FINISH)
+        }
+
+
     }
 
     private fun subscribeObserver(){
@@ -88,25 +108,15 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                 moveCameraToUser(MAP_ZOOM_DEFAULT)
             }
         }
-
-    }
-
-
-    private fun onClickButtonStart(){
-        when(runState){
-            RunState.START -> {
-                sendCommandToService(ACTION_RUNNING)
-            }
-            RunState.RUNNING -> {
-                sendCommandToService(ACTION_PAUSE)
-            }
-            RunState.PAUSE -> {
-                sendCommandToService(ACTION_RUNNING)
-            }
-            RunState.FINISH -> {
-                sendCommandToService(ACTION_FINISH)
-            }
+        RunningService.runningTime.observe(this) {
+            binding.tvTimeValue.text = TimeUtil.parseTime(it)
         }
+
+        RunningService.stepCounter.observe(this) {
+            binding.tvStepValue.text = it.toString()
+        }
+
+
     }
 
     private fun sendCommandToService(action: String){
@@ -119,17 +129,18 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun updateUi() {
         when(runState){
-            RunState.START -> {
-                binding.fabStart.text = getString(R.string.start)
-            }
             RunState.RUNNING -> {
-                binding.fabStart.text = " "
-                binding.fabStart.icon = getDrawable(R.drawable.ic_pause_24)
+                binding.fabFinish.visibility = View.GONE
+                binding.fabResumeContinue.icon = getDrawable(R.drawable.ic_pause_24)
             }
             RunState.PAUSE -> {
-                binding.fabStart.icon = getDrawable(R.drawable.ic_play_arrow_24)
+                binding.fabResumeContinue.icon = getDrawable(R.drawable.ic_play_arrow_24)
+                binding.fabFinish.visibility = View.VISIBLE
             }
             RunState.FINISH -> {
+
+            }
+            else -> {
 
             }
         }
@@ -235,6 +246,4 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
     }
-
-
 }

@@ -27,4 +27,8 @@ object Versions {
     const val LIFECYCLE_EXTENSION = "2.2.0"
 
 
+    //statistic chart
+
+    const val STATISTIC_CHART = "v3.1.0"
+
 }

@@ -27,8 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.activities.main.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <service android:name=".service.RunningService"
             android:foregroundServiceType="location"/>
@@ -39,9 +41,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_access_token"/>
-            android:name=".ui.activities.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
         <service android:name=".service.StepService">
 
         </service>

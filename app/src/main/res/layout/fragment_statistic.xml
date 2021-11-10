@@ -1,114 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.statistic.StatisticFragment"
-    android:orientation="vertical"
-    android:weightSum="15">
+    android:layout_height="match_parent">
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="@string/statistic_title_fragment"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/statistic_title_fragment" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="5"
-        android:layout_weight="0.3">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="8dp"
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
+            android:paddingLeft="8dp"
             android:text="@string/statistic_content_greeting"
-            android:textSize="20dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/statistic_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="8dp"
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
+            android:paddingLeft="8dp"
             android:text="Duong "
-            android:textSize="23dp"
-            android:textColor="@color/green_text"/>
+            android:textColor="@color/green_text"
+            android:textSize="23dp" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/statistic_description"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
         android:paddingLeft="16dp"
         android:text="@string/statistic_content_description_chart"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="5"
-        android:layout_weight="0.8">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic_description">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:paddingLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_weight="3.2"
             android:paddingStart="16dp"
-            android:textColor="@color/black"
-            android:layout_weight="3.2"/>
+            android:paddingLeft="8dp"
+            android:textColor="@color/black" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/statistic_btn_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:backgroundTint="@color/main_color_pale"
             android:text="D"
-            android:textColor="@color/main_color_dark"
-            android:backgroundTint="@color/main_color_pale"/>
+            android:textColor="@color/main_color_dark" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/statistic_btn_week"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="W"
-            android:textColor="@color/main_color_dark"
             android:backgroundTint="@color/main_color_pale"
-            />
+            android:text="W"
+            android:textColor="@color/main_color_dark" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/statistic_btn_month"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:backgroundTint="@color/main_color_pale"
             android:text="M"
-            android:textColor="@color/main_color_dark"
-            android:backgroundTint="@color/main_color_pale"/>
+            android:textColor="@color/main_color_dark" />
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/statistic_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/statistic_content_date"
+        android:id="@+id/statistic_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/statistic_content_date"
         android:textColor="@color/green_text"
-        android:textSize="36dp"/>
-
+        android:textSize="36dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.897" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/statistic_cv_steps"
@@ -278,6 +310,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

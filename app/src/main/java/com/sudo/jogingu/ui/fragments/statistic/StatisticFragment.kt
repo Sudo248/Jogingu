@@ -23,7 +23,9 @@ import com.sudo.domain.use_case.run.AddNewRun
 import com.sudo.domain.use_case.run.GetAllRuns
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentStatisticBinding
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,7 +33,7 @@ import kotlin.collections.ArrayList
 class StatisticFragment : Fragment() {
     lateinit var binding: FragmentStatisticBinding
     lateinit var newRun: AddNewRun
-    lateinit var getAllRun : MainRepositoryImpl
+    lateinit var getAllRun : GetAllRuns
     lateinit var runningList : Flow<Result<List<Run>>>
     private var runList = ArrayList<RunningDay>()
 
@@ -70,29 +72,29 @@ class StatisticFragment : Fragment() {
         setUpBarChart()
     }
 
-    // -------------------------------set up chart-----------------------------
+    // set up chart
     private fun setUpBarChart(){
 
 
         initBarChart()
-    // --------------------------draw bar chart with dynamic data---------------------------
+    //draw bar chart with dynamic data
 
         val entries: ArrayList<BarEntry> = ArrayList()
 
-    // -------------------Can replace thí data object with the custom object-----------------
+    // Can replace thí data object with the custom object
         for( i in runList.indices){
             val runningday = runList[i]
             entries.add(BarEntry(i.toFloat(),runningday.distance.toFloat(),"${i%4}"))
         }
-    // ------------------------------set show data distance-------------------------------
+    //set show data distance
         val barDataSet = BarDataSet(entries,"Distance")
 
 
-    // ------------------------------------set color--------------------------------------
+    // set color
         barDataSet.setColors(getResources().getColor(R.color.main_color_light))
-
+        barDataSet.setDrawValues(false)
         val data = BarData(barDataSet)
-    //----------------------------------- add data to chart----------------------------------
+    //add data to chart
         binding.barChart.data = data
 
         binding.barChart.invalidate()
@@ -101,28 +103,28 @@ class StatisticFragment : Fragment() {
 
     @SuppressLint("ResourceAsColor")
     private fun initBarChart() {
-    //------------------------------------- hide grid lines-----------------------------
+    //hide grid lines
         binding.barChart.axisLeft.setDrawGridLines(false)
         val xAxis: XAxis = binding.barChart.xAxis
         xAxis.setDrawGridLines(false)
         xAxis.setDrawAxisLine(false)
 
-    //----------------------------------- remove right y-axis-----------------------------------
+    //remove right y-axis
         binding.barChart.axisRight.isEnabled = false
 
-    //-----------------------------------remove legend-----------------------------------
+    //remove legend
         binding.barChart.legend.isEnabled = false
 
-    //----------------------------------- set background color-----------------------------------
+    //set background color
         //binding.barChart.setBackgroundColor(R.color.main_color_light)
 
-    //----------------------------------- remove description label-----------------------------------
+    //remove description label
         binding.barChart.description.isEnabled = false
 
-    //----------------------------------- add animation-----------------------------------
-    //    binding.barChart.animateY(1000)
+    //add animation
+        binding.barChart.animateY(1000)
 
-    //----------------------------------- draw label on x Axis-----------------------------------
+    //draw label on x Axis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 //        xAxis.valueFormatter = MyAxisFormatter()
 
@@ -132,7 +134,7 @@ class StatisticFragment : Fragment() {
         xAxis.labelRotationAngle = +0f
     }
 
-    //----------------------------------- set format for column-----------------------------------
+    //set format for column
     inner class MyAxisFormatter : IndexAxisValueFormatter() {
 
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
@@ -145,46 +147,68 @@ class StatisticFragment : Fragment() {
             }
         }
     }
-    //----------------------------------- get list distance user run in a week Fake data-----------------------------------
-    private  fun getFakeRunList(len: Int): ArrayList<RunningDay> {
-//        newRun.invoke(Run("R1","evening run",1200,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,10,31,21,14,12),"Ha Noi"))
+    // get list distance user run in a week Fake data
+    @OptIn(InternalCoroutinesApi::class)
+    private fun getFakeRunList(len: Int): ArrayList<RunningDay> {
+
+        runBlocking {
+
+            newRun.invoke(Run("R1","evening run",1200,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,10,31,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",1400,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,1,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",1300,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,2,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",100,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,3,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",1900,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,4,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",3000,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,5,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",4000,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,6,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",500,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,7,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",1200,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,8,21,14,12),"Ha Noi"))
+
+            newRun.invoke(Run("R1","evening run",1700,7f,132,"http://i.imgur.com/DvpvklR.png",123,
+                Date(2021,11,9,21,14,12),"Ha Noi"))
+            runningList = getAllRun.invoke()
+//            runningList.collect{
+//                val action = when(it){
+//                    is Result.Success-> {
+//                        for (run in it.data){
+//                            var date = Calendar.getInstance().time.month
+//                            if(run.timeStart.month == date){
+//                                runList.add(RunningDay(run.timeStart.month.toString(),run.distance))
+//                            }
+//                        }
+//                        Log.d("Flow running success","success")
+//                    }
+//                    is Result.Error -> {
+//                        Log.d("Flow running err","err")
+//                    }
+//                    else -> Log.d("Flow running else","else")
+//                }
+//            }
 //
-//        newRun.invoke(Run("R1","evening run",1400,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,1,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",1300,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,2,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",100,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,3,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",1900,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,4,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",3000,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,5,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",4000,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,6,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",500,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,7,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",1200,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,8,21,14,12),"Ha Noi"))
-//
-//        newRun.invoke(Run("R1","evening run",1700,7f,132,"http://i.imgur.com/DvpvklR.png",123,
-//            Date(2021,11,9,21,14,12),"Ha Noi"))
-//        runningList = getAllRun.getAllRuns()
-//        runningList.collect{}
-        for(i in 1..len){
-            if(len==7)
-                runList.add(RunningDay("T${i}", i%3))
-            else{
-                runList.add(RunningDay("${i}", i%7))
-            }
         }
+//        for(i in 1..len){
+//            if(len==7)
+//                runList.add(RunningDay("T${i}", i%3))
+//            else{
+//                runList.add(RunningDay("${i}", i%7))
+//            }
+//        }
         return runList
     }
 

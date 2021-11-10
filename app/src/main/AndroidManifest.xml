@@ -41,7 +41,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_access_token"/>
-        <service android:name=".service.StepService">
+        <service android:name=".service.GoogleMapService">
 
         </service>
     </application>

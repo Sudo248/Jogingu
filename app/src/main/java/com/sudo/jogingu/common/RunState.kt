@@ -9,7 +9,6 @@ enum class RunState {
     },
     PAUSE{
         override fun onChange(): RunState = RUNNING
-
     },
     FINISH{
         override fun onChange(): RunState = START

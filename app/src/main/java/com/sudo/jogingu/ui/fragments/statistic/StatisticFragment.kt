@@ -8,14 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.sudo.data.local.database.dao.JoginguDao
-import com.sudo.data.repositories.MainRepositoryImpl
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.Run
 import com.sudo.domain.entities.RunningDay
@@ -23,8 +22,10 @@ import com.sudo.domain.use_case.run.AddNewRun
 import com.sudo.domain.use_case.run.GetAllRuns
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentStatisticBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.collections.ArrayList
@@ -151,7 +152,7 @@ class StatisticFragment : Fragment() {
     @OptIn(InternalCoroutinesApi::class)
     private fun getFakeRunList(len: Int): ArrayList<RunningDay> {
 
-        runBlocking {
+        lifecycleScope.launch(Dispatchers.IO) {
 
             newRun.invoke(Run("R1","evening run",1200,7f,132,"http://i.imgur.com/DvpvklR.png",123,
                 Date(2021,10,31,21,14,12),"Ha Noi"))

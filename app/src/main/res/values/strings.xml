@@ -45,5 +45,7 @@
     <string name="statistic_content_description_chart">The chart below shows your training progress over time.</string>
     <string name="statistic_content_greeting">Hi, </string>
     <string name="statistic_content_date">Today</string>
+    <string name="statistic_content_month">This month</string>
+    <string name="statistic_content_week">This week</string>
     <string name="statistic_title_fragment">Statistic</string>
 </resources>

@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".app.JoginguApp"
         android:allowBackup="true"
@@ -31,19 +33,23 @@
         <activity
             android:name=".ui.activities.main.MainActivity"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
+            android:exported="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"/>
         <service android:name=".service.RunningService"
             android:foregroundServiceType="location"/>
 
+        <service android:name=".service.NotificationService" />
+        <receiver android:name=".service.NotificationReceiver"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_access_token"/>
-        <service android:name=".service.StepService">
 
-        </service>
+
+
     </application>
 
 </manifest>

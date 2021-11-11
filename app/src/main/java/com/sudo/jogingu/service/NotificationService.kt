@@ -1,26 +1,27 @@
 package com.sudo.jogingu.service
 
-import android.app.Notification
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.os.CountDownTimer
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.RingtoneManager
+import android.net.Uri
+
 import android.os.IBinder
-import android.os.Vibrator
-import android.widget.RemoteViews
+
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+
 import androidx.core.app.NotificationCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 import com.sudo.jogingu.R
-import com.sudo.jogingu.ui.fragments.target.TargetFragment
+
+import com.sudo.jogingu.app.JoginguApp
 import java.util.*
 import android.app.NotificationManager
-import android.util.Log
-import com.sudo.jogingu.Notifi.NotificationS
+
+
+
 
 
 class NotificationService : Service(){
@@ -34,26 +35,45 @@ class NotificationService : Service(){
     }
 
     override fun  onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-       sentNotification(intent)
+        doSenNotification()
         return START_STICKY;
     }
-    private fun sentNotification(intent: Intent) {
-        val notificationIntent = Intent(this, TargetFragment::class.java)
-        notificationIntent.putExtra("HOUR", intent.getIntExtra("HOUR", 0))
-        notificationIntent.putExtra("MINUTE", intent.getIntExtra("MINUTE", 0))
-        notificationIntent.putExtra("ID", intent.getIntExtra("ID", -1))
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+    private fun doSenNotification() {
+        val notifyIntent = Intent(this, com.sudo.jogingu.ui.activities.main.MainActivity::class.java).apply {
+            putExtra("check", 1)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
+//        val alarmManager: AlarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val calendar = Calendar.getInstance()
+//        calendar.timeInMillis = System.currentTimeMillis()
+//        calendar.set(Calendar.HOUR_OF_DAY, 15)
+//        calendar.set(Calendar.MINUTE, 6)
+//        alarmManager.setRepeating(
+//            AlarmManager.RTC_WAKEUP,
+//            calendar.timeInMillis,
+//            AlarmManager.INTERVAL_DAY,
+//            pendingIntent)
+        val bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.avatar)
+        val uri : Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         val notification: Notification =
-            NotificationCompat.Builder(this, NotificationS.CHANNEL_ID)
+            NotificationCompat.Builder(this, JoginguApp.CHANNEL_ID)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setContentTitle("Báo thức")
-                .setContentText("Ring Ring")
-                .setSilent(true)
-                .setSmallIcon(R.drawable.ic_outline_calendar_24)
+                .setContentTitle("Target")
+                .setContentText("6 km buổi sáng")
+
+                .setLargeIcon(bitmap)
+                .setSound(uri)
+                .setSmallIcon(R.drawable.ic_target_24px)
                 .setContentIntent(pendingIntent)
                 .build()
-        startForeground(1, notification)
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(0, notification)
     }
+
     override fun  onDestroy() {
         super.onDestroy()
         Toast.makeText(this, "Service Stopped", Toast.LENGTH_LONG).show();

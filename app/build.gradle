@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+
     // default
     implementation( Dependencies.appUis )
     implementation( Dependencies.testLibs )
@@ -55,6 +56,8 @@ dependencies {
     implementation "com.android.support:support-compat:28.0.0"
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.lifecycle:lifecycle-service:2.4.0'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
     kapt(Dependencies.KAPT_HILT)
 
     // ui

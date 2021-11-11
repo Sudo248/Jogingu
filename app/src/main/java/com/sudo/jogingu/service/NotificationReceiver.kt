@@ -17,8 +17,10 @@ import java.util.*
 
 abstract class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+
         startNoService(context,intent)
     }
+
     private fun startNoService(context: Context, intent: Intent) {
         val intentService = Intent(context, NotificationService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)

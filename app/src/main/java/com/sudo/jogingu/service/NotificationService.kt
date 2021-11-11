@@ -38,6 +38,7 @@ class NotificationService : Service(){
         doSenNotification()
         return START_STICKY;
     }
+
     private fun doSenNotification() {
         val notifyIntent = Intent(this, com.sudo.jogingu.ui.activities.main.MainActivity::class.java).apply {
             putExtra("check", 1)
@@ -70,8 +71,7 @@ class NotificationService : Service(){
                 .setSmallIcon(R.drawable.ic_target_24px)
                 .setContentIntent(pendingIntent)
                 .build()
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0, notification)
+        startForeground(1, notification)
     }
 
     override fun  onDestroy() {

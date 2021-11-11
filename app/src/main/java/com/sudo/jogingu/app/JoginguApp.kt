@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 
 import com.sudo.jogingu.R
 import com.sudo.jogingu.service.NotificationReceiver
+import com.sudo.jogingu.service.NotificationService
 import dagger.hilt.android.HiltAndroidApp
 import java.util.*
 
@@ -29,13 +30,13 @@ class JoginguApp : Application() {
 
 
     private fun startJobService() {
-        val intent = Intent(this, NotificationReceiver::class.java)
-        val alarmPendingIntent: PendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        val intent = Intent(this, NotificationService::class.java)
+        val alarmPendingIntent: PendingIntent = PendingIntent.getService(this, 0, intent, 0)
         val alarmManager: AlarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
-        calendar.set(Calendar.HOUR_OF_DAY, 22)
-        calendar.set(Calendar.MINUTE, 18)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 4)
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,

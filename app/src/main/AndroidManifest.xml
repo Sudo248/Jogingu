@@ -27,7 +27,7 @@
             android:name=".ui.activities.main.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true" />
-        <service android:name=".service.RunningService"
+        <service android:name=".service.GoogleMapService"
             android:foregroundServiceType="location"/>
 
         <meta-data

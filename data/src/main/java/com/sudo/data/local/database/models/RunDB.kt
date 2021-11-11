@@ -11,8 +11,8 @@ data class RunDB(
     @ColumnInfo(name = "run_id")
     val runId: String,
     val name: String,
-    val distance: Int,
-    val pace: Float,
+    val distance: Float,
+    val avgSpeed: Float,
     @ColumnInfo(name = "time_running")
     val timeRunning: Int,
     @ColumnInfo(name = "image_url")

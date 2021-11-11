@@ -3,20 +3,10 @@ package com.sudo.data.local.database.dao
 import androidx.room.*
 import com.sudo.data.local.database.models.NotificationDB
 import com.sudo.data.local.database.models.RunDB
-import com.sudo.data.local.database.models.UserDB
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface JoginguDao {
-
-    @Insert
-    suspend fun insertUserDB(userDB: UserDB)
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateUserDB(userDB: UserDB)
-
-    @Query("SELECT * FROM user")
-    suspend fun getUserDB(): UserDB
 
     @Insert
     suspend fun insertRunDB(runDB: RunDB)

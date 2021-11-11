@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.sudo.jogingu.R
+import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.databinding.ActivityRunBinding
 import com.sudo.jogingu.ui.activities.run.viewmodel.GoogleMapViewModel
@@ -36,7 +38,7 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
     private fun collect() {
         lifecycleScope.launchWhenStarted {
             viewModel.runState.collect{
@@ -74,6 +76,12 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
             }
         }
 
+        lifecycleScope.launchWhenStarted {
+            viewModel.avgSpeed.collect {
+                binding.tvSpeedValue.text = "%.2f".format(it)
+            }
+        }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -81,6 +89,7 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         if(TrackingPermission.hasLocationPermissions(this)){
             binding.mapView.getMapAsync {
                 it.isMyLocationEnabled = true
+                it.moveCamera(CameraUpdateFactory.zoomTo(Constant.MAP_ZOOM_DEFAULT))
                 viewModel.setMap(it)
             }
         }

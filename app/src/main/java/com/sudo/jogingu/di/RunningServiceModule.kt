@@ -106,6 +106,4 @@ object RunningServiceModule {
     fun provideSensorManager(
         @ApplicationContext context: Context
     ): SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
-
 }

@@ -16,23 +16,20 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.repositories.MainRepositoryImpl
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.Run
 import com.sudo.domain.entities.RunningDay
-import com.sudo.domain.use_case.run.AddNewRun
-import com.sudo.domain.use_case.run.GetAllRuns
+import com.sudo.domain.use_case.run.AddNewRunUseCase
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentStatisticBinding
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 import kotlin.collections.ArrayList
 
 
 class StatisticFragment : Fragment() {
     lateinit var binding: FragmentStatisticBinding
-    lateinit var newRun: AddNewRun
+    lateinit var newRunUseCase: AddNewRunUseCase
     lateinit var getAllRun : MainRepositoryImpl
     lateinit var runningList : Flow<Result<List<Run>>>
     private var runList = ArrayList<RunningDay>()

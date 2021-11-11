@@ -56,11 +56,10 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
 
     private val timer = Timer()
     private lateinit var timerTask: TimerTask
-    private var startTime = 0L
     private var magnitudePrevious = 0.0
 
     companion object{
-        val runningTime = MutableStateFlow(0L)
+        val runningTime = MutableStateFlow(0)
         val stepCounter = MutableStateFlow(0)
         val runState = MutableStateFlow(RunState.START)
         val distance = MutableStateFlow(0.0)
@@ -89,9 +88,6 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
                 }
                 ACTION_RUNNING -> {
                     Timber.d("Running")
-                    if(runState.value == RunState.START){
-                        startTime = System.currentTimeMillis()
-                    }
                     runState.value = RunState.RUNNING
                 }
                 ACTION_PAUSE -> {
@@ -141,9 +137,9 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
         lifecycleScope.launchWhenStarted {
             runningTime.collect {
                 withContext(Dispatchers.Default){
-                    Timber.d("time running: $it")
+//                    Timber.d("time running: $it")
                     val notification = currentNotificationBuilder
-                        .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distance.value/1000))
+                        .setContentTitle(TimeUtil.parseTime(it.toLong()) + " - "+"%.2f km".format(distance.value/1000))
 
                     notificationManager.notify(Constant.NOTIFICATION_ID, notification.build())
                 }
@@ -226,5 +222,6 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
 
     abstract fun registerUpdatePosition()
     abstract fun unregisterUpdatePosition()
+    abstract fun saveRun()
 
 }

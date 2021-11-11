@@ -13,24 +13,24 @@ import kotlinx.coroutines.flow.*
 import java.io.IOException
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor(
+class MainRepositoryImpl(
     private val dao: JoginguDao,
     private val pref: SharedPref
 ) : MainRepository{
 
     override suspend fun setUser(user: User) {
-        dao.insertUserDB(userDB = user.toUserDB())
+        pref.setUser(user)
     }
 
     override suspend fun updateUser(user: User) {
-        dao.updateUserDB(userDB = user.toUserDB())
+        pref.setUser(user)
     }
 
     override suspend fun getUser(): Flow<Result<User>> = flow {
         emit(Result.Loading)
         try{
-            val userDB = dao.getUserDB()
-            emit(Result.Success(userDB.toUser()))
+            val user = pref.getUser()
+            emit(Result.Success(user))
         }catch (e: IOException){
             emit(Result.Error("${e.message}"))
         }

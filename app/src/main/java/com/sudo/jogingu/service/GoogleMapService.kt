@@ -32,9 +32,10 @@ class GoogleMapService : BaseRunService() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     private val jobUpdate = Job()
+    private var fistEmit = true
 
     companion object{
-        val pathPoints = MutableStateFlow<Polyline>(mutableListOf())
+        val latestPoint = MutableStateFlow(LatLng(0.0,0.0))
     }
 
     private val locationCallBack = object : LocationCallback(){
@@ -48,16 +49,15 @@ class GoogleMapService : BaseRunService() {
         }
     }
 
-    private fun addPathPoint(location: Location?) {
+    private suspend fun addPathPoint(location: Location?) {
         //Timber.d("Thread in add path: ${Thread.currentThread().name}")
         location?.let {
             val pos = LatLng(location.latitude, location.longitude)
-            val tmp = pathPoints.value.toMutableList()
-            if(tmp.size > 1 && runState.value == RunState.RUNNING){
-                distance.value += calculateDistance(tmp.last(), pos)
+            if(runState.value == RunState.RUNNING && !fistEmit){
+                distance.value += calculateDistance(latestPoint.value, pos)
             }
-            tmp.add(pos)
-            pathPoints.value = tmp
+            latestPoint.emit(pos)
+            fistEmit = false
         }
     }
 
@@ -85,6 +85,10 @@ class GoogleMapService : BaseRunService() {
         jobUpdate.cancel()
     }
 
+    override fun saveRun() {
+
+    }
+
     private fun calculateDistance(p1: LatLng, p2: LatLng): Float{
 //        Timber.d("Thread in calculate: ${Thread.currentThread().name}")
         val result = FloatArray(1)
@@ -97,5 +101,7 @@ class GoogleMapService : BaseRunService() {
         )
         return result[0]
     }
+
+
 
 }

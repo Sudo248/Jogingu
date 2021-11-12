@@ -16,12 +16,14 @@ data class RunDB(
     val avgSpeed: Float = 0.0f,
     @ColumnInfo(name = "time_running")
     val timeRunning: Int = 0,
-    @ColumnInfo(name = "image_url")
+    @ColumnInfo(name = "image_byte_array")
     val imageInByteArray: ByteArray? = null,
     @ColumnInfo(name = "calo_burned")
     val caloBurned: Int = 0,
     @ColumnInfo(name = "time_start")
     val timeStart: Date = Date(System.currentTimeMillis()),
+    @ColumnInfo(name = "step_count")
+    val stepCount: Int,
     val location: String = "Viet Nam"
 ) {
     override fun equals(other: Any?): Boolean {

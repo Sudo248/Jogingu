@@ -11,6 +11,7 @@ data class Run(
     val imageInByteArray: ByteArray?,
     val caloBurned: Int,
     val timeStart: Date,
+    val stepCount: Int,
     val location: String
 ) {
     override fun equals(other: Any?): Boolean {

@@ -6,6 +6,9 @@ import android.graphics.BitmapFactory
 import android.os.Environment
 import android.widget.ImageView
 import com.sudo.data.R
+import com.sudo.data.local.database.models.RunDB
+import com.sudo.domain.entities.Run
+import com.sudo.domain.entities.RunInStatistic
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -43,4 +46,15 @@ fun getDirApp(): String{
 //    outputStream.close()
 //    return path
 //}
+
+fun RunDB.toRunInStatistic(): RunInStatistic {
+    return RunInStatistic(
+        runId = this.runId,
+        timeRunning = this.timeRunning,
+        caloBurned = this.caloBurned,
+        day = this.timeStart,
+        distance = this.distance,
+        stepCount = this.stepCount
+    )
+}
 

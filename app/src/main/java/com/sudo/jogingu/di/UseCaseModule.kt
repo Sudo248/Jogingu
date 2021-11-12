@@ -6,6 +6,9 @@ import com.sudo.domain.use_case.profile.*
 import com.sudo.domain.use_case.run.AddNewRunUseCase
 import com.sudo.domain.use_case.run.DeleteRunsUseCase
 import com.sudo.domain.use_case.run.GetAllRunsUseCase
+import com.sudo.domain.use_case.statistic.GetRunsThisDayUseCase
+import com.sudo.domain.use_case.statistic.GetRunsThisMonthUseCase
+import com.sudo.domain.use_case.statistic.GetRunsThisWeekUseCase
 import com.sudo.domain.use_case.target.DeleteTargetUseCase
 import com.sudo.domain.use_case.target.GetTargetUseCase
 import com.sudo.domain.use_case.target.SetTargetUseCase
@@ -90,5 +93,23 @@ object UseCaseModule {
     fun provideGetBMRUserUseCase(
         repo: MainRepository
     ) = GetBMRUserUseCase(repo)
+
+    @Singleton
+    @Provides
+    fun provideGetRunsThisDayUseCase(
+        repo: MainRepository
+    ) = GetRunsThisDayUseCase(repo)
+
+    @Singleton
+    @Provides
+    fun provideGetRunsThisWeekUseCase(
+        repo: MainRepository
+    ) = GetRunsThisWeekUseCase(repo)
+
+    @Singleton
+    @Provides
+    fun provideGetRunsThisMonthUseCase(
+        repo: MainRepository
+    ) = GetRunsThisMonthUseCase(repo)
 
 }

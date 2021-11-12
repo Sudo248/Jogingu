@@ -28,15 +28,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/item_img_user"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_img_user"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="12dp"
+                    android:thicknessRatio="1.9"
                     android:layout_marginTop="16dp"
-                    tools:src="@drawable/avatar"
+                    app:cardCornerRadius="40dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/item_img_user"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints"
+                        tools:src="@drawable/avatar" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/tv_item_name_user"
@@ -47,8 +60,8 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@id/item_img_user"
-                    app:layout_constraintTop_toTopOf="@id/item_img_user" />
+                    app:layout_constraintStart_toEndOf="@id/card_img_user"
+                    app:layout_constraintTop_toTopOf="@id/card_img_user" />
 
                 <TextView
                     android:id="@+id/tv_item_location"
@@ -69,8 +82,8 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/item_img_user"
-                    app:layout_constraintTop_toBottomOf="@id/item_img_user"/>
+                    app:layout_constraintStart_toStartOf="@id/card_img_user"
+                    app:layout_constraintTop_toBottomOf="@id/card_img_user"/>
 
                 <TextView
                     android:id="@+id/tv_item_title_distance"

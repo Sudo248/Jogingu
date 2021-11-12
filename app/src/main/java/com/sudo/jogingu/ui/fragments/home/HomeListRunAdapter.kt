@@ -33,6 +33,7 @@ class HomeListRunAdapter : ListAdapter<Run, HomeListRunAdapter.ViewHolder>(
             Glide.with(itemView)
                 .load(R.drawable.avatar)
                 .into(binding.itemImgUser)
+
             binding.tvItemNameUser.text = "Jogingu"
             binding.tvItemLocation.text = ""
             binding.tvItemNameRun.text = run.name

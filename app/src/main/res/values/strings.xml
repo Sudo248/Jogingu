@@ -47,16 +47,15 @@
 
 
     <!-- statistic fragment -->
-    <string name="statistic_content_step">Steps</string>
-    <string name="statistic_content_calories">Calories</string>
-    <string name="statistic_content_time">Time</string>
-    <string name="statistic_content_km">Km</string>
-    <string name="statistic_content_description_chart">The chart below shows your training progress over time.</string>
-    <string name="statistic_content_greeting">Hi, </string>
-    <string name="statistic_content_date">Today</string>
-    <string name="statistic_content_month">This month</string>
-    <string name="statistic_content_week">This week</string>
-    <string name="statistic_title_fragment">Statistic</string>\
+    <string name="steps">Steps</string>
+    <string name="calories">Calories</string>
+    <string name="time">Time</string>
+    <string name="description_chart">The chart below shows your training progress over time.</string>
+    <string name="Hi">Hi, </string>
+    <string name="today">Today</string>
+    <string name="this_month">This month</string>
+    <string name="this_week">This week</string>
+    <string name="statistic">Statistic</string>
 
 <!--    item run in home fragment-->
     <string name="morning_run">Morning Run</string>

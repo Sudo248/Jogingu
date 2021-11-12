@@ -1,9 +1,7 @@
 package com.sudo.domain.repositories
 
 import com.sudo.domain.common.Result
-import com.sudo.domain.entities.Notification
-import com.sudo.domain.entities.Run
-import com.sudo.domain.entities.User
+import com.sudo.domain.entities.*
 import com.sudo.domain.entities.Target
 import kotlinx.coroutines.flow.Flow
 
@@ -18,6 +16,10 @@ interface MainRepository {
     suspend fun getAllRuns(): Flow<Result<List<Run>>>
     suspend fun addNewRun(run: Run)
     suspend fun deleteRuns(vararg runs: Run)
+
+    suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic>>>
+    suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic>>>
+    suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic>>>
 
     suspend fun getTarget(): Flow<Result<Target>>
     suspend fun setTarget(target: Target)

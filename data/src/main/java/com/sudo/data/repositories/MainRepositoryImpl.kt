@@ -4,15 +4,14 @@ import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.mapper.*
 import com.sudo.data.shared_preference.SharedPref
 import com.sudo.data.util.calculateAge
+import com.sudo.data.util.toRunInStatistic
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.*
 import com.sudo.domain.entities.Target
 import com.sudo.domain.repositories.MainRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import java.io.IOException
-import javax.inject.Inject
+import java.util.*
 
 class MainRepositoryImpl(
     private val dao: JoginguDao,
@@ -65,11 +64,12 @@ class MainRepositoryImpl(
         }catch (e: IOException){
             emit(Result.Error("${e.message}"))
         }
-    }.shareIn(
-        scope = CoroutineScope(Dispatchers.IO),
-        replay = 1,
-        started = SharingStarted.Lazily
-    )
+    }
+//        .shareIn(
+//        scope = CoroutineScope(Dispatchers.IO),
+//        replay = 1,
+//        started = SharingStarted.Lazily
+//    )
 
     override suspend fun addNewRun(run: Run) {
         dao.insertRunDB(run.toRunDB())
@@ -77,6 +77,54 @@ class MainRepositoryImpl(
 
     override suspend fun deleteRuns(vararg runs: Run) {
         runs.forEach { dao.deleteRunDBs(it.toRunDB()) }
+    }
+
+    override suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic>>> = flow{
+        emit(Result.Loading)
+        try {
+            val cal = Calendar.getInstance()
+            val runThisDay = dao.getRunsFromDay(cal.timeInMillis)
+            emitAll(
+                runThisDay.map { list ->
+                    Result.Success(list.map { it.toRunInStatistic() })
+                }
+            )
+        }catch (e: Exception){
+            emit(Result.Error("${e.message}"))
+        }
+
+    }
+
+    override suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic>>> = flow{
+        emit(Result.Loading)
+        try {
+            val cal = Calendar.getInstance()
+            cal.set(Calendar.DAY_OF_WEEK,1)
+            val runThisWeek = dao.getRunsFromDay(cal.timeInMillis)
+            emitAll(
+                runThisWeek.map { list ->
+                    Result.Success(list.map { it.toRunInStatistic() })
+                }
+            )
+        }catch (e: Exception){
+            emit(Result.Error("${e.message}"))
+        }
+    }
+
+    override suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic>>> = flow{
+        emit(Result.Loading)
+        try {
+            val cal = Calendar.getInstance()
+            cal.set(Calendar.DAY_OF_MONTH,1)
+            val runThisMonth = dao.getRunsFromDay(cal.timeInMillis)
+            emitAll(
+                runThisMonth.map { list ->
+                    Result.Success(list.map { it.toRunInStatistic() })
+                }
+            )
+        }catch (e: Exception){
+            emit(Result.Error("${e.message}"))
+        }
     }
 
     override suspend fun getTarget(): Flow<Result<Target>> = flow {

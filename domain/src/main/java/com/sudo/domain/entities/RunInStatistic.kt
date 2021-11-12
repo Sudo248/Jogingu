@@ -7,5 +7,7 @@ data class RunInStatistic(
     val timeRunning: Int,
     val caloBurned: Int,
     val day: Date,
-    val distance: Float
+    val distance: Float,
+    val stepCount: Int,
+    val label: String = "1"
 )

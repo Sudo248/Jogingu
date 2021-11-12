@@ -12,11 +12,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 import com.sudo.domain.common.Result
+import com.sudo.domain.use_case.run.DeleteRunsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getAllRunsUseCase: GetAllRunsUseCase
+    private val getAllRunsUseCase: GetAllRunsUseCase,
+    private val deleteRunsUseCase: DeleteRunsUseCase
 ) : ViewModel() {
 
     private val _listRun = MutableLiveData<List<Run>>()

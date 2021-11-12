@@ -17,6 +17,9 @@ interface JoginguDao {
     @Query("SELECT * FROM runs")
     fun getAllRunDBs(): Flow<List<RunDB>>
 
+    @Query("SELECT * FROM runs WHERE time_start >= :time ORDER BY time_start")
+    fun getRunsFromDay(time: Long): Flow<List<RunDB>>
+
     @Insert
     suspend fun insertNotificationDB(notificationDB: NotificationDB)
 

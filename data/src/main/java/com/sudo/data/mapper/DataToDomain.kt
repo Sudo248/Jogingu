@@ -31,6 +31,7 @@ internal fun RunDB.toRun(): Run {
         imageInByteArray =  this.imageInByteArray,
         caloBurned = this.caloBurned,
         timeStart = this.timeStart,
+        stepCount = this.stepCount,
         location = this.location
     )
 }

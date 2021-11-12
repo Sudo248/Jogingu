@@ -61,6 +61,7 @@ abstract class BaseRunViewModel(
                 caloBurned = (getBMRUserUseCase() * distance.value / (runningTime.value.toTimeHour())).toInt(),
                 timeStart = Date(startTime),
                 location = getAddress(),
+                stepCount = stepCounter.value,
                 imageInByteArray = imageInByteArray
             )
         )

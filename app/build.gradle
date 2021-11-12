@@ -78,5 +78,8 @@ dependencies {
     // statistic chart
     implementation( Dependencies.STATISTIC_CHART)
 
+    implementation(Dependencies.GLIDE_CORE)
+    annotationProcessor(Dependencies.GLIDE_COMPILE)
+
 
 }

@@ -56,9 +56,13 @@
     <string name="statistic_content_date">Today</string>
     <string name="statistic_content_month">This month</string>
     <string name="statistic_content_week">This week</string>
-    <string name="statistic_title_fragment">Statistic</string>
+    <string name="statistic_title_fragment">Statistic</string>\
 
+<!--    item run in home fragment-->
     <string name="morning_run">Morning Run</string>
     <string name="afternoon_run">Afternoon Run</string>
     <string name="evening_run">Evening Run</string>
+    <string name="distance">Distance</string>
+    <string name="avg_speed">Avg speed</string>
+    <string name="total_time">Total time</string>
 </resources>

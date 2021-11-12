@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black">
+    android:layout_marginBottom="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="10dp"
@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white">
@@ -31,41 +30,40 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/item_img_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/img_avatar"
+                    tools:src="@drawable/avatar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/item_name_user"
+                    android:id="@+id/tv_item_name_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Dương"
+                    tools:text="Dương"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/item_img_user"
-                    app:layout_constraintTop_toTopOf="@id/item_img_user"
-                    />
+                    app:layout_constraintTop_toTopOf="@id/item_img_user" />
 
                 <TextView
-                    android:id="@+id/item_location"
+                    android:id="@+id/tv_item_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="October 14,2021 at 6:24 PM - Phường Đại Mỗ, Hanoi"
+                    tools:text="October 14,2021 at 6:24 PM - Phường Đại Mỗ, Hanoi"
                     android:textSize="12dp"
-                    app:layout_constraintStart_toStartOf="@id/item_name_user"
-                    app:layout_constraintTop_toBottomOf="@id/item_name_user"
+                    app:layout_constraintStart_toStartOf="@id/tv_item_name_user"
+                    app:layout_constraintTop_toBottomOf="@id/tv_item_name_user"
                     />
 
                 <TextView
-                    android:id="@+id/item_title"
-                    android:layout_width="100dp"
-                    android:layout_height="24dp"
+                    android:id="@+id/tv_item_name_run"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Evening Run"
                     android:textColor="@color/black"
@@ -75,66 +73,67 @@
                     app:layout_constraintTop_toBottomOf="@id/item_img_user"/>
 
                 <TextView
-                    android:id="@+id/item_title_distance"
+                    android:id="@+id/tv_item_title_distance"
                     android:layout_width="60dp"
                     android:layout_height="16dp"
                     android:layout_marginTop="9dp"
-                    android:text="Distance"
+                    android:text="@string/distance"
                     android:textSize="10dp"
-                    app:layout_constraintStart_toStartOf="@id/item_title"
-                    app:layout_constraintTop_toBottomOf="@id/item_title" />
+                    app:layout_constraintStart_toStartOf="@id/tv_item_name_run"
+                    app:layout_constraintTop_toBottomOf="@id/tv_item_name_run" />
 
                 <TextView
-                    android:id="@+id/item_title_pace"
+                    android:id="@+id/tv_item_title_pace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
-                    android:text="Pace"
+                    android:text="@string/avg_speed"
                     android:textSize="10sp"
-                    app:layout_constraintStart_toEndOf="@id/item_title_distance"
-                    app:layout_constraintTop_toTopOf="@id/item_title_distance"
-                    app:layout_constraintBottom_toBottomOf="@id/item_title_distance"/>
+                    app:layout_constraintStart_toEndOf="@id/tv_item_title_distance"
+                    app:layout_constraintTop_toTopOf="@id/tv_item_title_distance"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_item_title_distance"/>
 
                 <TextView
                     android:id="@+id/item_title_time_run"
                     android:layout_width="60dp"
                     android:layout_height="16dp"
                     android:layout_marginStart="50dp"
-                    android:text="Time"
+                    android:text="@string/total_time"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@id/item_title_pace"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_item_title_pace"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/item_title_pace"
-                    app:layout_constraintTop_toTopOf="@id/item_title_pace" />
+                    app:layout_constraintStart_toEndOf="@id/tv_item_title_pace"
+                    app:layout_constraintTop_toTopOf="@id/tv_item_title_pace" />
 
                 <TextView
-                    android:id="@+id/item_distance"
+                    android:id="@+id/tv_item_distance"
                     android:layout_width="60dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="4.00 km"
-                    android:textSize="16dp"
+                    tools:text="4.00 km"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/item_title_distance"
-                    app:layout_constraintTop_toBottomOf="@id/item_title_distance"/>
+                    app:layout_constraintEnd_toEndOf="@+id/tv_item_title_distance"
+                    app:layout_constraintStart_toStartOf="@id/tv_item_title_distance"
+                    app:layout_constraintTop_toBottomOf="@id/tv_item_title_distance" />
 
                 <TextView
-                    android:id="@+id/item_pace"
+                    android:id="@+id/tv_item_pace"
                     android:layout_width="70dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="7:07 /km"
-                    android:textSize="16dp"
+                    tools:text="7:07 /km"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/item_title_pace"
-                    app:layout_constraintTop_toBottomOf="@id/item_title_pace" />
+                    app:layout_constraintStart_toStartOf="@id/tv_item_title_pace"
+                    app:layout_constraintTop_toBottomOf="@id/tv_item_title_pace" />
 
                 <TextView
-                    android:id="@+id/item_time_run"
+                    android:id="@+id/tv_item_time_run"
                     android:layout_width="70dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="28m 29s"
+                    tools:text="28m 29s"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/item_title_time_run"
@@ -144,11 +143,11 @@
 
 
             <ImageView
-                android:id="@+id/item_img_map"
+                android:id="@+id/img_item_img_map"
                 android:layout_width="match_parent"
                 android:layout_height="224dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/img_mapbox"
+                tools:background="@drawable/img_mapbox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -160,4 +159,4 @@
     </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

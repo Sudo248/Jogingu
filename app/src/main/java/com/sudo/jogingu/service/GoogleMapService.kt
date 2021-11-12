@@ -80,10 +80,6 @@ class GoogleMapService : BaseRunService() {
         jobUpdate.cancel()
     }
 
-    override fun saveRun() {
-
-    }
-
     private fun calculateDistance(p1: LatLng, p2: LatLng): Float{
 //        Timber.d("Thread in calculate: ${Thread.currentThread().name}")
         val result = FloatArray(1)

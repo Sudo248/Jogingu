@@ -6,30 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.sudo.domain.common.Result
-import com.sudo.domain.entities.Run
-import com.sudo.domain.entities.RunningDay
+import com.sudo.domain.entities.RunInStatistic
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentStatisticBinding
-import com.sudo.jogingu.ui.fragments.statistic.viewmodels.StatisticViewModel
-
-import kotlinx.coroutines.flow.*
+import dagger.hilt.android.AndroidEntryPoint
 
 import kotlin.collections.ArrayList
 
-
+@AndroidEntryPoint
 class StatisticFragment : Fragment() {
     lateinit var binding: FragmentStatisticBinding
-//    lateinit var newRun: AddNewRun
-//    lateinit var getAllRun : GetAllRuns
-//    lateinit var runningList : Flow<Result<List<Run>>>
-    private var runList = ArrayList<RunningDay>()
 
+    private val viewModel: StatisticViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,19 +39,19 @@ class StatisticFragment : Fragment() {
         setupViewModel()
         binding.statisticBtnDay.setOnClickListener{
             runList.clear()
-            runList = viewModel?.getDataStatisticFilter(24) as ArrayList<RunningDay>
+            runList = viewModel?.getDataStatisticFilter(24) as ArrayList<RunInStatistic>
             setUpBarChart()
             updateView(24)
         }
         binding.statisticBtnWeek.setOnClickListener{
             runList.clear()
-            runList = viewModel?.getDataStatisticFilter(7) as ArrayList<RunningDay>
+            runList = viewModel?.getDataStatisticFilter(7) as ArrayList<RunInStatistic>
             setUpBarChart()
             updateView(7)
         }
         binding.statisticBtnMonth.setOnClickListener{
             runList.clear()
-            runList = viewModel?.getDataStatisticFilter(31) as ArrayList<RunningDay>
+            runList = viewModel?.getDataStatisticFilter(31) as ArrayList<RunInStatistic>
             setUpBarChart()
             updateView(31)
         }
@@ -75,7 +69,7 @@ class StatisticFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        runList = viewModel?.getDataStatisticFilter(7) as ArrayList<RunningDay>
+        runList = viewModel?.getDataStatisticFilter(7) as ArrayList<RunInStatistic>
         setUpBarChart()
     }
     private fun setupViewModel() {

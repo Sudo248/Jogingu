@@ -120,6 +120,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
             RunState.FINISH -> {
                 unregisterUpdatePosition()
                 unregisterSensorListener()
+                stopSelf()
             }
         }
     }
@@ -219,6 +220,5 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
 
     abstract fun registerUpdatePosition()
     abstract fun unregisterUpdatePosition()
-    abstract fun saveRun()
 
 }

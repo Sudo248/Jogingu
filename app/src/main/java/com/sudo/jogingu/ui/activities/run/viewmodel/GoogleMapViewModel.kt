@@ -21,10 +21,7 @@ import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.service.GoogleMapService
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 import javax.inject.Inject
@@ -78,7 +75,8 @@ class GoogleMapViewModel @Inject constructor(
 
     override fun getAddress(): String {
         val listAddress = geocoder.getFromLocation(pathPoints[0].latitude, pathPoints[0].longitude,1)
-        return listAddress[0].getAddressLine(0)
+//        return listAddress[0].getAddressLine(0)
+        return "Yet Kieu - Ha Dong"
     }
 
     private fun sendCommandToService(action: String){
@@ -109,36 +107,37 @@ class GoogleMapViewModel @Inject constructor(
         }
     }
 
-    override fun onFinishClick(){
+    override fun onFinishClick(mapHeight: Int, mapWith: Int){
         sendCommandToService(ACTION_FINISH)
+        saveRunToDB(mapHeight, mapWith)
     }
 
     override fun saveRunToDB(mapHeight: Int, mapWith: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             zoomToSeeWholeTrack(mapHeight, mapWith)
-            var saveRun: Job = Job()
             map?.snapshot { bmp ->
-                saveRun = save(bmp?.toByteArray())
+                save(bmp?.toByteArray())
+                _isSuccessToSaveRun.value = true
             }
-            saveRun.join()
-            _isSuccessToSaveRun.value = true
         }
     }
 
-    private fun zoomToSeeWholeTrack(mapHeight: Int, mapWith: Int){
+    private suspend fun zoomToSeeWholeTrack(mapHeight: Int, mapWith: Int){
         val bounds = LatLngBounds.Builder()
         for(position in pathPoints){
             bounds.include(position)
         }
-        map?.moveCamera(
-            CameraUpdateFactory.newLatLngBounds(
-                bounds.build(),
-                mapWith,
-                mapHeight,
-                (mapHeight * 0.05f).toInt()
+        withContext(Dispatchers.Main){
+            Timber.d("bounds: $bounds")
+            map?.moveCamera(
+                CameraUpdateFactory.newLatLngBounds(
+                    bounds.build(),
+                    mapWith,
+                    mapHeight / 3,
+                    0
+                )
             )
-        )
-
+        }
     }
 
     init {
@@ -156,7 +155,7 @@ class GoogleMapViewModel @Inject constructor(
 //              delay 15s for each calculate avg speed
                 delay(15000)
                 if(runningTime.value > 0){
-                    Timber.d("Avg Speed: ${distance.value} / ${runningTime.value} = ${distance.value / runningTime.value}")
+//                    Timber.d("Avg Speed: ${distance.value} / ${runningTime.value} = ${distance.value / runningTime.value}")
                     avgSpeed.value = distance.value / runningTime.value
                 }
             }

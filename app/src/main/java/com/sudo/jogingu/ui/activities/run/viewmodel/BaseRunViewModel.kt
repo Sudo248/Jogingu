@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -49,6 +50,7 @@ abstract class BaseRunViewModel(
     protected var startTime: Long = 0
 
     protected fun save(imageInByteArray: ByteArray?) = viewModelScope.launch(Dispatchers.IO) {
+        Timber.d("start to save run")
         addNewRunUseCase(
             Run(
                 runId = genId("run"),
@@ -62,6 +64,7 @@ abstract class BaseRunViewModel(
                 imageInByteArray = imageInByteArray
             )
         )
+        Timber.d("Save run success")
     }
 
 
@@ -71,7 +74,7 @@ abstract class BaseRunViewModel(
 
     abstract fun onStartClick()
     abstract fun onPauseOrResumeClick()
-    abstract fun onFinishClick()
+    abstract fun onFinishClick(mapHeight: Int, mapWith: Int)
 
     abstract fun saveRunToDB(mapHeight: Int, mapWith: Int)
 

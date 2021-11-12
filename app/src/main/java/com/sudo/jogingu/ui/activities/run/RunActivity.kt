@@ -129,7 +129,8 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         }
 
         binding.fabFinish.setOnClickListener {
-            viewModel.onFinishClick()
+            viewModel.onFinishClick(binding.mapView.height, binding.mapView.width)
+
         }
 
     }

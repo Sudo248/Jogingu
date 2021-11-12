@@ -12,6 +12,8 @@ interface MainRepository {
     suspend fun setUser(user: User)
     suspend fun updateUser(user: User)
     suspend fun getUser(): Flow<Result<User>>
+    suspend fun getFullNameUser(): String
+    suspend fun getBMRUser(): Float
 
     suspend fun getAllRuns(): Flow<Result<List<Run>>>
     suspend fun addNewRun(run: Run)

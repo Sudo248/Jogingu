@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sudo.jogingu">
 
+
+
     <application
         android:name=".app.JoginguApp"
         android:allowBackup="true"
@@ -27,6 +29,7 @@
             android:name=".ui.activities.main.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true" />
+
         <service android:name=".service.GoogleMapService"
             android:foregroundServiceType="location"/>
 
@@ -36,9 +39,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_access_token"/>
-        <service android:name=".service.GoogleMapService">
-
-        </service>
     </application>
 
 </manifest>

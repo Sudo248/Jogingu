@@ -13,9 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LifecycleService
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.sudo.jogingu.R
 import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.Constant.ACTION_FINISH
@@ -25,15 +23,14 @@ import com.sudo.jogingu.common.Constant.ACTION_START
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.util.TimeUtil
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.util.*
+import java.util.TimerTask
+import java.util.Timer
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -139,7 +136,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
                 withContext(Dispatchers.Default){
 //                    Timber.d("time running: $it")
                     val notification = currentNotificationBuilder
-                        .setContentTitle(TimeUtil.parseTime(it.toLong()) + " - "+"%.2f km".format(distance.value/1000))
+                        .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distance.value/1000))
 
                     notificationManager.notify(Constant.NOTIFICATION_ID, notification.build())
                 }

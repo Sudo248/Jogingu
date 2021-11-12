@@ -1,14 +1,15 @@
 package com.sudo.jogingu.ui.activities.run.viewmodel
 
-import android.content.Context
+import android.graphics.Bitmap
+import android.location.Geocoder
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
-import com.sudo.data.util.genId
-import com.sudo.domain.entities.Run
+import com.sudo.jogingu.util.toByteArray
+import com.sudo.domain.use_case.profile.GetBMRUserUseCase
 import com.sudo.domain.use_case.run.AddNewRunUseCase
 import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.Constant.ACTION_FINISH
@@ -18,24 +19,29 @@ import com.sudo.jogingu.common.Constant.ACTION_START
 import com.sudo.jogingu.common.Polyline
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.service.GoogleMapService
-import com.sudo.jogingu.util.saveImageToFile
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
-import java.util.*
 import javax.inject.Inject
 
-@AndroidEntryPoint
+@HiltViewModel
 class GoogleMapViewModel @Inject constructor(
-    private val addNewRunUseCase: AddNewRunUseCase
-) : BaseRunViewModel() {
+    addNewRunUseCase: AddNewRunUseCase,
+    getBMRUserUseCase: GetBMRUserUseCase,
+    private val geocoder: Geocoder
+) : BaseRunViewModel(
+    addNewRunUseCase,
+    getBMRUserUseCase
+) {
 
     private var map: GoogleMap? = null
     private var pathPoints: Polyline = mutableListOf()
-    private var startTime: Long = 0
     private var currentPos = 0
-    lateinit var context: Context
 
     fun setMap(map: GoogleMap){
         this.map = map
@@ -70,8 +76,13 @@ class GoogleMapViewModel @Inject constructor(
         }
     }
 
+    override fun getAddress(): String {
+        val listAddress = geocoder.getFromLocation(pathPoints[0].latitude, pathPoints[0].longitude,1)
+        return listAddress[0].getAddressLine(0)
+    }
+
     private fun sendCommandToService(action: String){
-        super.sendCommandToService(context, action, GoogleMapService::class.java)
+        super.sendCommandToService(action, GoogleMapService::class.java)
     }
 
     override fun onStartClick(){
@@ -105,26 +116,12 @@ class GoogleMapViewModel @Inject constructor(
     override fun saveRunToDB(mapHeight: Int, mapWith: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             zoomToSeeWholeTrack(mapHeight, mapWith)
-            var pathImage: Deferred<String>? = null
-
+            var saveRun: Job = Job()
             map?.snapshot { bmp ->
-                pathImage = viewModelScope.async(Dispatchers.IO){
-                    saveImageToFile(bmp)
-                }
+                saveRun = save(bmp?.toByteArray())
             }
-
-            val newRun = Run(
-                runId = genId("run"),
-                name = "Today",
-                distance = kotlin.math.round(distance.value).toFloat(),
-                avgSpeed = kotlin.math.round(avgSpeed.value).toFloat(),
-                timeRunning = runningTime.value,
-                caloBurned = 10,
-                timeStart = Date(startTime),
-                location = "",
-                imageUrl = pathImage?.await() ?: ""
-            )
-
+            saveRun.join()
+            _isSuccessToSaveRun.value = true
         }
     }
 
@@ -133,7 +130,6 @@ class GoogleMapViewModel @Inject constructor(
         for(position in pathPoints){
             bounds.include(position)
         }
-
         map?.moveCamera(
             CameraUpdateFactory.newLatLngBounds(
                 bounds.build(),

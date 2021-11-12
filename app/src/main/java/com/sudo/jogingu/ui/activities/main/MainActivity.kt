@@ -8,7 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.ActivityMainBinding
 import com.sudo.jogingu.ui.activities.run.RunActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 

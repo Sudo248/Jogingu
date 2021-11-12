@@ -4,7 +4,6 @@ import com.sudo.data.local.database.models.NotificationDB
 import com.sudo.data.local.database.models.RunDB
 import com.sudo.domain.entities.Notification
 import com.sudo.domain.entities.Run
-import com.sudo.domain.entities.User
 
 //internal fun UserDB.toUser(): User {
 //    return User(
@@ -29,7 +28,7 @@ internal fun RunDB.toRun(): Run {
         distance = this.distance,
         avgSpeed = this.avgSpeed,
         timeRunning = this.timeRunning,
-        imageUrl =  this.imageUrl,
+        imageInByteArray =  this.imageInByteArray,
         caloBurned = this.caloBurned,
         timeStart = this.timeStart,
         location = this.location

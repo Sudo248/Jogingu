@@ -2,8 +2,9 @@ package com.sudo.data.shared_preference
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Base64
 import com.sudo.data.shared_preference.PrefKeys.namePrefs
-import com.sudo.data.util.calculateDate
+import com.sudo.data.util.calculateAge
 import com.sudo.domain.entities.Gender
 import com.sudo.domain.entities.Target
 import com.sudo.domain.entities.User
@@ -164,14 +165,14 @@ class SharedPref(private val context: Context) {
         return prefs.getInt(UserKeys.weight, 0).toShort()
     }
 
-    fun setImageUrlUser(url: String?){
+    fun setImageUser(imageInByteArray: ByteArray?){
         val editor = prefs.edit()
-        editor.putString(UserKeys.imageUrl, url)
+        editor.putString(UserKeys.imageInByteArray, Base64.encodeToString(imageInByteArray, Base64.DEFAULT))
         editor.apply()
     }
 
-    fun getImageUrlUser(): String?{
-        return prefs.getString(UserKeys.imageUrl,"")
+    fun getImageUser(): ByteArray?{
+        return Base64.decode(prefs.getString(UserKeys.imageInByteArray,""), Base64.DEFAULT)
     }
 
     suspend fun setUser(user: User){
@@ -185,7 +186,7 @@ class SharedPref(private val context: Context) {
             setBirthdayUser(user.birthday)
             setHeightUser(user.height)
             setWeightUser(user.weight)
-            setImageUrlUser(user.imageUrl)
+            setImageUser(user.imageInByteArray)
         }
     }
 
@@ -199,10 +200,10 @@ class SharedPref(private val context: Context) {
                 primarySport = getPrimarySport(),
                 gender = getGenderUser(),
                 birthday = getBirthDayUser(),
-                age = calculateDate(getBirthDayUser()).toByte(),
+                age = calculateAge(getBirthDayUser()).toByte(),
                 height = getHeightUser(),
                 weight = getWeightUser(),
-                imageUrl = getImageUrlUser()
+                imageInByteArray = getImageUser()
             )
         }
     }

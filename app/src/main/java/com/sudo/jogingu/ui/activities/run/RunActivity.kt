@@ -1,6 +1,7 @@
 package com.sudo.jogingu.ui.activities.run
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,13 +12,16 @@ import com.sudo.jogingu.R
 import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.databinding.ActivityRunBinding
+import com.sudo.jogingu.ui.activities.main.MainActivity
 import com.sudo.jogingu.ui.activities.run.viewmodel.GoogleMapViewModel
 import com.sudo.jogingu.util.TimeUtil
 import com.sudo.jogingu.util.TrackingPermission
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
+@AndroidEntryPoint
 class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     private lateinit var binding: ActivityRunBinding
     private val viewModel: GoogleMapViewModel by viewModels()
@@ -30,7 +34,17 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         TrackingPermission.requestPermission(this)
 
         binding.mapView.onCreate(savedInstanceState)
-        viewModel.context = this
+
+        viewModel.sendCommandToService = { action, serviceClass ->
+            Intent(this, serviceClass).also {
+                it.action = action
+                this.startService(it)
+            }
+        }
+
+        viewModel.getNameRunByTime = {
+            TimeUtil.getNameRunByTime(this, it)
+        }
 
         getMapAsync()
         subscribeUi()
@@ -82,6 +96,13 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
             }
         }
 
+        lifecycleScope.launchWhenStarted {
+            viewModel.isSuccessToSaveRun.collect{
+                if(it){
+                    startMainActivity()
+                }
+            }
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -111,6 +132,12 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
             viewModel.onFinishClick()
         }
 
+    }
+
+    private fun startMainActivity(){
+        Intent(this, MainActivity::class.java).also {
+            this.startActivity(it)
+        }
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {

@@ -91,7 +91,8 @@ object Dependencies {
 
 
 
+
     const val STATISTIC_CHART =
-    "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
+        "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
 
 }

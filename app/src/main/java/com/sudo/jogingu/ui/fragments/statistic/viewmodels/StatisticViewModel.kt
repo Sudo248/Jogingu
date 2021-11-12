@@ -11,14 +11,23 @@ import com.sudo.data.repositories.MainRepositoryImpl
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.Run
 import com.sudo.domain.entities.RunningDay
+import com.sudo.domain.use_case.profile.GetNameUserUseCase
+import com.sudo.domain.use_case.profile.GetUserUseCase
+import com.sudo.domain.use_case.run.GetAllRunsUseCase
 import com.sudo.jogingu.R
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.*
 import java.util.concurrent.Flow
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 import kotlin.coroutines.coroutineContext
 
-class StatisticViewModel: ViewModel() {
-    lateinit var mainRepositoryImpl: MainRepositoryImpl
+@HiltViewModel
+class StatisticViewModel @Inject constructor(
+    private val getAllRunsUseCase: GetAllRunsUseCase,
+    private val getNameUserUseCase: GetNameUserUseCase
+) : ViewModel() {
     private var runList = ArrayList<RunningDay>()
 
     fun getDataStatistic(numberDay: Int): List<RunningDay>{

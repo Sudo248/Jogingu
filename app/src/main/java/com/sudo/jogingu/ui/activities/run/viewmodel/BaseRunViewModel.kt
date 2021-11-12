@@ -3,18 +3,33 @@ package com.sudo.jogingu.ui.activities.run.viewmodel
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.location.Geocoder
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.sudo.data.util.genId
+import com.sudo.domain.entities.Run
+import com.sudo.domain.use_case.profile.GetBMRUserUseCase
+import com.sudo.domain.use_case.run.AddNewRunUseCase
 import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.service.BaseRunService
-import com.sudo.jogingu.util.getDirApp
+import com.sudo.jogingu.util.toByteArray
+import com.sudo.jogingu.util.toTimeHour
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import java.util.*
+import kotlin.math.round
 
-abstract class BaseRunViewModel : ViewModel() {
+
+abstract class BaseRunViewModel(
+    private val addNewRunUseCase: AddNewRunUseCase,
+    private val getBMRUserUseCase: GetBMRUserUseCase
+) : ViewModel() {
 
     val runState: StateFlow<RunState> = BaseRunService.runState
 
@@ -26,21 +41,41 @@ abstract class BaseRunViewModel : ViewModel() {
 
     val avgSpeed = MutableStateFlow(0.0)
 
-    protected fun sendCommandToService(context: Context, action: String, serviceClass: Class<*> ){
-        Intent(context, serviceClass).also {
-            it.action = action
-            context.startService(it)
-        }
+    protected val _isSuccessToSaveRun = MutableStateFlow(false)
+    val isSuccessToSaveRun: StateFlow<Boolean> = _isSuccessToSaveRun
+
+    lateinit var sendCommandToService: (action: String, serviceClass: Class<*> ) -> Unit
+    lateinit var getNameRunByTime: (time: Long) -> String
+    protected var startTime: Long = 0
+
+    protected fun save(imageInByteArray: ByteArray?) = viewModelScope.launch(Dispatchers.IO) {
+        addNewRunUseCase(
+            Run(
+                runId = genId("run"),
+                name = getNameRunByTime(startTime),
+                distance = round(distance.value).toFloat(),
+                avgSpeed = round(avgSpeed.value).toFloat(),
+                timeRunning = runningTime.value,
+                caloBurned = (getBMRUserUseCase() * distance.value / (runningTime.value.toTimeHour())).toInt(),
+                timeStart = Date(startTime),
+                location = getAddress(),
+                imageInByteArray = imageInByteArray
+            )
+        )
     }
+
 
     abstract fun drawPolylines()
     abstract fun moveCameraToUserPosition()
+    abstract fun getAddress(): String
 
     abstract fun onStartClick()
     abstract fun onPauseOrResumeClick()
     abstract fun onFinishClick()
 
     abstract fun saveRunToDB(mapHeight: Int, mapWith: Int)
+
+
 
 
 }

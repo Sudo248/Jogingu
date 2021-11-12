@@ -1,27 +1,23 @@
 package com.sudo.jogingu.util
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.Environment
-import java.io.File
-import java.io.FileOutputStream
+import com.sudo.jogingu.common.Constant.HOUR_DURATION
+import com.sudo.jogingu.common.Constant.MINUTE_DURATION
+import java.io.ByteArrayOutputStream
 
-fun getDirApp(): String{
-    val dir = File(Environment.getDataDirectory(),"Jogingu")
-    if(!dir.exists()) dir.mkdir()
-    return dir.path
+fun Bitmap.toByteArray(): ByteArray{
+    val stream = ByteArrayOutputStream()
+    this.compress(Bitmap.CompressFormat.PNG, 100, stream)
+    return stream.toByteArray()
 }
 
-fun loadImageFromFile(pathImage: String): Bitmap {
-    val image = File(pathImage)
-    return BitmapFactory.decodeFile(image.absolutePath)
+fun Int.toTimeHour(): Int{
+    return this / HOUR_DURATION
 }
 
-fun saveImageToFile(image: Bitmap?): String{
-    val path = getDirApp() + "${System.currentTimeMillis()}.png"
-    val outputStream = FileOutputStream(File(path))
-    image?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-    outputStream.flush()
-    outputStream.close()
-    return path
+fun Int.toTimeMinute(): Int{
+    return this / MINUTE_DURATION
 }
+
+
+

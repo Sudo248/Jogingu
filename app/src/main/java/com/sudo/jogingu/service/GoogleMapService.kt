@@ -1,7 +1,6 @@
 package com.sudo.jogingu.service
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.location.Location
 import android.os.Looper
 import androidx.lifecycle.lifecycleScope
@@ -10,11 +9,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
 import com.sudo.jogingu.common.Constant
-import com.sudo.jogingu.common.Constant.LATITUDE_DEFAULT
-import com.sudo.jogingu.common.Constant.LONGITUDE_DEFAULT
-import com.sudo.jogingu.common.Polyline
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.util.TrackingPermission
 import dagger.hilt.android.AndroidEntryPoint

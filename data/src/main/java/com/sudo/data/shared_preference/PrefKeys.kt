@@ -24,5 +24,5 @@ object UserKeys{
     const val birthday = "birthday"
     const val height = "height"
     const val weight = "weight"
-    const val imageUrl = "image_url"
+    const val imageInByteArray = "image_byte_array"
 }

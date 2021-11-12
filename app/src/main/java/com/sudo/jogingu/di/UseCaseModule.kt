@@ -2,9 +2,7 @@ package com.sudo.jogingu.di
 
 import com.sudo.domain.repositories.MainRepository
 import com.sudo.domain.use_case.notification.AddNewNotification
-import com.sudo.domain.use_case.profile.GetUserUseCase
-import com.sudo.domain.use_case.profile.SetUserUseCase
-import com.sudo.domain.use_case.profile.UpdateUserUseCase
+import com.sudo.domain.use_case.profile.*
 import com.sudo.domain.use_case.run.AddNewRunUseCase
 import com.sudo.domain.use_case.run.DeleteRunsUseCase
 import com.sudo.domain.use_case.run.GetAllRunsUseCase
@@ -80,5 +78,17 @@ object UseCaseModule {
     fun provideSetTargetUseCase(
         repo: MainRepository
     ) = SetTargetUseCase(repo)
+
+    @Singleton
+    @Provides
+    fun provideGetNameUserUseCase(
+        repo: MainRepository
+    ) = GetNameUserUseCase(repo)
+
+    @Singleton
+    @Provides
+    fun provideGetBMRUserUseCase(
+        repo: MainRepository
+    ) = GetBMRUserUseCase(repo)
 
 }

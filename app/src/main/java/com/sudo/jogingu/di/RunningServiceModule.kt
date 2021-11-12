@@ -45,7 +45,7 @@ object RunningServiceModule {
             .setAutoCancel(false)
             .setOngoing(true)
             .setSmallIcon(R.drawable.ic_directions_run_24)
-            .setContentTitle(TimeUtil.parseTime(0L) + " - "+"0 km")
+            .setContentTitle(TimeUtil.parseTime(0) + " - "+"0 km")
             .setContentIntent(pendingIntent)
 
 

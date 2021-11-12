@@ -3,12 +3,13 @@ package com.sudo.data.repositories
 import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.mapper.*
 import com.sudo.data.shared_preference.SharedPref
+import com.sudo.data.util.calculateAge
 import com.sudo.domain.common.Result
-import com.sudo.domain.entities.Notification
-import com.sudo.domain.entities.Run
+import com.sudo.domain.entities.*
 import com.sudo.domain.entities.Target
-import com.sudo.domain.entities.User
 import com.sudo.domain.repositories.MainRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import java.io.IOException
 import javax.inject.Inject
@@ -36,6 +37,22 @@ class MainRepositoryImpl(
         }
     }
 
+    override suspend fun getFullNameUser(): String {
+        return pref.getLastNameUser() + pref.getFirstNameUser()
+    }
+
+    override suspend fun getBMRUser(): Float {
+        val height = pref.getHeightUser()
+        val weight = pref.getWeightUser()
+        val gender = pref.getGenderUser()
+        val age = pref.getBirthDayUser()
+        return if(gender == Gender.FEMALE){
+            (9.247f * weight) + (3.098f * height) - (4.33f * calculateAge(age)) + 447.593f
+        }else{
+            (13.397f * weight) + (4.799f * height) - (5.677f * calculateAge(age)) + 88.362f
+        }
+    }
+
     override suspend fun getAllRuns(): Flow<Result<List<Run>>> = flow {
         emit(Result.Loading)
         try{
@@ -48,7 +65,11 @@ class MainRepositoryImpl(
         }catch (e: IOException){
             emit(Result.Error("${e.message}"))
         }
-    }
+    }.shareIn(
+        scope = CoroutineScope(Dispatchers.IO),
+        replay = 1,
+        started = SharingStarted.Lazily
+    )
 
     override suspend fun addNewRun(run: Run) {
         dao.insertRunDB(run.toRunDB())
@@ -61,19 +82,15 @@ class MainRepositoryImpl(
     override suspend fun getTarget(): Flow<Result<Target>> = flow {
         emit(Result.Loading)
         try{
-            val distance = pref.getDistanceTarget()
-            val calo = pref.getCaloTarget()
-            val recursive = pref.getRecursiveTarget()
-            emit(Result.Success(Target(distance, calo, recursive)))
+            val target = pref.getTarget()
+            emit(Result.Success(target))
         }catch (e: IOException){
             emit(Result.Error("${e.message}"))
         }
     }
 
     override suspend fun setTarget(target: Target) {
-        pref.setDistanceTarget(target.distance)
-        pref.setCaloTarget(target.calo)
-        pref.setRecursiveTarget(target.recursive)
+        pref.setTarget(target)
     }
 
     override suspend fun deleteTarget() {

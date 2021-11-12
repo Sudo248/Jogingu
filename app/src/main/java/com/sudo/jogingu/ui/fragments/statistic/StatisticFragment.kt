@@ -14,8 +14,6 @@ import com.github.mikephil.charting.data.BarEntry
 import com.sudo.domain.common.Result
 import com.sudo.domain.entities.Run
 import com.sudo.domain.entities.RunningDay
-import com.sudo.domain.use_case.run.AddNewRun
-import com.sudo.domain.use_case.run.GetAllRuns
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentStatisticBinding
 import com.sudo.jogingu.ui.fragments.statistic.viewmodels.StatisticViewModel

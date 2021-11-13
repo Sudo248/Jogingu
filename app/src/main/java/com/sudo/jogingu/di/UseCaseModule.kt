@@ -1,6 +1,7 @@
 package com.sudo.jogingu.di
 
 import com.sudo.domain.repositories.MainRepository
+import com.sudo.domain.use_case.app.IsFirstOpenApp
 import com.sudo.domain.use_case.notification.AddNewNotification
 import com.sudo.domain.use_case.profile.*
 import com.sudo.domain.use_case.run.AddNewRunUseCase
@@ -24,9 +25,9 @@ object UseCaseModule {
 
     @Singleton
     @Provides
-    fun provideAddNewNotificationUseCase(
-
-    ) = AddNewNotification()
+    fun provideIsFirstOpenAppUseCase(
+        repo: MainRepository
+    ) = IsFirstOpenApp(repo)
 
     @Singleton
     @Provides

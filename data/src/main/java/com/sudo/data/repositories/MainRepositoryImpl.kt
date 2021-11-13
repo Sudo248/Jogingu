@@ -19,6 +19,14 @@ class MainRepositoryImpl(
     private val pref: SharedPref
 ) : MainRepository{
 
+    override suspend fun isFirstOpenApp(): Boolean {
+        return pref.isFirstOpenApp()
+    }
+
+    override suspend fun isFirstOpenApp(isFirstOpenApp: Boolean) {
+        pref.setIsFirstOpenApp(isFirstOpenApp)
+    }
+
     override suspend fun setUser(user: User) {
         pref.setUser(user)
     }

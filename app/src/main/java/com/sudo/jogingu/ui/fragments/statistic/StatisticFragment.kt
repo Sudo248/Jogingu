@@ -141,6 +141,8 @@ class StatisticFragment : Fragment() {
         //remove description label
         binding.barChart.description.isEnabled = false
 
+        binding.barChart.xAxis.setLabelCount(7,true)
+
         //draw label on x Axis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.setDrawLabels(true)

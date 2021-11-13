@@ -20,6 +20,9 @@ import com.sudo.jogingu.common.Constant.ACTION_FINISH
 import com.sudo.jogingu.common.Constant.ACTION_PAUSE
 import com.sudo.jogingu.common.Constant.ACTION_RUNNING
 import com.sudo.jogingu.common.Constant.ACTION_START
+import com.sudo.jogingu.common.Constant.NOTIFICATION_RUNNING_CHANNEL_ID
+import com.sudo.jogingu.common.Constant.NOTIFICATION_RUNNING_CHANNEL_NAME
+import com.sudo.jogingu.common.Constant.NOTIFICATION_RUNNING_ID
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.util.TimeUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +43,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
     @Inject
     lateinit var notificationManager: NotificationManagerCompat
     @Inject
+    @Named("RunningNotificationBuilder")
     lateinit var notificationBuilder: NotificationCompat.Builder
     @Inject
     lateinit var sensorManager: SensorManager
@@ -126,11 +130,10 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
     }
 
     private fun startForegroundService(){
-
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createNotification()
         }
-        startForeground(Constant.NOTIFICATION_ID, notificationBuilder.build())
+        startForeground(NOTIFICATION_RUNNING_ID, notificationBuilder.build())
 
         lifecycleScope.launchWhenStarted {
             runningTime.collect {
@@ -139,7 +142,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
                     val notification = currentNotificationBuilder
                         .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distance.value/1000))
 
-                    notificationManager.notify(Constant.NOTIFICATION_ID, notification.build())
+                    notificationManager.notify(NOTIFICATION_RUNNING_ID, notification.build())
                 }
             }
         }
@@ -148,8 +151,8 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotification(){
         val channel = NotificationChannel(
-            Constant.NOTIFICATION_CHANNEL_ID,
-            Constant.NOTIFICATION_CHANNEL_NAME,
+            NOTIFICATION_RUNNING_CHANNEL_ID,
+            NOTIFICATION_RUNNING_CHANNEL_NAME,
             NotificationManager.IMPORTANCE_LOW
         )
         notificationManager.createNotificationChannel(channel)
@@ -172,7 +175,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
         currentNotificationBuilder = notificationBuilder
             .addAction(R.drawable.ic_pause_24, notificationActionText, pendingIntent)
 
-        notificationManager.notify(Constant.NOTIFICATION_ID, currentNotificationBuilder.build())
+        notificationManager.notify(NOTIFICATION_RUNNING_ID, currentNotificationBuilder.build())
 
     }
 

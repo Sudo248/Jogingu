@@ -1,21 +1,14 @@
-package com.sudo.jogingu.service
+package com.sudo.jogingu.receiver
 
-import android.app.*
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Build
-import android.util.Log
-import androidx.core.app.NotificationCompat
-import com.sudo.jogingu.R
-import com.sudo.jogingu.app.JoginguApp
-import java.util.*
+import com.sudo.jogingu.service.NotificationService
 
 abstract class NotificationReceiver : BroadcastReceiver() {
+    @SuppressLint("UnsafeProtectedBroadcastReceiver")
     override fun onReceive(context: Context, intent: Intent) {
 
         startNoService(context,intent)

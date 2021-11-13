@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface MainRepository {
 
+    suspend fun isFirstOpenApp(): Boolean
+    suspend fun isFirstOpenApp(isFirstOpenApp: Boolean)
+
     suspend fun setUser(user: User)
     suspend fun updateUser(user: User)
     suspend fun getUser(): Flow<Result<User>>

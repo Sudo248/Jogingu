@@ -28,14 +28,14 @@ class StatisticViewModel: ViewModel() {
 
         for(i in 1..numberDay){
             if(numberDay==7)
-                if(i==7){
-                    runList.add(RunningDay("CN", i%4))
+                if(i+1==7){
+                    runList.add(RunningDay("CN", i))
                 }
                 else
-                    runList.add(RunningDay("T${i+1}", i%4))
+                    runList.add(RunningDay("T${i+1}", i))
 
             else{
-                runList.add(RunningDay("${i}", i%7))
+                runList.add(RunningDay("${i}", i))
             }
         }
         return runList

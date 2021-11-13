@@ -26,4 +26,8 @@ object Versions {
 
     const val STATISTIC_CHART = "v3.1.0"
 
+    //splash glide
+    const val SPLASH_GIF = "1.2.23"
+    const val SPLASH_GLIDE = "4.12.0"
+
 }

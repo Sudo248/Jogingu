@@ -15,299 +15,301 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/statistic_title_fragment" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingLeft="8dp"
+                android:text="@string/statistic_content_greeting"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/statistic_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingLeft="8dp"
+                android:text="Duong "
+                android:textColor="@color/green_text"
+                android:textSize="23dp" />
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:paddingStart="16dp"
-            android:paddingLeft="8dp"
-            android:text="@string/statistic_content_greeting"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:id="@+id/statistic_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingLeft="16dp"
+            android:text="@string/statistic_content_description_chart"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statistic_description">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3.2"
+                android:paddingStart="16dp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/statistic_btn_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/main_color_pale"
+                android:text="D"
+                android:textColor="@color/main_color_dark" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/statistic_btn_week"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/main_color_pale"
+                android:text="W"
+                android:textColor="@color/main_color_dark" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/statistic_btn_month"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/main_color_pale"
+                android:text="M"
+                android:textColor="@color/main_color_dark" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/statistic_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/statistic_tv_name"
+            android:id="@+id/statistic_date"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:paddingStart="16dp"
-            android:paddingLeft="8dp"
-            android:text="Duong "
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/statistic_content_week"
             android:textColor="@color/green_text"
-            android:textSize="23dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/statistic_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:paddingLeft="16dp"
-        android:text="@string/statistic_content_description_chart"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistic_description">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_weight="3.2"
-            android:paddingStart="16dp"
-            android:paddingLeft="8dp"
-            android:textColor="@color/black" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/statistic_btn_day"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:backgroundTint="@color/main_color_pale"
-            android:text="D"
-            android:textColor="@color/main_color_dark" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/statistic_btn_week"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:backgroundTint="@color/main_color_pale"
-            android:text="W"
-            android:textColor="@color/main_color_dark" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/statistic_btn_month"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:backgroundTint="@color/main_color_pale"
-            android:text="M"
-            android:textColor="@color/main_color_dark" />
-    </LinearLayout>
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/statistic_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/statistic_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/statistic_content_week"
-        android:textColor="@color/green_text"
-        android:textSize="36dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/statistic_cv_steps"
-            android:layout_width="133dp"
-            android:layout_height="85dp"
-            android:layout_marginBottom="100dp"
-            android:background="@color/white"
-            app:cardCornerRadius="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/statistic_vc_km"
+            android:textSize="36dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintVertical_bias="0.897" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/green_text"
-                android:orientation="vertical"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="@string/statistic_content_step"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/statistic_tv_steps"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
-                    android:text="400"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/statistic_cv_calories"
-            android:layout_width="133dp"
-            android:layout_height="85dp"
-            android:layout_marginBottom="100dp"
-            android:background="@color/green_text"
-            app:cardCornerRadius="17dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/statistic_cv_time"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_cv_steps"
+                android:layout_width="133dp"
+                android:layout_height="85dp"
+                android:layout_marginBottom="100dp"
+                android:background="@color/white"
+                app:cardCornerRadius="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistic_vc_km"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/green_text"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="@string/statistic_content_step"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/statistic_tv_steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        android:text="400"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_cv_calories"
+                android:layout_width="133dp"
+                android:layout_height="85dp"
+                android:layout_marginBottom="100dp"
                 android:background="@color/green_text"
-                android:orientation="vertical"
-                android:weightSum="2">
+                app:cardCornerRadius="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/statistic_cv_time"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="@string/statistic_content_calories"
-                    android:textColor="@color/white" />
+                    android:layout_height="match_parent"
+                    android:background="@color/green_text"
+                    android:orientation="vertical"
+                    android:weightSum="2">
 
-                <TextView
-                    android:id="@+id/statistic_tv_calories"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
-                    android:text="350"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="@string/statistic_content_calories"
+                        android:textColor="@color/white" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/statistic_cv_time"
-            android:layout_width="133dp"
-            android:layout_height="85dp"
-            android:background="@color/green_text"
-            app:cardCornerRadius="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/statistic_vc_km"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/statistic_cv_steps">
+                    <TextView
+                        android:id="@+id/statistic_tv_calories"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        android:text="350"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_cv_time"
+                android:layout_width="133dp"
+                android:layout_height="85dp"
                 android:background="@color/green_text"
-                android:orientation="vertical"
-                android:weightSum="2"
-                app:circularflow_defaultRadius="17dp"
-                app:circularflow_radiusInDP="17">
+                app:cardCornerRadius="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/statistic_vc_km"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statistic_cv_steps">
 
-                <TextView
-                    android:id="@+id/statistic_tv_time"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
-                    android:text="5:04"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:layout_height="match_parent"
+                    android:background="@color/green_text"
+                    android:orientation="vertical"
+                    android:weightSum="2"
+                    app:circularflow_defaultRadius="17dp"
+                    app:circularflow_radiusInDP="17">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="@string/statistic_content_time"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/statistic_tv_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        android:text="5:04"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="@string/statistic_content_time"
+                        android:textColor="@color/white" />
 
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/statistic_vc_km"
-            android:layout_width="133dp"
-            android:layout_height="85dp"
-            android:background="@color/green_text"
-            app:cardCornerRadius="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/statistic_cv_time"
-            app:layout_constraintTop_toBottomOf="@id/statistic_cv_calories">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_vc_km"
+                android:layout_width="133dp"
+                android:layout_height="85dp"
                 android:background="@color/green_text"
-                android:orientation="vertical"
-                android:weightSum="2"
-                app:circularflow_defaultRadius="17dp"
-                app:circularflow_radiusInDP="17">
+                app:cardCornerRadius="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/statistic_cv_time"
+                app:layout_constraintTop_toBottomOf="@id/statistic_cv_calories">
 
-                <TextView
-                    android:id="@+id/statistic_tv_km"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
-                    android:text="3"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:layout_height="match_parent"
+                    android:background="@color/green_text"
+                    android:orientation="vertical"
+                    android:weightSum="2"
+                    app:circularflow_defaultRadius="17dp"
+                    app:circularflow_radiusInDP="17">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="@string/statistic_content_km"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/statistic_tv_km"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="@string/statistic_content_km"
+                        android:textColor="@color/white" />
 
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,4 +67,10 @@ dependencies {
     // statistic chart
     implementation( Dependencies.STATISTIC_CHART)
 
+    //splash
+    implementation (Dependencies.SPLASH_GIF)
+
+    implementation (Dependencies.SPLASH_GLIDE)
+
+    annotationProcessor (Dependencies.SPLASH_COMPILER)
 }

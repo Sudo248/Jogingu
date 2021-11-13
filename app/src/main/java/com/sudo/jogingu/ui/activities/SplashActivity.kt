@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         lifecycleScope.launchWhenStarted {
-            delay(1000)
+            delay(2000)
             moveToMainActivity()
         }
     }

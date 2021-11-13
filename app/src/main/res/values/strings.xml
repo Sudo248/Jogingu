@@ -48,4 +48,14 @@
     <string name="statistic_content_month">This month</string>
     <string name="statistic_content_week">This week</string>
     <string name="statistic_title_fragment">Statistic</string>
+
+    <!--About Joggingu Fragment-->
+    <string name="about_us_title_fragment">Joggingu</string>
+    <string name="about_joggingu">About Joggingu</string>
+    <string name="about_app_description">Joggingu is mobile app.Track your fitness with Joggingu activity tracker. Record routes, map your favorite run trail analyze your training with all the stats – for free!</string>
+    <string name="about_us_use_smater">3 Ways to Train Smarter with Joggingu</string>
+    <string name="about_us_content_use_smater1">TRACK and ANALYSE: Get key stats like distance, pace, speed, elevation gained and calories burned</string>
+    <string name="about_us_content_use_smater2">NEW ROUTES and MAPS: Mix up your training with the world is largest trail network</string>
+    <string name="about_us_content_use_smater3">CHALLENGE and COMPETE: Push yourself with monthly Challenges and compete with others</string>
+    <string name="about_us_meet_the_team">Meet The Team</string>
 </resources>

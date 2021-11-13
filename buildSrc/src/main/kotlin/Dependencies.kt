@@ -76,4 +76,10 @@ object Dependencies {
     const val STATISTIC_CHART =
     "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
 
+    const val SPLASH_GIF =
+        "pl.droidsonroids.gif:android-gif-drawable:${Versions.SPLASH_GIF}"
+    const val SPLASH_GLIDE =
+        "com.github.bumptech.glide:glide:${Versions.SPLASH_GLIDE}"
+    const val SPLASH_COMPILER =
+        "com.github.bumptech.glide:compiler:${Versions.SPLASH_GLIDE}"
 }

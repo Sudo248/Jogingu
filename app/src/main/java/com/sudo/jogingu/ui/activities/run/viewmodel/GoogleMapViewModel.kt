@@ -1,5 +1,6 @@
 package com.sudo.jogingu.ui.activities.run.viewmodel
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.location.Geocoder
 import androidx.lifecycle.viewModelScope
@@ -113,7 +114,7 @@ class GoogleMapViewModel @Inject constructor(
     }
 
     override fun saveRunToDB(mapHeight: Int, mapWith: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             zoomToSeeWholeTrack(mapHeight, mapWith)
             map?.snapshot { bmp ->
                 save(bmp?.toByteArray())
@@ -122,6 +123,7 @@ class GoogleMapViewModel @Inject constructor(
         }
     }
 
+    @SuppressLint("MissingPermission")
     private suspend fun zoomToSeeWholeTrack(mapHeight: Int, mapWith: Int){
         val bounds = LatLngBounds.Builder()
         for(position in pathPoints){
@@ -129,12 +131,13 @@ class GoogleMapViewModel @Inject constructor(
         }
         withContext(Dispatchers.Main){
             Timber.d("bounds: $bounds")
+            map?.isMyLocationEnabled = false
             map?.moveCamera(
                 CameraUpdateFactory.newLatLngBounds(
                     bounds.build(),
                     mapWith,
                     mapHeight / 3,
-                    0
+                    (mapHeight * 0.05f).toInt()
                 )
             )
         }

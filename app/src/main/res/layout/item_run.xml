@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:strokeWidth="20dp"
+    android:background="@color/white"
     android:layout_marginBottom="10dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white">
@@ -47,7 +41,7 @@
                         android:layout_height="50dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints"
+                        tools:ignore="ContentDescription,MissingConstraints"
                         tools:src="@drawable/avatar" />
                 </androidx.cardview.widget.CardView>
 
@@ -68,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="October 14,2021 at 6:24 PM - Phường Đại Mỗ, Hanoi"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="@id/tv_item_name_user"
                     app:layout_constraintTop_toBottomOf="@id/tv_item_name_user"
                     />
@@ -78,9 +72,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Evening Run"
+                    tools:text="Evening Run"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/card_img_user"
                     app:layout_constraintTop_toBottomOf="@id/card_img_user"/>
@@ -91,7 +85,7 @@
                     android:layout_height="16dp"
                     android:layout_marginTop="9dp"
                     android:text="@string/distance"
-                    android:textSize="10dp"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="@id/tv_item_name_run"
                     app:layout_constraintTop_toBottomOf="@id/tv_item_name_run" />
 
@@ -101,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:text="@string/avg_speed"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/tv_item_title_distance"
                     app:layout_constraintTop_toTopOf="@id/tv_item_title_distance"
                     app:layout_constraintBottom_toBottomOf="@id/tv_item_title_distance"/>
@@ -112,7 +106,7 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="50dp"
                     android:text="@string/total_time"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_item_title_pace"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_item_title_pace"
@@ -120,8 +114,8 @@
 
                 <TextView
                     android:id="@+id/tv_item_distance"
-                    android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     tools:text="4.00 km"
                     android:textSize="16sp"
@@ -132,8 +126,8 @@
 
                 <TextView
                     android:id="@+id/tv_item_pace"
-                    android:layout_width="70dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     tools:text="7:07 /km"
                     android:textSize="16sp"
@@ -143,8 +137,8 @@
 
                 <TextView
                     android:id="@+id/tv_item_time_run"
-                    android:layout_width="70dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     tools:text="28m 29s"
                     android:textSize="16sp"
@@ -157,8 +151,8 @@
 
             <ImageView
                 android:id="@+id/img_item_img_map"
-                android:layout_width="match_parent"
-                android:layout_height="224dp"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="16dp"
                 tools:background="@drawable/img_mapbox"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -166,10 +160,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/information_run"
                 tools:ignore="MissingConstraints" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

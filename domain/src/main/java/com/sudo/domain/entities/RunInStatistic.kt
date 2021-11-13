@@ -1,6 +1,6 @@
 package com.sudo.domain.entities
 
-import java.util.*
+import java.util.Date
 
 data class RunInStatistic(
     val runId: String,
@@ -9,5 +9,5 @@ data class RunInStatistic(
     val day: Date,
     val distance: Float,
     val stepCount: Int,
-    val label: String = "1"
+    val label: String = ""
 )

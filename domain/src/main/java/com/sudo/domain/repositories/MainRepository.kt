@@ -17,9 +17,9 @@ interface MainRepository {
     suspend fun addNewRun(run: Run)
     suspend fun deleteRuns(vararg runs: Run)
 
-    suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic>>>
-    suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic>>>
-    suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic>>>
+    suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic?>>>
+    suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic?>>>
+    suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic?>>>
 
     suspend fun getTarget(): Flow<Result<Target>>
     suspend fun setTarget(target: Target)

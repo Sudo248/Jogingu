@@ -25,21 +25,19 @@ abstract class JoginguDatabase : RoomDatabase(){
     companion object{
         @Volatile
         private var INSTANCE: JoginguDatabase? = null
-
         fun getInstance(context: Context): JoginguDatabase{
             return INSTANCE ?: synchronized(this){
                 INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
             }
         }
 
-        fun buildDatabase(context: Context): JoginguDatabase{
+        private fun buildDatabase(context: Context): JoginguDatabase{
             return Room.databaseBuilder(
                 context,
                 JoginguDatabase::class.java,
                 "jogingu-db"
             ).build()
         }
-
     }
 
 }

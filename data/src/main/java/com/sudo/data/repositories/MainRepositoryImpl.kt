@@ -10,6 +10,7 @@ import com.sudo.domain.entities.*
 import com.sudo.domain.entities.Target
 import com.sudo.domain.repositories.MainRepository
 import kotlinx.coroutines.flow.*
+import timber.log.Timber
 import java.io.IOException
 import java.util.*
 
@@ -79,14 +80,22 @@ class MainRepositoryImpl(
         runs.forEach { dao.deleteRunDBs(it.toRunDB()) }
     }
 
-    override suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic>>> = flow{
+    override suspend fun getRunsThisDay(): Flow<Result<List<RunInStatistic?>>> = flow{
         emit(Result.Loading)
         try {
             val cal = Calendar.getInstance()
+            cal.set(Calendar.HOUR_OF_DAY, 0)
+            cal.set(Calendar.MINUTE, 0)
             val runThisDay = dao.getRunsFromDay(cal.timeInMillis)
+            val runsInDay = MutableList<RunInStatistic?>(24){null}
             emitAll(
                 runThisDay.map { list ->
-                    Result.Success(list.map { it.toRunInStatistic() })
+                    for (run in list){
+                        cal.time = run.timeStart
+                        val hour = cal.get(Calendar.HOUR_OF_DAY)
+                        runsInDay[hour-1] = run.toRunInStatistic()
+                    }
+                    Result.Success(runsInDay)
                 }
             )
         }catch (e: Exception){
@@ -95,15 +104,27 @@ class MainRepositoryImpl(
 
     }
 
-    override suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic>>> = flow{
+    override suspend fun getRunsThisWeek(): Flow<Result<List<RunInStatistic?>>> = flow{
         emit(Result.Loading)
         try {
             val cal = Calendar.getInstance()
-            cal.set(Calendar.DAY_OF_WEEK,1)
-            val runThisWeek = dao.getRunsFromDay(cal.timeInMillis)
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY)
+            cal.set(Calendar.HOUR_OF_DAY, 0)
+            cal.set(Calendar.MINUTE, 0)
+            val runsThisWeek = dao.getRunsFromDay(cal.timeInMillis)
+            val runsInWeek = MutableList<RunInStatistic?>(7){null}
             emitAll(
-                runThisWeek.map { list ->
-                    Result.Success(list.map { it.toRunInStatistic() })
+                runsThisWeek.map { list ->
+                    for(run in list){
+                        cal.time = run.timeStart
+                        val day = cal.get(Calendar.DAY_OF_WEEK)
+                        if(day == Calendar.SUNDAY){
+                            runsInWeek[6] = run.toRunInStatistic()
+                        }else{
+                            runsInWeek[day-2] = run.toRunInStatistic()
+                        }
+                    }
+                    Result.Success(runsInWeek)
                 }
             )
         }catch (e: Exception){
@@ -111,15 +132,25 @@ class MainRepositoryImpl(
         }
     }
 
-    override suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic>>> = flow{
+    override suspend fun getRunsThisMonth(): Flow<Result<List<RunInStatistic?>>> = flow{
         emit(Result.Loading)
         try {
+            Timber.d("start get run of month")
             val cal = Calendar.getInstance()
             cal.set(Calendar.DAY_OF_MONTH,1)
-            val runThisMonth = dao.getRunsFromDay(cal.timeInMillis)
+            cal.set(Calendar.HOUR_OF_DAY, 0)
+            cal.set(Calendar.MINUTE, 0)
+            val runsThisMonth = dao.getRunsFromDay(cal.timeInMillis)
+            val maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+            val runsInMonth = MutableList<RunInStatistic?>(maxDay){null}
             emitAll(
-                runThisMonth.map { list ->
-                    Result.Success(list.map { it.toRunInStatistic() })
+                runsThisMonth.map { list ->
+                    for(run in list){
+                        cal.time = run.timeStart
+                        val day = cal.get(Calendar.DAY_OF_MONTH)
+                        runsInMonth[day-1] = run.toRunInStatistic()
+                    }
+                    Result.Success(runsInMonth)
                 }
             )
         }catch (e: Exception){

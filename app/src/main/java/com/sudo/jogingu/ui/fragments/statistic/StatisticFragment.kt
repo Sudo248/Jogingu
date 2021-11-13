@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -31,13 +30,11 @@ class StatisticFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    companion object {
-        var viewModel: StatisticViewModel? = null
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentStatisticBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -90,7 +87,7 @@ class StatisticFragment : Fragment() {
     }
 
     // set up chart
-    private fun setUpBarChart(listRun: List<RunInStatistic>){
+    private fun setUpBarChart(listRun: List<RunInStatistic?>){
 
         //draw bar chart with dynamic data
         val entries: ArrayList<BarEntry> = ArrayList()
@@ -98,7 +95,7 @@ class StatisticFragment : Fragment() {
         // Can replace thí data object with the custom object
         for( i in listRun.indices){
             val runningDay = listRun[i]
-            entries.add(BarEntry(i.toFloat(),runningDay.distance))
+            entries.add(BarEntry(i.toFloat(), runningDay?.distance ?: 0.0f))
         }
         //set show data distance
         val barDataSet = BarDataSet(entries,"Distance")
@@ -113,13 +110,16 @@ class StatisticFragment : Fragment() {
         binding.barChart.xAxis.valueFormatter = object : IndexAxisValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
                 val index = value.toInt()
-                return if (index < listRun.size) {
-                    listRun[index].label
-                } else {
-                    ""
+                return if(listRun.size <= 7){
+                    if(index == 6) "cn"
+                    else "${index+2}"
+                }else{
+                    "${index+1}"
                 }
             }
         }
+        //add animation
+        binding.barChart.animateY(1000)
 
         binding.barChart.invalidate()
     }
@@ -140,9 +140,6 @@ class StatisticFragment : Fragment() {
 
         //remove description label
         binding.barChart.description.isEnabled = false
-
-        //add animation
-        binding.barChart.animateY(1000)
 
         //draw label on x Axis
         xAxis.position = XAxis.XAxisPosition.BOTTOM

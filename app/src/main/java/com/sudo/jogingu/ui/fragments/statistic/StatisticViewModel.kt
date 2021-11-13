@@ -15,6 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -26,21 +27,22 @@ class StatisticViewModel @Inject constructor(
     private val getNameUserUseCase: GetNameUserUseCase
 ) : ViewModel() {
 
-    private val _listRun = MutableLiveData<List<RunInStatistic>>()
-    val listRun: LiveData<List<RunInStatistic>> = _listRun
+    private val _listRun = MutableLiveData<List<RunInStatistic?>>()
+    val listRun: LiveData<List<RunInStatistic?>> = _listRun
 
     var totalStep: Int = 0
     var totalCaloBurned: Float = 0.0f
     var totalTimeRunning: Int = 0
     var totalDistance: Float = 0.0f
 
-    private var listRunThisDay: List<RunInStatistic>? = null
-    private var listRunThisWeek: List<RunInStatistic>? = null
-    private var listRunThisMonth: List<RunInStatistic>? = null
+    private var listRunThisDay: List<RunInStatistic?>? = null
+    private var listRunThisWeek: List<RunInStatistic?>? = null
+    private var listRunThisMonth: List<RunInStatistic?>? = null
 
     init {
-//        getRunsThisWeek()
-        test()
+        Timber.d("Init Statistic ViewModel")
+        getRunsThisWeek()
+//        test()
     }
 
     fun getRunsThisDay(){
@@ -48,15 +50,15 @@ class StatisticViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 getRunsThisDayUseCase().collect {
                     if(it is Result.Success){
+                        Timber.d("Size of list this day: ${it.data.size}")
                         listRunThisDay = it.data
-                        _listRun.postValue(listRunThisDay)
+                        postValue(listRunThisDay)
                     }
                 }
             }
         }else{
-            _listRun.postValue(listRunThisDay)
+            postValue(listRunThisDay)
         }
-        listRunThisDay?.let{ calculateTotal(it) }
     }
 
     fun getRunsThisWeek(){
@@ -64,44 +66,46 @@ class StatisticViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 getRunsThisWeekUseCase().collect {
                     if(it is Result.Success){
+                        Timber.d("Size of list this week: ${it.data.size}")
                         listRunThisWeek = it.data
-                        _listRun.postValue(listRunThisWeek)
+                        postValue(listRunThisWeek)
                     }
                 }
             }
         }else{
-            _listRun.postValue(listRunThisWeek)
+            postValue(listRunThisWeek)
         }
-
-        listRunThisWeek?.let{ calculateTotal(it) }
     }
 
     fun getRunsThisMonth(){
         if(listRunThisMonth == null){
             viewModelScope.launch(Dispatchers.IO) {
                 getRunsThisMonthUseCase().collect {
+                    Timber.d("result in get run in month: $it")
                     if(it is Result.Success){
+                        Timber.d("Size of list this month: ${it.data.size}")
                         listRunThisMonth = it.data
-                        _listRun.postValue(listRunThisMonth)
+                        postValue(listRunThisMonth)
                     }
                 }
             }
         }else{
-            _listRun.postValue(listRunThisMonth)
+            postValue(listRunThisMonth)
         }
-        listRunThisMonth?.let{ calculateTotal(it) }
     }
 
-    private fun calculateTotal(listRun: List<RunInStatistic>){
+    private fun calculateTotal(listRun: List<RunInStatistic?>){
         totalStep = 0
         totalCaloBurned = 0.0f
         totalTimeRunning = 0
         totalDistance = 0.0f
         for (run in listRun){
-            totalStep += run.stepCount
-            totalCaloBurned += run.caloBurned
-            totalTimeRunning += run.timeRunning
-            totalDistance += run.distance
+            run?.let{
+                totalStep += it.stepCount
+                totalCaloBurned += it.caloBurned
+                totalTimeRunning += it.timeRunning
+                totalDistance += it.distance
+            }
         }
     }
 
@@ -120,6 +124,11 @@ class StatisticViewModel @Inject constructor(
         }
         listRunThisWeek = listTmp
         getRunsThisWeek()
+    }
+
+    private fun postValue(list: List<RunInStatistic?>?){
+        list?.let{ calculateTotal(it) }
+        _listRun.postValue(list)
     }
 
 }

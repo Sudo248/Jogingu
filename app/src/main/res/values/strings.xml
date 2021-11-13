@@ -59,4 +59,21 @@
     <string name="channel_name">channel_name</string>
     <string name="channel_description">channel_description</string>
 
+    <string name="steps">Steps</string>
+    <string name="calories">Calories</string>
+    <string name="time">Time</string>
+    <string name="description_chart">The chart below shows your training progress over time.</string>
+    <string name="Hi">Hi, </string>
+    <string name="today">Today</string>
+    <string name="this_month">This month</string>
+    <string name="this_week">This week</string>
+    <string name="statistic">Statistic</string>
+
+<!--    item run in home fragment-->
+    <string name="morning_run">Morning Run</string>
+    <string name="afternoon_run">Afternoon Run</string>
+    <string name="evening_run">Evening Run</string>
+    <string name="distance">Distance</string>
+    <string name="avg_speed">Avg speed</string>
+    <string name="total_time">Total time</string>
 </resources>

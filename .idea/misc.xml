@@ -49,12 +49,16 @@
         <entry key="..\:/Android/Jogingu/app/src/main/res/layout/fragment_week_chart.xml" value="0.22268518518518518" />
         <entry key="..\:/Android/Jogingu/app/src/main/res/layout/item_of_frahome.xml" value="0.22268518518518518" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.29259259259259257" />
+        <entry key="app/src/main/res/layout/activity_run.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_running.xml" value="0.29259259259259257" />
+        <entry key="app/src/main/res/layout/fragment_statistic.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_target.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_you.xml" value="0.32916666666666666" />
         <entry key="app/src/main/res/layout/item_gender.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/item_of_frahome.xml" value="0.29259259259259257" />
+        <entry key="app/src/main/res/layout/item_run.xml" value="0.23478260869565218" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/menu/profile_menu.xml" value="0.32916666666666666" />
       </map>

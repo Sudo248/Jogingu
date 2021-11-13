@@ -28,7 +28,9 @@ object Versions {
 
 
     //statistic chart
-
     const val STATISTIC_CHART = "v3.1.0"
+
+    // glide
+    const val GLIDE = "4.12.0"
 
 }

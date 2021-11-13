@@ -1,42 +1,30 @@
 package com.sudo.jogingu.ui.activities.run
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.location.LocationListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
 import com.sudo.jogingu.R
-import com.sudo.jogingu.common.Constant.ACTION_FINISH
-import com.sudo.jogingu.common.Constant.ACTION_PAUSE
-import com.sudo.jogingu.common.Constant.ACTION_RUNNING
-import com.sudo.jogingu.common.Constant.ACTION_START
-import com.sudo.jogingu.common.Constant.LATITUDE_DEFAULT
-import com.sudo.jogingu.common.Constant.LONGITUDE_DEFAULT
-import com.sudo.jogingu.common.Constant.MAP_ZOOM_DEFAULT
-import com.sudo.jogingu.common.Constant.POLYLINE_COLOR
-import com.sudo.jogingu.common.Constant.POLYLINE_WIDTH_DEFAULT
-import com.sudo.jogingu.common.Polylines
+import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.databinding.ActivityRunBinding
-import com.sudo.jogingu.service.RunningService
+import com.sudo.jogingu.ui.activities.main.MainActivity
+import com.sudo.jogingu.ui.activities.run.viewmodel.GoogleMapViewModel
 import com.sudo.jogingu.util.TimeUtil
 import com.sudo.jogingu.util.TrackingPermission
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
+@AndroidEntryPoint
 class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     private lateinit var binding: ActivityRunBinding
-    private lateinit var map: GoogleMap
-    private var runState: RunState = RunState.START
-    private var pathPoints: Polylines = mutableListOf()
+    private val viewModel: GoogleMapViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,23 +35,83 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
         binding.mapView.onCreate(savedInstanceState)
 
+        viewModel.sendCommandToService = { action, serviceClass ->
+            Intent(this, serviceClass).also {
+                it.action = action
+                this.startService(it)
+            }
+        }
+
+        viewModel.getNameRunByTime = {
+            TimeUtil.getNameRunByTime(this, it)
+        }
+
         getMapAsync()
         subscribeUi()
-        subscribeObserver()
+        collect()
 
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
+    private fun collect() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.runState.collect{
+                when(it){
+                    RunState.RUNNING -> {
+                        binding.fabFinish.visibility = View.GONE
+                        binding.fabPauseOrResume.icon = getDrawable(R.drawable.ic_pause_24)
+                    }
+                    RunState.PAUSE -> {
+                        binding.fabPauseOrResume.icon = getDrawable(R.drawable.ic_play_arrow_24)
+                        binding.fabFinish.visibility = View.VISIBLE
+                    }
+                    else -> {
+                        Timber.d("collect runState: $it")
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.runningTime.collect {
+                binding.tvTimeValue.text = TimeUtil.parseTime(it)
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.stepCounter.collect {
+                binding.tvStepValue.text = it.toString()
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.distance.collect {
+                binding.tvDistance.text = "%.2f".format(it/1000)
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.avgSpeed.collect {
+                binding.tvSpeedValue.text = "%.2f".format(it)
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.isSuccessToSaveRun.collect{
+                if(it){
+                    startMainActivity()
+                }
+            }
+        }
+    }
 
     @SuppressLint("MissingPermission")
     private fun getMapAsync(){
         if(TrackingPermission.hasLocationPermissions(this)){
             binding.mapView.getMapAsync {
-                map = it
-                map.isMyLocationEnabled = true
-                addAllPolyline()
-                if(runState == RunState.START){
-                    sendCommandToService(ACTION_START)
-                }
+                it.isMyLocationEnabled = true
+                it.moveCamera(CameraUpdateFactory.zoomTo(Constant.MAP_ZOOM_DEFAULT))
+                viewModel.setMap(it)
             }
         }
     }
@@ -73,123 +121,23 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
             binding.glStartRunMain.setGuidelinePercent(0.6F)
             binding.ctlBeforeStart.visibility = View.GONE
             binding.ctlAfterStart.visibility = View.VISIBLE
-            sendCommandToService(ACTION_RUNNING)
+            viewModel.onStartClick()
         }
 
-        binding.fabResumeContinue.setOnClickListener {
-            if(runState == RunState.RUNNING){
-                sendCommandToService(ACTION_PAUSE)
-            }else{
-                sendCommandToService(ACTION_RUNNING)
-            }
+        binding.fabPauseOrResume.setOnClickListener {
+            viewModel.onPauseOrResumeClick()
         }
 
         binding.fabFinish.setOnClickListener {
-            sendCommandToService(ACTION_FINISH)
-        }
+            viewModel.onFinishClick(binding.root.height, binding.root.width)
 
+        }
 
     }
 
-    private fun subscribeObserver(){
-
-        RunningService.runState.observe(this){
-            runState = it
-            updateUi()
-        }
-
-        RunningService.pathPoints.observe(this){
-            pathPoints = it
-            if(runState == RunState.RUNNING){
-                drawLatestPolyLine()
-                moveCameraToUser()
-            }else{
-                showMyPosition()
-                moveCameraToUser(MAP_ZOOM_DEFAULT)
-            }
-        }
-        RunningService.runningTime.observe(this) {
-            binding.tvTimeValue.text = TimeUtil.parseTime(it)
-        }
-
-        RunningService.stepCounter.observe(this) {
-            binding.tvStepValue.text = it.toString()
-        }
-
-
-    }
-
-    private fun sendCommandToService(action: String){
-        Intent(this, RunningService::class.java).also {
-            it.action = action
-            this.startService(it)
-        }
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun updateUi() {
-        when(runState){
-            RunState.RUNNING -> {
-                binding.fabFinish.visibility = View.GONE
-                binding.fabResumeContinue.icon = getDrawable(R.drawable.ic_pause_24)
-            }
-            RunState.PAUSE -> {
-                binding.fabResumeContinue.icon = getDrawable(R.drawable.ic_play_arrow_24)
-                binding.fabFinish.visibility = View.VISIBLE
-            }
-            RunState.FINISH -> {
-
-            }
-            else -> {
-
-            }
-        }
-    }
-
-    private fun showMyPosition(){
-        if(pathPoints.isNotEmpty() && pathPoints.last().isNotEmpty()){
-            val lastLatLng = pathPoints.last().last()
-            val polyLineOptions = PolylineOptions()
-                .color(POLYLINE_COLOR)
-                .width(POLYLINE_WIDTH_DEFAULT)
-                .add(lastLatLng)
-            map.addPolyline(polyLineOptions)
-        }
-    }
-
-    private fun drawLatestPolyLine(){
-        if(pathPoints.last().size > 1){
-            val preLastLatLng = pathPoints.last()[pathPoints.last().size-2]
-            val lastLatLng = pathPoints.last().last()
-            val polyLineOptions = PolylineOptions()
-                .color(POLYLINE_COLOR)
-                .width(POLYLINE_WIDTH_DEFAULT)
-                .add(preLastLatLng)
-                .add(lastLatLng)
-            map.addPolyline(polyLineOptions)
-        }
-    }
-
-    private fun moveCameraToUser(cameraPosition: Float? = null){
-        Timber.d("camera position: $cameraPosition")
-        if(pathPoints.isNotEmpty() && pathPoints.last().isNotEmpty()){
-            map.animateCamera(
-                CameraUpdateFactory.newLatLngZoom(
-                    pathPoints.last().last(),
-                    cameraPosition ?: map.cameraPosition.zoom
-                )
-            )
-        }
-    }
-
-    // use when rotate screen
-    private fun addAllPolyline(){
-        for(polyline in pathPoints){
-            val polylineOptions = PolylineOptions()
-                .color(POLYLINE_COLOR)
-                .width(POLYLINE_WIDTH_DEFAULT)
-                .addAll(polyline)
-            map.addPolyline(polylineOptions)
+    private fun startMainActivity(){
+        Intent(this, MainActivity::class.java).also {
+            this.startActivity(it)
         }
     }
 

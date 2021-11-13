@@ -1,6 +1,8 @@
 package com.sudo.jogingu.common
 
 import android.graphics.Color
+import android.os.Environment
+import java.io.File
 
 object Constant {
     const val  REQUEST_CODE_LOCATION_PERMISSION = 0

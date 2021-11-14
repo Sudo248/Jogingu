@@ -58,6 +58,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
     private val timer = Timer()
     private lateinit var timerTask: TimerTask
     private var magnitudePrevious = 0.0
+    private var isServiceKill = false
 
     companion object{
         val runningTime = MutableStateFlow(0)
@@ -124,7 +125,8 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
             RunState.FINISH -> {
                 unregisterUpdatePosition()
                 unregisterSensorListener()
-                notificationManager.cancel(NOTIFICATION_RUNNING_ID)
+                isServiceKill = true
+                stopForeground(true)
                 stopSelf()
             }
         }
@@ -173,11 +175,12 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
             set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
         }
 
-        currentNotificationBuilder = notificationBuilder
-            .addAction(R.drawable.ic_pause_24, notificationActionText, pendingIntent)
+        if(!isServiceKill){
+            currentNotificationBuilder = notificationBuilder
+                .addAction(R.drawable.ic_pause_24, notificationActionText, pendingIntent)
 
-        notificationManager.notify(NOTIFICATION_RUNNING_ID, currentNotificationBuilder.build())
-
+            notificationManager.notify(NOTIFICATION_RUNNING_ID, currentNotificationBuilder.build())
+        }
     }
 
     override fun onSensorChanged(event: SensorEvent?) {

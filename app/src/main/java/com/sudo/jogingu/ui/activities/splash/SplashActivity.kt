@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
             }else{
                 0
             }
-            delay(1000)
+            delay(1500)
             moveToMainActivity(idFragment)
         }
     }

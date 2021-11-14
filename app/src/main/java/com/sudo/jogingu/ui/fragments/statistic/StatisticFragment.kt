@@ -82,9 +82,9 @@ class StatisticFragment : Fragment() {
         totalDistance: Float
     ) {
         binding.statisticTvSteps.text = totalStep.toString()
-        binding.statisticTvCalories.text = "%.2f".format(totalCaloBurned)
+        binding.statisticTvCalories.text = "%.2f".format(totalCaloBurned/10000000f)
         binding.statisticTvTime.text = totalTimeRunning.toString()
-        binding.statisticTvKm.text = "%.2f".format(totalDistance)
+        binding.statisticTvKm.text = "%.2f".format(totalDistance/1000f)
     }
 
     // set up chart

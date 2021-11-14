@@ -42,7 +42,7 @@ abstract class BaseRunViewModel(
 
     val avgSpeed = MutableStateFlow(0.0)
 
-    protected val _isSuccessToSaveRun = MutableStateFlow(false)
+    private val _isSuccessToSaveRun = MutableStateFlow(false)
     val isSuccessToSaveRun: StateFlow<Boolean> = _isSuccessToSaveRun
 
     lateinit var sendCommandToService: (action: String, serviceClass: Class<*> ) -> Unit

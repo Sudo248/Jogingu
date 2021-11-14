@@ -2,6 +2,7 @@ package com.sudo.jogingu.ui.fragments.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log.d
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +16,11 @@ import com.sudo.data.util.calculateAge
 import com.sudo.data.util.genId
 import com.sudo.domain.entities.Gender
 import com.sudo.domain.entities.User
+import com.sudo.jogingu.ui.activities.main.MainActivity
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,7 +49,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Timber.d("type of activity: ${activity!!::class.java.name} ${activity is MainActivity}")
+        if(activity is MainActivity){
+            (activity as MainActivity).supportActionBar?.hide()
+        }
         setUpUi()
         observer()
     }
@@ -148,5 +154,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        (activity as MainActivity).supportActionBar?.show()
+    }
 
 }

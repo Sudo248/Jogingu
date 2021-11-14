@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="@string/app_home"
+        android:title="@string/home"
         android:icon="@drawable/ic_home_24px"
         android:enabled="true"/>
     <item
         android:id="@+id/targetFragment"
-        android:title="@string/app_target"
+        android:title="@string/target"
         android:icon="@drawable/ic_target_24px"
         android:enabled="true"/>
     <item
@@ -16,12 +16,12 @@
         android:enabled="false"/>
     <item
         android:id="@+id/statisticFragment"
-        android:title="@string/app_statistic"
+        android:title="@string/statistic"
         android:icon="@drawable/ic_bar_chart_24"
         android:enabled="true"/>
     <item
         android:id="@+id/profileFragment"
-        android:title="@string/app_you"
+        android:title="@string/profile"
         android:icon="@drawable/ic_account_24px"
         android:enabled="true"/>
 

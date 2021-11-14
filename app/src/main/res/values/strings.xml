@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Jogingu</string>
 
-    <string name="app_home">Home</string>
-    <string name="app_target">Target</string>
-    <string name="app_statistic">Statistic</string>
-    <string name="app_you">You</string>
+    <string name="home">Home</string>
+    <string name="target">Target</string>
+    <string name="statistic">Statistic</string>
+    <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_splash">SplashActivity</string>
@@ -40,7 +40,7 @@
     <string name="target_content_recurring">Recurring / days</string>
     <string name="target_content_notification_before">Notification</string>
 
-<!--    running activity-->
+    <!--    running activity-->
     <string name="request_permission">You need to accept location permission to use this app</string>
     <string name="title_notification_running">Run</string>
     <string name="map_access_token">AIzaSyABgcb4CSiVPAkAcBpG8lQHcC7MnC7-q0I</string>
@@ -70,9 +70,8 @@
     <string name="today">Today</string>
     <string name="this_month">This month</string>
     <string name="this_week">This week</string>
-    <string name="statistic">Statistic</string>
 
-<!--    item run in home fragment-->
+    <!--    item run in home fragment-->
     <string name="morning_run">Morning Run</string>
     <string name="afternoon_run">Afternoon Run</string>
     <string name="evening_run">Evening Run</string>
@@ -80,4 +79,22 @@
     <string name="avg_speed">Avg speed</string>
     <string name="total_time">Total time</string>
     <string name="save">save</string>
+
+    <!--    about us fragment-->
+    <string name="about_jogingu">About Jogingu</string>
+    <string name="about_app_description">Track your fitness with Jogingu activity tracker. Record routes, map your favourite run and analyze your training with all the stats – for free</string>
+    <string name="about_us_use_smarter">3 Ways to Train Smarter with Jogingu</string>
+    <string name="about_us_content_use_smarter1"> TRACK and ANALYSE: Get key stats like distance, pace, speed and calories burned.</string>
+    <string name="about_us_content_use_smarter2">NEW ROUTES and MAPS: Mix up your training with the world’s largest trail network</string>
+    <string name="about_us_content_use_smarter3">CHALLENGE and COMPETE: Push yourself with monthly Challenges</string>
+    <string name="about_us_meet_the_team">Meet the team</string>
+    <string name="about_us_title_fragment">About</string>
+    <!--    <string name=""></string>-->
+
+    <!--    developer-->
+    <string name="duong">Lê Hồng Dương</string>
+    <string name="dung">Trần Đăng Dũng</string>
+    <string name="trang">Nguyễn Quỳnh Trang</string>
+    <string name="truong">Bùi Quang Trường</string>
+
 </resources>

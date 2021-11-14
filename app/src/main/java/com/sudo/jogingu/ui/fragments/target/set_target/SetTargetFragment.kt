@@ -111,6 +111,11 @@ class SetTargetFragment : Fragment() {
                     timeStart = timeFormat.parse(edtTargetTimeStart.editText?.text.toString())!!.time
                 )
                 viewModel.saveTarget(target)
+                ToastHelper.makeText(
+                    requireContext(),
+                    getString(R.string.save_success),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }

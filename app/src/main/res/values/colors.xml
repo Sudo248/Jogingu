@@ -22,4 +22,7 @@
     <color name="green">#2E7D32</color>
 
     <color name="green_text">#2E7D32</color>
+
+    <color name="gray_light_plus">#C8C8C8</color>
+
 </resources>

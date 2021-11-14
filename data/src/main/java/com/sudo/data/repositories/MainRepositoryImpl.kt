@@ -125,7 +125,7 @@ class MainRepositoryImpl(
         emit(Result.Loading)
         try {
             val cal = Calendar.getInstance()
-            cal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY)
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY)
             cal.set(Calendar.HOUR_OF_DAY, 0)
             cal.set(Calendar.MINUTE, 0)
             val runsThisWeek = dao.getRunsFromDay(cal.timeInMillis)
@@ -135,11 +135,7 @@ class MainRepositoryImpl(
                     for(run in list){
                         cal.time = run.timeStart
                         val day = cal.get(Calendar.DAY_OF_WEEK)
-                        if(day == Calendar.SUNDAY){
-                            runsInWeek[6] = run.toRunInStatistic()
-                        }else{
-                            runsInWeek[day-2] = run.toRunInStatistic()
-                        }
+                        runsInWeek[day-1] = run.toRunInStatistic()
                     }
                     Result.Success(runsInWeek)
                 }

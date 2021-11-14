@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.sudo.jogingu.R
 import com.sudo.jogingu.common.Constant.OPEN_FRAGMENT
 import com.sudo.jogingu.databinding.ActivityMainBinding
+import com.sudo.jogingu.ui.activities.about_us.AboutUsActivity
 import com.sudo.jogingu.ui.activities.run.RunActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
         var idFragment = 0
         savedInstanceState?.let{
             idFragment = it.getInt(OPEN_FRAGMENT)
@@ -28,10 +32,14 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragments) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
 
-        navigateToFragment(idFragment)
+//        navigateToFragment(idFragment)
 
         binding.fabRun.setOnClickListener {
             moveToRunningActivity()
+        }
+
+        binding.logo.setOnClickListener {
+            this.startActivity(Intent(this, AboutUsActivity::class.java))
         }
 
     }

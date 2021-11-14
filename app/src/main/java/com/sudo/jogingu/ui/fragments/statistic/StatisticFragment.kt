@@ -41,6 +41,7 @@ class StatisticFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.title = getString(R.string.statistic)
         initBarChart()
         subscribeUi()
         observer()
@@ -111,8 +112,8 @@ class StatisticFragment : Fragment() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
                 val index = value.toInt()
                 return if(listRun.size <= 7){
-                    if(index == 6) "cn"
-                    else "${index+2}"
+                    if(index == 0) "cn"
+                    else "${index+1}"
                 }else{
                     "${index+1}"
                 }

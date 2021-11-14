@@ -10,7 +10,6 @@ import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -35,7 +34,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.title = getString(R.string.home)
         viewModel.listRun.observe(viewLifecycleOwner){
             Timber.d("Size of list run: ${it.size}")
             adapter.submitList(it)

@@ -44,6 +44,7 @@ class ProfileViewModel @Inject constructor(
 
     fun onSaveClick(user: User){
         viewModelScope.launch(Dispatchers.IO) {
+            _user.postValue(user)
             setUserUseCase(user)
         }
     }

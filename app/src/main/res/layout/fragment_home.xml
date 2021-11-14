@@ -7,26 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.home.HomeFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/abl_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tb_home"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/main_color_normal"
-            android:theme="@style/Theme.AppCompat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Home"
-            app:titleTextColor="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="0dp"
@@ -34,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abl_home">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_rcv"

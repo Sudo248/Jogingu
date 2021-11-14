@@ -6,12 +6,9 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
-import android.media.RingtoneManager
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.sudo.jogingu.MainActivity
 import com.sudo.jogingu.R
-import com.sudo.jogingu.common.Constant
 import com.sudo.jogingu.common.Constant.ACTION_NOTIFICATION_EVERYDAY
 import com.sudo.jogingu.common.Constant.ACTION_NOTIFICATION_RUN
 import com.sudo.jogingu.common.Constant.NOTIFICATION_EVERYDAY_CHANNEL_ID
@@ -19,6 +16,7 @@ import com.sudo.jogingu.common.Constant.NOTIFICATION_RUNNING_CHANNEL_ID
 import com.sudo.jogingu.common.Constant.NOTIFICATION_RUN_CHANNEL_ID
 import com.sudo.jogingu.common.Constant.OPEN_FRAGMENT
 import com.sudo.jogingu.service.NotificationService
+import com.sudo.jogingu.ui.activities.main.MainActivity
 import com.sudo.jogingu.util.TimeUtil
 import dagger.Module
 import dagger.Provides
@@ -27,7 +25,6 @@ import dagger.hilt.android.components.ServiceComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ServiceScoped
 import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ServiceComponent::class)

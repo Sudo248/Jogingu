@@ -39,11 +39,9 @@ class ViewTargetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.target.observe(viewLifecycleOwner){
             setTarget(it)
         }
-
     }
 
     private fun setTarget(target: Target) {

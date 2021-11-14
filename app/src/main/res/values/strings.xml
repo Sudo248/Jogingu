@@ -37,6 +37,15 @@
     <string name="target_content_recurring">Recurring / days</string>
     <string name="target_content_notification_before">Notification</string>
 
+<!--    running activity-->
+    <string name="request_permission">You need to accept location permission to use this app</string>
+    <string name="title_notification_running">Run</string>
+    <string name="map_access_token">AIzaSyABgcb4CSiVPAkAcBpG8lQHcC7MnC7-q0I</string>
+    <string name="start">Start</string>
+    <string name="resume">Resume</string>
+    <string name="finish">Finish</string>
+
+
     <!-- statistic fragment -->
     <string name="statistic_content_step">Steps</string>
     <string name="statistic_content_calories">Calories</string>
@@ -45,17 +54,26 @@
     <string name="statistic_content_description_chart">The chart below shows your training progress over time.</string>
     <string name="statistic_content_greeting">Hi, </string>
     <string name="statistic_content_date">Today</string>
-    <string name="statistic_content_month">This month</string>
-    <string name="statistic_content_week">This week</string>
     <string name="statistic_title_fragment">Statistic</string>
+    <!-- Notification -->
+    <string name="channel_name">channel_name</string>
+    <string name="channel_description">channel_description</string>
 
-    <!--About Joggingu Fragment-->
-    <string name="about_us_title_fragment">Joggingu</string>
-    <string name="about_joggingu">About Joggingu</string>
-    <string name="about_app_description">Joggingu is mobile app.Track your fitness with Joggingu activity tracker. Record routes, map your favorite run trail analyze your training with all the stats – for free!</string>
-    <string name="about_us_use_smater">3 Ways to Train Smarter with Joggingu</string>
-    <string name="about_us_content_use_smater1">TRACK and ANALYSE: Get key stats like distance, pace, speed, elevation gained and calories burned</string>
-    <string name="about_us_content_use_smater2">NEW ROUTES and MAPS: Mix up your training with the world is largest trail network</string>
-    <string name="about_us_content_use_smater3">CHALLENGE and COMPETE: Push yourself with monthly Challenges and compete with others</string>
-    <string name="about_us_meet_the_team">Meet The Team</string>
+    <string name="steps">Steps</string>
+    <string name="calories">Calories</string>
+    <string name="time">Time</string>
+    <string name="description_chart">The chart below shows your training progress over time.</string>
+    <string name="Hi">Hi, </string>
+    <string name="today">Today</string>
+    <string name="this_month">This month</string>
+    <string name="this_week">This week</string>
+    <string name="statistic">Statistic</string>
+
+<!--    item run in home fragment-->
+    <string name="morning_run">Morning Run</string>
+    <string name="afternoon_run">Afternoon Run</string>
+    <string name="evening_run">Evening Run</string>
+    <string name="distance">Distance</string>
+    <string name="avg_speed">Avg speed</string>
+    <string name="total_time">Total time</string>
 </resources>

@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sudo.jogingu">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.barometer" android:required="true"/>
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false"/>
+
     <application
         android:name=".app.JoginguApp"
         android:allowBackup="true"
@@ -11,10 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jogingu">
         <activity
-            android:name=".ui.activities.RunningActivity"
+            android:name=".ui.activities.run.RunActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activities.SplashActivity"
+            android:name=".ui.activities.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +34,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ui.activities.MainActivity"
-            android:exported="true"></activity>
+            android:name=".ui.activities.main.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"/>
+
+        <service android:name=".service.GoogleMapService"
+            android:foregroundServiceType="location"/>
+
+        <service android:name=".service.NotificationService" />
+        <receiver android:name=".receiver.NotificationReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_access_token"/>
+
+
+
     </application>
 
 </manifest>

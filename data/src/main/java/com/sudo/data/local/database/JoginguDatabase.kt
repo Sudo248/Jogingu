@@ -8,12 +8,10 @@ import androidx.room.TypeConverters
 import com.sudo.data.local.database.dao.JoginguDao
 import com.sudo.data.local.database.models.NotificationDB
 import com.sudo.data.local.database.models.RunDB
-import com.sudo.data.local.database.models.UserDB
 import com.sudo.data.util.Converter
 
 @Database(
     entities = [
-        UserDB::class,
         RunDB::class,
         NotificationDB::class
     ],
@@ -27,21 +25,19 @@ abstract class JoginguDatabase : RoomDatabase(){
     companion object{
         @Volatile
         private var INSTANCE: JoginguDatabase? = null
-
         fun getInstance(context: Context): JoginguDatabase{
             return INSTANCE ?: synchronized(this){
                 INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
             }
         }
 
-        fun buildDatabase(context: Context): JoginguDatabase{
+        private fun buildDatabase(context: Context): JoginguDatabase{
             return Room.databaseBuilder(
                 context,
                 JoginguDatabase::class.java,
                 "jogingu-db"
             ).build()
         }
-
     }
 
 }

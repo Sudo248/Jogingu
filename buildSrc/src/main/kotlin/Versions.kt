@@ -21,6 +21,11 @@ object Versions {
     const val NAVIGATION = "2.3.5"
     const val LEGACY = "1.0.0"
     const val TIMBER = "4.7.1"
+    const val MAP = "17.0.1"
+    const val LOCATION = "18.0.0"
+    const val EASY_PERMISSION = "3.0.0"
+    const val LIFECYCLE_EXTENSION = "2.2.0"
+
 
     //statistic chart
 

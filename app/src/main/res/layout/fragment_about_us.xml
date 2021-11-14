@@ -121,179 +121,81 @@
                         android:weightSum="3"
                         app:layout_constraintTop_toTopOf="@+id/txt_aboutus">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:padding="10dp"
-                            android:text="@string/about_us_content_use_smarter1"
-                            android:textSize="17dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:padding="10dp"
-                            android:text="@string/about_us_content_use_smarter2"
-                            android:textSize="17dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="166dp"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:padding="10dp"
-                            android:text="@string/about_us_content_use_smarter3"
-                            android:textSize="17dp" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="17dp"
+                        android:text="@string/about_us_content_use_smater1"
+                        android:gravity="left"
+                        android:padding="10dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="17dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:text="@string/about_us_content_use_smater2"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="17dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:text="@string/about_us_content_use_smater3"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
+                android:id="@+id/linearmeetteam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="7dp"
-                android:layout_marginTop="7dp"
-                app:cardCornerRadius="6dp">
+                android:orientation="vertical"
+                android:weightSum="17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear3way"
+                app:layout_constraintVertical_bias="0.0">
 
-                <LinearLayout
-                    android:id="@+id/linear_meet_team"
+                <TextView
+                    android:id="@+id/txt_meettheteam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/about_us_meet_the_team"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_color_dark"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="880dp"
                     android:orientation="vertical"
-                    android:weightSum="17"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintVertical_bias="0.0">
-
-                    <TextView
-
-                        android:id="@+id/txt_meet_the_team"
+                    android:weightSum="4"
+                    android:layout_weight="16"
+                    app:layout_constraintTop_toTopOf="@+id/txt_aboutus">
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/about_us_meet_the_team"
-                        android:textColor="@color/main_color_dark"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
-
+                        android:layout_height="0dp"
+                        android:layout_weight="5">
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="12"
-                                android:src="@drawable/img_duong" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="5"
-                                android:text="@string/duong"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="12"
-                                android:src="@drawable/img_dung" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="5"
-                                android:text="@string/dung"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="12"
-                                android:src="@drawable/img_trang" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="5"
-                                android:text="@string/trang"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="12"
-                                android:src="@drawable/img_truong" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="5"
-                                android:text="@string/truong"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
+                            android:weightSum="5">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/img_duong"
+                                android:layout_weight="3"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
+            </LinearLayout>
 
 
 

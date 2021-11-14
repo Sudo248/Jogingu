@@ -12,7 +12,7 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="@string/about_us_title_fragment"
+        app:title="Joggingu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -54,7 +54,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="0.8"
                         android:gravity="center"
-                        android:text="@string/about_joggingu"
+                        android:text="About joggingu"
                         android:textColor="@color/main_color_dark"
                         android:textSize="18dp"
                         android:textStyle="bold" />
@@ -64,7 +64,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="4.2"
                         android:padding="8dp"
-                        android:text="@string/about_app_description"
+                        android:text="Track your fitness with Joggingu activity tracker. Record routes, map your favorite run and analyze your training with all the stats – for free"
                         android:textSize="16dp" />
 
 
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/about_us_use_smater"
+                    android:text="3 Ways to Train Smarter with Joggingu"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="@color/main_color_dark"/>
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="17dp"
-                        android:text="@string/about_us_content_use_smater1"
+                        android:text="TRACK and ANALYSE: Get key stats like distance, pace, speed and calories burned."
                         android:gravity="left"
                         android:padding="10dp"/>
                     <TextView
@@ -117,7 +117,7 @@
                         android:textSize="17dp"
                         android:gravity="left"
                         android:padding="10dp"
-                        android:text="@string/about_us_content_use_smater2"/>
+                        android:text="NEW ROUTES and MAPS: Mix up your training with the world’s largest trail network"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                         android:textSize="17dp"
                         android:gravity="left"
                         android:padding="10dp"
-                        android:text="@string/about_us_content_use_smater3"/>
+                        android:text="CHALLENGE and COMPETE: Push yourself with monthly Challenges"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/about_us_meet_the_team"
+                    android:text=" Meet the team"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="@color/main_color_dark"/>

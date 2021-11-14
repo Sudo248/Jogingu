@@ -96,10 +96,10 @@ object Dependencies {
     // glide
 
     const val GLIDE_CORE =
-        "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+        "com.github.bumptech.glide:glide:${Versions.SPLASH_GLIDE}"
 
     const val GLIDE_COMPILE =
-        "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+        "com.github.bumptech.glide:compiler:${Versions.SPLASH_GLIDE}"
 
 
 

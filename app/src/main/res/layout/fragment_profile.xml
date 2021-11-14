@@ -55,6 +55,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profile_fab_add_photo"
         app:backgroundTint="@color/main_color_normal"
@@ -144,6 +145,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
                 android:hint="@string/birthday"
+                app:errorContentDescription="@string/required"
                 app:endIconDrawable="@drawable/ic_outline_calendar_24"
                 app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -166,6 +168,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
                 android:hint="@string/height"
+                app:errorContentDescription="@string/required"
                 app:layout_constraintEnd_toStartOf="@+id/profile_edt_weight"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_edt_birth_day">
@@ -185,6 +188,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
                 android:hint="@string/weight"
+                app:errorContentDescription="@string/required"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_edt_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -206,6 +210,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
                 android:hint="@string/gender"
+                app:errorContentDescription="@string/required"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_edt_height">
@@ -215,7 +220,15 @@
                     android:layout_height="match_parent"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_profile_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/save"
+                app:layout_constraintEnd_toEndOf="@+id/profile_edt_gender"
+                app:layout_constraintTop_toBottomOf="@+id/profile_edt_gender" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

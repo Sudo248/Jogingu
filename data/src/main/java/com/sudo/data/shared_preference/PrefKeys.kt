@@ -11,10 +11,14 @@ object PrefKeys{
 object TargetKeys{
     const val distance = "distance_target"
     const val calo= "calo_target"
+    const val timeStart= "time_start_target"
+    const val place= "place_target"
     const val recursive = "recursive_target"
+    const val notificationBefore= "notification_before_target"
 }
 
 object UserKeys{
+    const val userId = "user_id"
     const val firstName = "first_name"
     const val lastName = "last_name"
     const val city = "city"

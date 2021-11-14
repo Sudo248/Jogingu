@@ -3,6 +3,7 @@ package com.sudo.domain.entities
 import java.util.Date
 
 data class User(
+    val userId: String? = null,
     val firstName: String = "Duong",
     val lastName: String = "Le",
     val city: String = "Ha Noi",
@@ -21,6 +22,7 @@ data class User(
 
         other as User
 
+        if(userId != other.userId) return false
         if (firstName != other.firstName) return false
         if (lastName != other.lastName) return false
         if (city != other.city) return false
@@ -40,7 +42,8 @@ data class User(
     }
 
     override fun hashCode(): Int {
-        var result = firstName.hashCode()
+        var result = userId.hashCode()
+        result = 31 * result + firstName.hashCode()
         result = 31 * result + lastName.hashCode()
         result = 31 * result + city.hashCode()
         result = 31 * result + country.hashCode()

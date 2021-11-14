@@ -20,6 +20,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener
 class TargetFragment : Fragment() {
     lateinit var binding: FragmentTargetBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

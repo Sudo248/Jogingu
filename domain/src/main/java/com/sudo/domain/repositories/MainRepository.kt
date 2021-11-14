@@ -15,6 +15,7 @@ interface MainRepository {
     suspend fun getUser(): Flow<Result<User>>
     suspend fun getFullNameUser(): String
     suspend fun getBMRUser(): Float
+    suspend fun loadImageFromDevice(pathImage: String): Flow<Result<ByteArray>>
 
     suspend fun getAllRuns(): Flow<Result<List<Run>>>
     suspend fun addNewRun(run: Run)

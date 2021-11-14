@@ -61,6 +61,15 @@ class MainRepositoryImpl(
         }
     }
 
+    override suspend fun loadImageFromDevice(pathImage: String): Flow<Result<ByteArray>> = flow{
+        emit(Result.Loading)
+        try {
+            TODO("Load image from device")
+        }catch (e: Exception){
+            emit(Result.Error("${e.message}"))
+        }
+    }
+
     override suspend fun getAllRuns(): Flow<Result<List<Run>>> = flow {
         emit(Result.Loading)
         try{
@@ -181,9 +190,7 @@ class MainRepositoryImpl(
     }
 
     override suspend fun deleteTarget() {
-        pref.setDistanceTarget(0)
-        pref.setCaloTarget(0)
-        pref.setRecursiveTarget(null)
+        pref.deleteTarget()
     }
 
     override suspend fun getAllNotifications(): Flow<Result<List<Notification>>> = flow {

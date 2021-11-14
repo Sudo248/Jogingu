@@ -46,15 +46,44 @@ class SharedPref(private val context: Context) {
         editor.apply()
     }
 
-    fun getRecursiveTarget(): Date?{
-        val time = prefs.getLong(TargetKeys.recursive, 0)
-        return if(time == 0L) null else Date(time)
+    fun getPlaceTarget(): String? {
+        return prefs.getString(TargetKeys.place, null)
     }
 
-    fun setRecursiveTarget(date: Date?){
+    fun setPlaceTarget(place: String?){
         val editor = prefs.edit()
-        editor.putLong(TargetKeys.recursive, date?.time ?: 0)
+        editor.putString(TargetKeys.place, place)
         editor.apply()
+    }
+
+    fun getRecursiveTarget(): Int{
+        return prefs.getInt(TargetKeys.recursive, 0)
+    }
+
+    fun setRecursiveTarget(recursive: Int){
+        val editor = prefs.edit()
+        editor.putInt(TargetKeys.recursive, recursive)
+        editor.apply()
+    }
+
+    fun getNotificationTarget(): Int{
+        return prefs.getInt(TargetKeys.notificationBefore, 10)
+    }
+
+    fun setNotificationTarget(notificationBefore: Int){
+        val editor = prefs.edit()
+        editor.putInt(TargetKeys.notificationBefore, notificationBefore)
+        editor.apply()
+    }
+
+    fun setTimeStart(time: Long){
+        val editor = prefs.edit()
+        editor.putLong(TargetKeys.timeStart, time)
+        editor.apply()
+    }
+
+    fun getTimeStart(): Long{
+        return prefs.getLong(TargetKeys.timeStart, 0L)
     }
 
     suspend fun setTarget(target: Target){
@@ -62,6 +91,9 @@ class SharedPref(private val context: Context) {
             setDistanceTarget(target.distance)
             setCaloTarget(target.calo)
             setRecursiveTarget(target.recursive)
+            setPlaceTarget(target.place)
+            setNotificationTarget(target.notificationBefore)
+            setTimeStart(target.timeStart)
         }
     }
 
@@ -70,9 +102,33 @@ class SharedPref(private val context: Context) {
             return Target(
                 distance = getDistanceTarget(),
                 calo = getCaloTarget(),
-                recursive = getRecursiveTarget()
+                recursive = getRecursiveTarget(),
+                place = getPlaceTarget(),
+                notificationBefore = getNotificationTarget(),
+                timeStart = getTimeStart()
             )
         }
+    }
+
+    suspend fun deleteTarget(){
+        synchronized(prefs){
+            setDistanceTarget(0)
+            setCaloTarget(0)
+            setTimeStart(0L)
+            setNotificationTarget(0)
+            setPlaceTarget(null)
+            setRecursiveTarget(0)
+        }
+    }
+
+    fun setUserId(userId: String?){
+        val editor = prefs.edit()
+        editor.putString(UserKeys.userId, userId)
+        editor.apply()
+    }
+
+    fun getUserId(): String?{
+        return prefs.getString(UserKeys.userId, null)
     }
 
     fun setFirstNameUser(firstName: String){
@@ -166,17 +222,23 @@ class SharedPref(private val context: Context) {
     }
 
     fun setImageUser(imageInByteArray: ByteArray?){
-        val editor = prefs.edit()
-        editor.putString(UserKeys.imageInByteArray, Base64.encodeToString(imageInByteArray, Base64.DEFAULT))
-        editor.apply()
+        imageInByteArray?.let{
+            val editor = prefs.edit()
+            editor.putString(UserKeys.imageInByteArray, Base64.encodeToString(it, Base64.DEFAULT))
+            editor.apply()
+        }
     }
 
     fun getImageUser(): ByteArray?{
-        return Base64.decode(prefs.getString(UserKeys.imageInByteArray,""), Base64.DEFAULT)
+        prefs.getString(UserKeys.imageInByteArray, null)?.let{
+            return Base64.decode(it, Base64.DEFAULT)
+        }
+        return null
     }
 
     suspend fun setUser(user: User){
         synchronized(prefs){
+            setUserId(user.userId)
             setFirstNameUser(user.firstName)
             setLastNameUser(user.lastName)
             setCityUser(user.city)
@@ -193,6 +255,7 @@ class SharedPref(private val context: Context) {
     suspend fun getUser(): User{
         synchronized(prefs){
             return User(
+                userId = getUserId(),
                firstName = getFirstNameUser(),
                 lastName = getLastNameUser(),
                 city = getCityUser(),

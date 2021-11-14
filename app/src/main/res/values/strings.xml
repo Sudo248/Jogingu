@@ -86,7 +86,12 @@
     <string name="about_us_content_use_smarter2">NEW ROUTES and MAPS: Mix up your training with the world’s largest trail network</string>
     <string name="about_us_content_use_smarter3">CHALLENGE and COMPETE: Push yourself with monthly Challenges</string>
     <string name="about_us_meet_the_team">Meet the team</string>
-    <string name=""></string>
-    <string name=""></string>
+    <string name="about_us_title_fragment">About</string>
+<!--    <string name=""></string>-->
 
+<!--    developer-->
+    <string name="duong">Lê Hồng Dương</string>
+    <string name="dung">Trần Đăng Dũng</string>
+    <string name="trang">Nguyễn Quỳnh Trang</string>
+    <string name="truong">Bùi Quang Trường</string>
 </resources>

@@ -9,4 +9,6 @@ data class Notification(
     val note: String,
     // chủ yêu để hiển thị.
     val timeToRun: String
+
+
 )

@@ -55,4 +55,43 @@
     <string name="statistic_content_greeting">Hi, </string>
     <string name="statistic_content_date">Today</string>
     <string name="statistic_title_fragment">Statistic</string>
+    <!-- Notification -->
+    <string name="channel_name">channel_name</string>
+    <string name="channel_description">channel_description</string>
+
+    <string name="steps">Steps</string>
+    <string name="calories">Calories</string>
+    <string name="time">Time</string>
+    <string name="description_chart">The chart below shows your training progress over time.</string>
+    <string name="Hi">Hi, </string>
+    <string name="today">Today</string>
+    <string name="this_month">This month</string>
+    <string name="this_week">This week</string>
+    <string name="statistic">Statistic</string>
+
+<!--    item run in home fragment-->
+    <string name="morning_run">Morning Run</string>
+    <string name="afternoon_run">Afternoon Run</string>
+    <string name="evening_run">Evening Run</string>
+    <string name="distance">Distance</string>
+    <string name="avg_speed">Avg speed</string>
+    <string name="total_time">Total time</string>
+
+
+<!--    about us fragment-->
+    <string name="about_jogingu">About Jogingu</string>
+    <string name="about_app_description">Track your fitness with Jogingu activity tracker. Record routes, map your favourite run and analyze your training with all the stats – for free</string>
+    <string name="about_us_use_smarter">3 Ways to Train Smarter with Jogingu</string>
+    <string name="about_us_content_use_smarter1"> TRACK and ANALYSE: Get key stats like distance, pace, speed and calories burned.</string>
+    <string name="about_us_content_use_smarter2">NEW ROUTES and MAPS: Mix up your training with the world’s largest trail network</string>
+    <string name="about_us_content_use_smarter3">CHALLENGE and COMPETE: Push yourself with monthly Challenges</string>
+    <string name="about_us_meet_the_team">Meet the team</string>
+    <string name="about_us_title_fragment">About</string>
+<!--    <string name=""></string>-->
+
+<!--    developer-->
+    <string name="duong">Lê Hồng Dương</string>
+    <string name="dung">Trần Đăng Dũng</string>
+    <string name="trang">Nguyễn Quỳnh Trang</string>
+    <string name="truong">Bùi Quang Trường</string>
 </resources>

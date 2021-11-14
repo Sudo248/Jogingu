@@ -89,9 +89,26 @@ object Dependencies {
     const val LIFECYCLE_EXTENSION =
         "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE_EXTENSION}"
 
-
-
+    // statistic chart
     const val STATISTIC_CHART =
-    "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
+        "com.github.PhilJay:MPAndroidChart:${Versions.STATISTIC_CHART}"
 
+    // glide
+
+    const val GLIDE_CORE =
+        "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+
+    const val GLIDE_COMPILE =
+        "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+
+
+
+
+
+    const val SPLASH_GIF =
+        "pl.droidsonroids.gif:android-gif-drawable:${Versions.SPLASH_GIF}"
+    const val SPLASH_GLIDE =
+        "com.github.bumptech.glide:glide:${Versions.SPLASH_GLIDE}"
+    const val SPLASH_COMPILER =
+        "com.github.bumptech.glide:compiler:${Versions.SPLASH_GLIDE}"
 }

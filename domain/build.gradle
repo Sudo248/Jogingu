@@ -15,5 +15,6 @@ dependencies {
 
     // timber
     implementation( Dependencies.TIMBER )
+    implementation 'androidx.room:room-common:2.3.0'
 
 }

@@ -269,7 +269,7 @@
             android:background="@drawable/bg_running_distance_display"
             android:elevation="10dp"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
-            app:layout_constraintEnd_toStartOf="@+id/fab_resume_continue"
+            app:layout_constraintEnd_toStartOf="@+id/fab_pause_or_resume"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/fab_finish"
             app:layout_constraintTop_toTopOf="@+id/gl_running_secondary"
@@ -296,7 +296,7 @@
         </FrameLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fab_resume_continue"
+            android:id="@+id/fab_pause_or_resume"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:elevation="10dp"

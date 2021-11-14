@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+
     // default
     implementation( Dependencies.appUis )
     implementation( Dependencies.testLibs )
@@ -52,8 +53,11 @@ dependencies {
     implementation( Dependencies.HILT_ANDROID )
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation "com.android.support:support-compat:28.0.0"
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.lifecycle:lifecycle-service:2.4.0'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
     kapt(Dependencies.KAPT_HILT)
 
     // ui
@@ -78,4 +82,10 @@ dependencies {
     // statistic chart
     implementation( Dependencies.STATISTIC_CHART)
 
+    //splash
+    implementation (Dependencies.SPLASH_GIF)
+
+    implementation (Dependencies.SPLASH_GLIDE)
+
+    annotationProcessor (Dependencies.SPLASH_COMPILER)
 }

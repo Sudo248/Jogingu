@@ -8,7 +8,17 @@
         android:id="@+id/homeFragment"
         android:name="com.sudo.jogingu.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_targetFragment"
+            app:destination="@id/targetFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
+    </fragment>
     <fragment
         android:id="@+id/targetFragment"
         android:name="com.sudo.jogingu.ui.fragments.target.TargetFragment"

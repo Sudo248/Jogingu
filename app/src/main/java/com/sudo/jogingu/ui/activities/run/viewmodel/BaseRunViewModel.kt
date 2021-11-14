@@ -65,6 +65,7 @@ abstract class BaseRunViewModel(
                 imageInByteArray = imageInByteArray
             )
         )
+        _isSuccessToSaveRun.value = true
         Timber.d("Save run success")
     }
 

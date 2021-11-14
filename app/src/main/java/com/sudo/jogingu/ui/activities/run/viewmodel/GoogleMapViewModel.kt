@@ -118,7 +118,6 @@ class GoogleMapViewModel @Inject constructor(
             zoomToSeeWholeTrack(mapHeight, mapWith)
             map?.snapshot { bmp ->
                 save(bmp?.toByteArray())
-                _isSuccessToSaveRun.value = true
             }
         }
     }

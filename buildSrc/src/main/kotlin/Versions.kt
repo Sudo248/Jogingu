@@ -33,4 +33,6 @@ object Versions {
     // glide
     const val GLIDE = "4.12.0"
 
+    const val SPLASH_GIF = "1.2.23"
+
 }

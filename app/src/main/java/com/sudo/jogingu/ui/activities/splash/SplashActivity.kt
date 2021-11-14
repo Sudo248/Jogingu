@@ -46,6 +46,7 @@ class SplashActivity : AppCompatActivity() {
             this.startActivity(it)
         }
         startActivity(Intent(this, MainActivity::class.java))
+        this.finish()
     }
 
     private fun sendCommandToSetupEverydayNotification(){

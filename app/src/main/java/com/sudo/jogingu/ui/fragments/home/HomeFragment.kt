@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         activity?.title = getString(R.string.home)
         viewModel.listRun.observe(viewLifecycleOwner){
             Timber.d("Size of list run: ${it.size}")
-            adapter.submitList(it)
+            adapter.submitList(it.reversed())
         }
 
         binding.homeRcv.adapter = adapter

@@ -101,6 +101,9 @@ object Dependencies {
     const val GLIDE_COMPILE =
         "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
 
+    const val SPLASH_GIF =
+        "pl.droidsonroids.gif:android-gif-drawable:${Versions.SPLASH_GIF}"
+
 
 
 

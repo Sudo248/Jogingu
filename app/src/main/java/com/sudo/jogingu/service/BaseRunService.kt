@@ -124,6 +124,7 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
             RunState.FINISH -> {
                 unregisterUpdatePosition()
                 unregisterSensorListener()
+                notificationManager.cancel(NOTIFICATION_RUNNING_ID)
                 stopSelf()
             }
         }

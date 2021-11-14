@@ -202,7 +202,7 @@
                                 android:src="@drawable/img_duong" />
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="5"
                                 android:text="@string/duong"
@@ -221,7 +221,7 @@
                                 android:src="@drawable/img_dung" />
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="5"
                                 android:text="@string/dung"
@@ -247,7 +247,7 @@
                                 android:src="@drawable/img_trang" />
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="5"
                                 android:text="@string/trang"
@@ -266,7 +266,7 @@
                                 android:src="@drawable/img_truong" />
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="5"
                                 android:text="@string/truong"

@@ -85,5 +85,7 @@ dependencies {
     implementation(Dependencies.GLIDE_CORE)
     annotationProcessor(Dependencies.GLIDE_COMPILE)
 
+    implementation(Dependencies.SPLASH_GIF)
+
 
 }

@@ -144,7 +144,6 @@ abstract class BaseRunService : LifecycleService(), SensorEventListener {
 //                    Timber.d("time running: $it")
                     val notification = currentNotificationBuilder
                         .setContentTitle(TimeUtil.parseTime(it) + " - "+"%.2f km".format(distance.value/1000))
-
                     notificationManager.notify(NOTIFICATION_RUNNING_ID, notification.build())
                 }
             }

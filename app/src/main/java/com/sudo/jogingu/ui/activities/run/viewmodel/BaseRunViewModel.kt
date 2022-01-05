@@ -16,6 +16,7 @@ import com.sudo.jogingu.service.BaseRunService
 import com.sudo.jogingu.util.toByteArray
 import com.sudo.jogingu.util.toTimeHour
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -50,7 +51,6 @@ abstract class BaseRunViewModel(
     protected var startTime: Long = 0
 
     protected fun save(imageInByteArray: ByteArray?) = viewModelScope.launch(Dispatchers.IO) {
-        Timber.d("start to save run")
         addNewRunUseCase(
             Run(
                 runId = genId("run"),
@@ -76,9 +76,9 @@ abstract class BaseRunViewModel(
 
     abstract fun onStartClick()
     abstract fun onPauseOrResumeClick()
-    abstract fun onFinishClick(mapHeight: Int, mapWith: Int)
+    abstract fun onFinishClick(mapHeight: Int, mapWidth: Int)
 
-    abstract fun saveRunToDB(mapHeight: Int, mapWith: Int)
+    abstract fun saveRunToDB(mapHeight: Int, mapWidth: Int)
 
 
 

@@ -3,12 +3,14 @@ package com.sudo.jogingu.ui.fragments.profile
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log.d
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -19,6 +21,7 @@ import com.sudo.domain.entities.User
 import com.sudo.jogingu.ui.activities.main.MainActivity
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.FragmentProfileBinding
+import com.sudo.jogingu.helper.ToastHelper
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.text.SimpleDateFormat
@@ -74,6 +77,13 @@ class ProfileFragment : Fragment() {
         }
         binding.btnProfileSave.setOnClickListener {
             viewModel.onSaveClick(getUser())
+            ToastHelper.makeText(
+                requireContext(),
+                getString(R.string.save_success),
+                Toast.LENGTH_SHORT
+            )
+                .setGravity(Gravity.TOP, 0, 100)
+                .show()
         }
     }
 

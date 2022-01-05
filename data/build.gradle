@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk Config.compileSdk
@@ -59,4 +60,9 @@ dependencies {
 
     // timber
     implementation( Dependencies.TIMBER )
+//    implementation "androidx.core:core-ktx:+"
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
+//repositories {
+//    mavenCentral()
+//}

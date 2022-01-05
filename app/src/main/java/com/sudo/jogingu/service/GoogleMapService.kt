@@ -71,7 +71,6 @@ class GoogleMapService : BaseRunService() {
                 locationCallBack,
                 Looper.getMainLooper()
             )
-
         }
     }
 

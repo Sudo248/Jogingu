@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.sudo.domain.entities.Run
 import com.sudo.jogingu.R
 import com.sudo.jogingu.databinding.ItemRunBinding
+import com.sudo.jogingu.util.TimeUtil
 
 class HomeListRunAdapter : ListAdapter<Run, HomeListRunAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<Run>(){
@@ -37,12 +38,13 @@ class HomeListRunAdapter : ListAdapter<Run, HomeListRunAdapter.ViewHolder>(
             binding.tvItemNameUser.text = "Jogingu"
             binding.tvItemLocation.text = ""
             binding.tvItemNameRun.text = run.name
-            binding.tvItemDistance.text = "%.2f km".format(run.distance)
-            binding.tvItemPace.text = "%.2f km/h".format(run.avgSpeed)
-            binding.tvItemTimeRun.text = "${run.timeRunning}"
+            binding.tvItemDistance.text = "%.2f km".format(run.distance /1000f)
+            binding.tvItemPace.text = "%.2f km/h".format(run.avgSpeed /3.6f)
+            binding.tvItemTimeRun.text = TimeUtil.parseTime(run.timeRunning, true)
 
             Glide.with(itemView)
                 .load(run.imageInByteArray)
+                .optionalFitCenter()
                 .into(binding.imgItemImgMap)
         }
     }

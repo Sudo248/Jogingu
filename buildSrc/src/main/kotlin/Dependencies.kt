@@ -13,8 +13,6 @@ object Dependencies {
     private const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
-    val appUis = listOf(coreKtx, appcompat, material, constraintLayout)
-
     /**********************************  Test libs  ******************************************/
 
     const val junit =
@@ -23,8 +21,6 @@ object Dependencies {
         "androidx.test.ext:junit:${Versions.etxJunit}"
     const val espressoCore =
         "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
-
-    val testLibs = listOf(junit, etxJunit, espressoCore)
 
     /**********************************  Other  ******************************************/
 

@@ -1,7 +1,7 @@
 object Versions {
     // project level
     const val kotlinVersion = "1.5.31"
-    const val gradle = "7.0.0"
+    const val gradle = "7.0.2"
 
     // ui libs
     const val coreKtx = "1.6.0"

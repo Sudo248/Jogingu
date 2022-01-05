@@ -20,7 +20,6 @@ import com.sudo.jogingu.common.Constant.ACTION_START
 import com.sudo.jogingu.common.Polyline
 import com.sudo.jogingu.common.RunState
 import com.sudo.jogingu.service.GoogleMapService
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
@@ -40,6 +39,7 @@ class GoogleMapViewModel @Inject constructor(
     private var map: GoogleMap? = null
     private var pathPoints: Polyline = mutableListOf()
     private var currentPos = 0
+    private var isStart = false
 
     fun setMap(map: GoogleMap){
         this.map = map
@@ -75,7 +75,7 @@ class GoogleMapViewModel @Inject constructor(
     }
 
     override fun getAddress(): String {
-        val listAddress = geocoder.getFromLocation(pathPoints[0].latitude, pathPoints[0].longitude,1)
+//        val listAddress = geocoder.getFromLocation(pathPoints[0].latitude, pathPoints[0].longitude,1)
 //        return listAddress[0].getAddressLine(0)
         return "Yet Kieu - Ha Dong"
     }
@@ -108,37 +108,42 @@ class GoogleMapViewModel @Inject constructor(
         }
     }
 
-    override fun onFinishClick(mapHeight: Int, mapWith: Int){
+    override fun onFinishClick(mapHeight: Int, mapWidth: Int){
         sendCommandToService(ACTION_FINISH)
-        saveRunToDB(mapHeight, mapWith)
-    }
+        saveRunToDB(mapHeight, mapWidth)
 
-    override fun saveRunToDB(mapHeight: Int, mapWith: Int) {
-        viewModelScope.launch(Dispatchers.Default) {
-            zoomToSeeWholeTrack(mapHeight, mapWith)
-            map?.snapshot { bmp ->
-                save(bmp?.toByteArray())
-            }
-        }
     }
 
     @SuppressLint("MissingPermission")
-    private suspend fun zoomToSeeWholeTrack(mapHeight: Int, mapWith: Int){
-        val bounds = LatLngBounds.Builder()
-        for(position in pathPoints){
-            bounds.include(position)
-        }
-        withContext(Dispatchers.Main){
-            Timber.d("bounds: $bounds")
-            map?.isMyLocationEnabled = false
-            map?.moveCamera(
-                CameraUpdateFactory.newLatLngBounds(
-                    bounds.build(),
-                    mapWith,
-                    mapHeight / 3,
-                    (mapHeight * 0.05f).toInt()
-                )
-            )
+    override fun saveRunToDB(mapHeight: Int, mapWidth: Int) {
+        viewModelScope.launch(Dispatchers.Default) {
+            Timber.d("Size of path Points: ${pathPoints.size}")
+            val bounds = LatLngBounds.Builder()
+            for(position in pathPoints){
+                bounds.include(position)
+            }
+            val height = (mapWidth * 0.8).toInt()
+            withContext(Dispatchers.Main){
+                map?.let{ it ->
+                    it.isMyLocationEnabled = false
+                    it.mapType = GoogleMap.MAP_TYPE_NORMAL
+                    it.moveCamera(
+                        CameraUpdateFactory.newLatLngBounds(
+                            bounds.build(),
+                            mapWidth,
+                            height,
+                            (mapWidth*0.05).toInt()
+                        )
+                    )
+                    delay(1000)
+                    it.snapshot { bmp ->
+                        bmp?.let{ bitmap->
+                            val resized = Bitmap.createBitmap(bitmap,0, (mapHeight - height) /2, mapWidth, height )
+                            save(resized.toByteArray())
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -148,6 +153,12 @@ class GoogleMapViewModel @Inject constructor(
                 pathPoints.add(it)
                 moveCameraToUserPosition()
                 if(runState.value == RunState.RUNNING){
+                    if(!isStart){
+                        val tmp = pathPoints[pathPoints.size - 2]
+                        pathPoints.clear()
+                        pathPoints.addAll(listOf(tmp,it))
+                        isStart = true
+                    }
                     drawPolylines()
                 }
             }
@@ -162,6 +173,12 @@ class GoogleMapViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        map = null
+        pathPoints.clear()
     }
 
 }

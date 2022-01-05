@@ -129,8 +129,18 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         }
 
         binding.fabFinish.setOnClickListener {
-            viewModel.onFinishClick(binding.root.height, binding.root.width)
+//            Timber.d("Before: ${binding.mapView.height} ${binding.mapView.width}")
+//            val mapWidth = binding.mapView.width
+//            val mapHeight = (mapWidth * 0.8).toInt()
+//
+//            val layoutParams = binding.mapView.layoutParams
+//            layoutParams.height = mapHeight
+//
+//            binding.mapView.layoutParams = layoutParams
+//
+//            Timber.d("After: ${binding.mapView.height} ${binding.mapView.width}")
 
+            viewModel.onFinishClick(binding.mapView.height, binding.mapView.width)
         }
 
     }
@@ -138,6 +148,7 @@ class RunActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     private fun startMainActivity(){
         Intent(this, MainActivity::class.java).also {
             this.startActivity(it)
+            this.finish()
         }
     }
 

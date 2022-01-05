@@ -91,7 +91,7 @@ class SetTargetFragment : Fragment() {
                 ToastHelper.makeText(
                     requireContext(),
                     getString(R.string.warning),
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 )
                     .setGravity(Gravity.TOP, 0, 100)
                     .show()
@@ -115,7 +115,9 @@ class SetTargetFragment : Fragment() {
                     requireContext(),
                     getString(R.string.save_success),
                     Toast.LENGTH_SHORT
-                ).show()
+                )
+                    .setGravity(Gravity.TOP, 0, 100)
+                    .show()
             }
 
         }

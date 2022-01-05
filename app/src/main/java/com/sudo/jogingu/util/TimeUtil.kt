@@ -7,7 +7,7 @@ import com.sudo.jogingu.common.Constant.MINUTE_DURATION
 import java.util.*
 
 object TimeUtil {
-    fun parseTime(time: Int): String{
+    fun parseTime(time: Int, withLetter: Boolean = false): String{
         var timeInSeconds = time
         val hours = timeInSeconds.toTimeHour()
         timeInSeconds %= HOUR_DURATION
@@ -16,9 +16,19 @@ object TimeUtil {
         val seconds = timeInSeconds
 
         return if(hours > 0){
-            "%02d:%02d:%02d".format(hours, minutes, seconds)
+            if (withLetter){
+                "%dh %02dm".format(hours, minutes, seconds)
+            }
+            else{
+                "%02d:%02d:%02d".format(hours, minutes, seconds)
+            }
         }else{
-            "%02d : %02d".format(minutes, seconds)
+            if(withLetter){
+                "%dm  %02ds".format(minutes, seconds)
+            }
+            else{
+                "%02d : %02d".format(minutes, seconds)
+            }
         }
     }
 

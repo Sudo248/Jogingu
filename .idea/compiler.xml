@@ -4,6 +4,8 @@
     <bytecodeTargetLevel target="1.8">
       <module name="Jogingu.app" target="11" />
       <module name="Jogingu.buildSrc" target="11" />
+      <module name="Jogingu.buildSrc.main" target="11" />
+      <module name="Jogingu.buildSrc.test" target="11" />
       <module name="Jogingu.data" target="11" />
     </bytecodeTargetLevel>
   </component>

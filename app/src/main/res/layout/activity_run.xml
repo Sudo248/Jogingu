@@ -25,13 +25,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_before_start"
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_start_run_main" >
+        app:layout_constraintTop_toBottomOf="@id/gl_start_run_main">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_start_run_secondary"
@@ -39,16 +39,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="55dp" />
+
         <FrameLayout
             android:id="@+id/frame_rectangle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="bottom"
             android:background="@color/main_color_normal"
-            app:layout_constraintTop_toBottomOf="@id/gl_start_run_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gl_start_run_secondary" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_start"
@@ -57,11 +58,11 @@
             android:elevation="10dp"
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
+            android:text="@string/start"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@string/start"
             app:backgroundTint="@color/main_color_dark"
             app:iconSize="100dp"
             app:iconTint="@color/white"
@@ -70,8 +71,7 @@
             app:layout_constraintBottom_toTopOf="@+id/gl_start_run_secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gl_start_run_secondary"
-            />
+            app:layout_constraintTop_toTopOf="@+id/gl_start_run_secondary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -138,20 +138,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="--"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
-                    tools:layout_editor_absoluteY="82dp" />
+                    tools:layout_editor_absoluteY="82dp"
+                    tools:text="--" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Speed"
+                    android:text="@string/speed"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
             </LinearLayout>
@@ -179,20 +179,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="00:00:00"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
-                    tools:layout_editor_absoluteY="82dp" />
+                    tools:layout_editor_absoluteY="82dp"
+                    tools:text="00:00:00" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Time"
+                    android:text="@string/time"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
             </LinearLayout>
@@ -219,31 +219,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="10"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="42dp"
-                    tools:layout_editor_absoluteY="82dp" />
+                    tools:layout_editor_absoluteY="82dp"
+                    tools:text="10" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal"
-                    android:text="Step"
+                    android:text="@string/step"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     tools:layout_editor_absoluteX="42dp"
                     tools:layout_editor_absoluteY="82dp" />
             </LinearLayout>
 
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupRunInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="lnl_speed,lnl_time,lnl_count_step" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_finish"
-            android:visibility="gone"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:elevation="10dp"
@@ -254,6 +258,7 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:backgroundTint="@color/main_color_dark"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
             app:layout_constraintEnd_toStartOf="@+id/fl_display_distance"
@@ -264,8 +269,8 @@
 
         <FrameLayout
             android:id="@+id/fl_display_distance"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/bg_running_distance_display"
             android:elevation="10dp"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
@@ -301,10 +306,10 @@
             android:layout_height="70dp"
             android:elevation="10dp"
             app:backgroundTint="@color/main_color_dark"
+            app:collapsedSize="70dp"
             app:icon="@drawable/ic_pause_24"
             app:iconSize="40dp"
             app:iconTint="@color/white"
-            app:collapsedSize="70dp"
             app:layout_anchor="@+id/frame_rectangle_second"
             app:layout_anchorGravity="top|center"
             app:layout_constraintBottom_toTopOf="@+id/gl_running_secondary"
@@ -315,10 +320,6 @@
             app:layout_constraintVertical_bias="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

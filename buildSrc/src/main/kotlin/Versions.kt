@@ -1,7 +1,7 @@
 object Versions {
     // project level
-    const val kotlinVersion = "1.5.31"
-    const val gradle = "7.0.2"
+    const val kotlinVersion = "1.8.10"
+    const val gradle = "7.3.0"
 
     // ui libs
     const val coreKtx = "1.6.0"
@@ -16,7 +16,7 @@ object Versions {
 
     //libs
     const val COROUTINES = "1.3.9"
-    const val HILT = "2.38.1"
+    const val HILT = "2.44"
     const val ROOM = "2.3.0"
     const val NAVIGATION = "2.3.5"
     const val LEGACY = "1.0.0"
@@ -34,5 +34,18 @@ object Versions {
     const val GLIDE = "4.12.0"
 
     const val SPLASH_GIF = "1.2.23"
+    const val FRAGMENT_KTX = "1.5.6"
+    const val LIFECYCLE_SERVICE = "2.6.1"
+
+    const val GOOGLE_MAP_UTILS = "3.2.0"
+
+    //firebase
+    const val GOOGLE_SERVICE = "4.3.15"
+    const val FIREBASE_AUTH = "21.2.0"
+    const val FIREBASE_FIRESTORE = "24.4.5"
+    const val FIREBASE_STORAGE = "20.1.0"
+
+    // shimmer
+    const val SHIMMER_VERSION = "0.5.0"
 
 }

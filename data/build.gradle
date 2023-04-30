@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 apply plugin: 'kotlin-android'
 
@@ -38,6 +39,7 @@ dependencies {
     // default
     implementation ( Dependencies.coreKtx )
     implementation ( Dependencies.appcompat )
+    api 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     testImplementation ( Dependencies.junit )
     androidTestImplementation ( Dependencies.etxJunit )
     androidTestImplementation ( Dependencies.espressoCore )
@@ -60,9 +62,18 @@ dependencies {
 
     // timber
     implementation( Dependencies.TIMBER )
-//    implementation "androidx.core:core-ktx:+"
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // firebase
+    api (Dependencies.FIREBASE_AUTH)
+    api (Dependencies.FIREBASE_FIRESTORE)
+    implementation (Dependencies.FIREBASE_STORAGE)
+
+    // retrofit
+    api "com.squareup.retrofit2:retrofit:2.9.0"
+
+    // JSON Parsing
+    api "com.google.code.gson:gson:2.9.0"
+    api "com.squareup.retrofit2:converter-gson:2.9.0"
+    api "com.squareup.okhttp3:logging-interceptor:4.2.1"
+
 }
-//repositories {
-//    mavenCentral()
-//}

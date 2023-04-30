@@ -19,6 +19,8 @@
     <string name="set_new_photo">Set new photo</string>
     <string name="delete_photo">Delete Photo</string>
     <string name="city">City</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
     <string name="country">Country</string>
     <string name="primary_sport">Primary sport</string>
     <string name="birthday">Birthday</string>
@@ -38,7 +40,7 @@
     <string name="target_content_time_start">Time start</string>
     <string name="target_content_place">Place</string>
     <string name="target_content_recurring">Recurring / days</string>
-    <string name="target_content_notification_before">Notification</string>
+    <string name="target_content_notification_before">Notification /minutes</string>
 
     <!--    running activity-->
     <string name="request_permission">You need to accept location permission to use this app</string>
@@ -79,6 +81,7 @@
     <string name="avg_speed">Avg speed</string>
     <string name="total_time">Total time</string>
     <string name="save">save</string>
+    <string name="update">Update</string>
 
     <!--    about us fragment-->
     <string name="about_jogingu">About Jogingu</string>
@@ -96,5 +99,23 @@
     <string name="dung">Trần Đăng Dũng</string>
     <string name="trang">Nguyễn Quỳnh Trang</string>
     <string name="truong">Bùi Quang Trường</string>
+    <string name="no_run_to_show">No run to show</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="waiting">Waiting...</string>
+<!--    auth-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="new_user">New user?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="passwords_mismatch">Please make sure your passwords match</string>
+    <string name="step">Step</string>
+    <string name="speed">Speed</string>
+    <string name="title_save_run_dialog">Do you want to save this run</string>
+    <string name="_continue" >Continue</string>
 
 </resources>

@@ -57,7 +57,9 @@ dependencies {
     implementation project (Modules.data)
 
     // coroutine
-    implementation( Dependencies.COROUTINES_CORE )
+    implementation( Dependencies.COROUTINES_CORE)
+    implementation(Dependencies.COROUTINES_ANDROID)
+    implementation(Dependencies.COROUTINES_ROOM)
 
     // hilt
     implementation( Dependencies.HILT_ANDROID )
@@ -67,6 +69,7 @@ dependencies {
     implementation ( Dependencies.NAVIGATION_FRAGMENT )
     implementation ( Dependencies.NAVIGATION_UI )
     implementation ( Dependencies.LEGACY_SUPPORT )
+    implementation ( Dependencies.FRAGMENT_KTX )
 
     // timber
     implementation( Dependencies.TIMBER )
@@ -79,22 +82,20 @@ dependencies {
     implementation ( Dependencies.EASY_PERMISSION )
 
     // lifecycle extension
-    implementation ( Dependencies.LIFECYCLE_EXTENSION )
-
+    implementation ( Dependencies.LIFECYCLE_SERVICE )
 
     // statistic chart
     implementation( Dependencies.STATISTIC_CHART)
 
-    implementation(Dependencies.GLIDE_CORE)
-    annotationProcessor(Dependencies.GLIDE_COMPILE)
+    // glide
+    implementation( Dependencies.GLIDE_CORE )
+    annotationProcessor( Dependencies.GLIDE_COMPILE )
 
-    implementation(Dependencies.SPLASH_GIF)
-    implementation "androidx.core:core-ktx:+"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    // splash
+    implementation( Dependencies.SPLASH_GIF )
 
+    // map-utils
+    implementation( Dependencies.ANDROID_MAP_UTILS )
 
+    implementation( Dependencies.FACEBOOK_SHIMMER )
 }
-//
-//repositories {
-//    mavenCentral()
-//}

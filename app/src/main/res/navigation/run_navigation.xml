@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/startRunFragment"
-        android:name="com.sudo.jogingu.ui.fragments.run.StartRunFragment"
+        android:name="com.sudo248.jogingu.ui.fragments.run.StartRunFragment"
         android:label="StartRunFragment" >
         <action
             android:id="@+id/action_startRunFragment_to_runningFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/runningFragment"
-        android:name="com.sudo.jogingu.ui.fragments.run.RunningFragment"
+        android:name="com.sudo248.jogingu.ui.fragments.run.RunningFragment"
         android:label="RunningFragment" >
         <action
             android:id="@+id/action_runningFragment_to_startRunFragment"

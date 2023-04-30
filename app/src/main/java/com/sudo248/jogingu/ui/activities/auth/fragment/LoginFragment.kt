@@ -1,0 +1,60 @@
+package com.sudo248.jogingu.ui.activities.auth.fragment
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.sudo248.domain.common.DataState
+import com.sudo248.jogingu.databinding.FragmentLoginBinding
+import com.sudo248.jogingu.ui.activities.auth.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class LoginFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginBinding
+
+    private val viewModel: AuthViewModel by activityViewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentLoginBinding.inflate(inflater)
+        setupUi()
+        observer()
+        return binding.root
+    }
+
+    private fun setupUi() {
+        binding.apply {
+            edtEmail.doOnTextChanged { text, _, _, _ ->
+                if (!text.isNullOrBlank()){
+                    viewModel.email = text.toString()
+                }
+                tilPassword.error = null
+            }
+
+            edtPassword.doOnTextChanged { text, _, _, _ ->
+                if (!text.isNullOrBlank()){
+                    viewModel.password = text.toString()
+                }
+                tilPassword.error = null
+            }
+        }
+    }
+
+    private fun observer() {
+        viewModel.result.observe(viewLifecycleOwner) {
+            if (it is DataState.Error){
+                //if(!binding.tilEmail.editText?.text.isNullOrBlank() || !binding.tilPassword.editText?.text.isNullOrBlank()){
+                binding.tilPassword.error = it.message
+                //}
+            }
+        }
+    }
+}

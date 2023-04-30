@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_dark">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/information_run"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_item_img_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_img_user"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:elevation="12dp"
+                android:thicknessRatio="1.9"
+                app:cardCornerRadius="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/item_img_user"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@color/gray_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,MissingConstraints" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_item_name_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toTopOf="@id/tv_item_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/card_img_user"
+                app:layout_constraintTop_toTopOf="@id/card_img_user"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_item_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="@+id/card_img_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/tv_item_name_user"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_name_user"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_item_name_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/card_img_user"
+                app:layout_constraintTop_toBottomOf="@id/card_img_user"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_item_title_distance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.2"
+                android:layout_marginTop="9dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_title_pace"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_name_run" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="5dp"
+                android:background="@color/gray_light"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_distance"
+                app:layout_constraintEnd_toStartOf="@id/tv_item_title_pace"
+                app:layout_constraintStart_toEndOf="@id/tv_item_title_distance"
+                app:layout_constraintTop_toTopOf="@id/tv_item_title_distance" />
+
+            <TextView
+                android:id="@+id/tv_item_title_pace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                app:layout_constraintWidth_percent="0.2"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_title_distance"
+                app:layout_constraintEnd_toStartOf="@+id/item_title_time_run"
+                app:layout_constraintStart_toEndOf="@+id/tv_item_title_distance"
+                app:layout_constraintTop_toTopOf="@id/tv_item_title_distance" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="5dp"
+                android:background="@color/gray_light"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_pace"
+                app:layout_constraintEnd_toStartOf="@id/item_title_time_run"
+                app:layout_constraintStart_toEndOf="@id/tv_item_title_pace"
+                app:layout_constraintTop_toTopOf="@id/tv_item_title_pace" />
+
+
+            <TextView
+                android:id="@+id/item_title_time_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.2"
+                android:layout_marginStart="50dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_title_pace"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_item_title_pace"
+                app:layout_constraintTop_toTopOf="@id/tv_item_title_pace" />
+
+            <TextView
+                android:id="@+id/tv_item_distance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_item_title_distance"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/tv_item_title_distance"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_title_distance" />
+
+            <TextView
+                android:id="@+id/tv_item_pace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_item_title_pace"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/tv_item_title_pace"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_title_pace" />
+
+            <TextView
+                android:id="@+id/tv_item_time_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/item_title_time_run"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/item_title_time_run"
+                app:layout_constraintTop_toBottomOf="@id/item_title_time_run" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/img_item_img_map"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray_normal"
+            app:layout_constraintDimensionRatio="H,3:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/information_run" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

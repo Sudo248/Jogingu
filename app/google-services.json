@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "861801846752",
+    "project_id": "jogingu-v2",
+    "storage_bucket": "jogingu-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861801846752:android:86dc5c135ab71d82d27d85",
+        "android_client_info": {
+          "package_name": "com.sudo.data"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861801846752-o34g44m0srgqop5r64bo1sm4phc8l8jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKX5d7j-hjrljxmtcIigi0ONDCGcr3W7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861801846752-28as1blccjfgoobhbp69c8bnssecmlhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861801846752:android:a06aa1ae5328541cd27d85",
+        "android_client_info": {
+          "package_name": "com.sudo.jogingu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861801846752-o34g44m0srgqop5r64bo1sm4phc8l8jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKX5d7j-hjrljxmtcIigi0ONDCGcr3W7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861801846752-28as1blccjfgoobhbp69c8bnssecmlhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861801846752:android:e7a16234734a1228d27d85",
+        "android_client_info": {
+          "package_name": "com.sudo248.jogingu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861801846752-fkurjclqc94kam38ksq6rl54vv2s4ejb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sudo248.jogingu",
+            "certificate_hash": "a4c33004956597b8d16055e789d35af12e371447"
+          }
+        },
+        {
+          "client_id": "861801846752-o34g44m0srgqop5r64bo1sm4phc8l8jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKX5d7j-hjrljxmtcIigi0ONDCGcr3W7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861801846752-28as1blccjfgoobhbp69c8bnssecmlhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

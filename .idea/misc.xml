@@ -47,7 +47,7 @@
         <entry key="app/src/main/res/drawable/bg_running_distance_display.xml" value="0.30527752502274796" />
         <entry key="app/src/main/res/drawable/bg_toast.xml" value="0.30527752502274796" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.29259259259259257" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_run.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.29259259259259257" />
@@ -57,6 +57,7 @@
         <entry key="app/src/main/res/layout/fragment_set_target.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_statistic.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_target.xml" value="0.29259259259259257" />
+        <entry key="app/src/main/res/layout/fragment_view_target.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_you.xml" value="0.32916666666666666" />
         <entry key="app/src/main/res/layout/item_gender.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/item_of_frahome.xml" value="0.29259259259259257" />

@@ -100,8 +100,20 @@ object Dependencies {
     const val SPLASH_GIF =
         "pl.droidsonroids.gif:android-gif-drawable:${Versions.SPLASH_GIF}"
 
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT_KTX}"
 
+    const val LIFECYCLE_SERVICE = "androidx.lifecycle:lifecycle-service:${Versions.LIFECYCLE_SERVICE}"
 
+    const val ANDROID_MAP_UTILS = "com.google.maps.android:android-maps-utils:${Versions.GOOGLE_MAP_UTILS}"
 
+    // firebase
+    const val GOOGLE_SERVICE = "com.google.gms:google-services:${Versions.GOOGLE_SERVICE}"
 
+    const val FIREBASE_AUTH = "com.google.firebase:firebase-auth-ktx:${Versions.FIREBASE_AUTH}"
+
+    const val FIREBASE_FIRESTORE = "com.google.firebase:firebase-firestore-ktx:${Versions.FIREBASE_FIRESTORE}"
+
+    const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage-ktx:${Versions.FIREBASE_STORAGE}"
+
+    const val FACEBOOK_SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER_VERSION}"
 }

@@ -39,7 +39,6 @@ dependencies {
     // default
     implementation ( Dependencies.coreKtx )
     implementation ( Dependencies.appcompat )
-    api 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     testImplementation ( Dependencies.junit )
     androidTestImplementation ( Dependencies.etxJunit )
     androidTestImplementation ( Dependencies.espressoCore )
@@ -64,16 +63,8 @@ dependencies {
     implementation( Dependencies.TIMBER )
 
     // firebase
-    api (Dependencies.FIREBASE_AUTH)
-    api (Dependencies.FIREBASE_FIRESTORE)
+    implementation (Dependencies.FIREBASE_AUTH)
+    implementation (Dependencies.FIREBASE_FIRESTORE)
     implementation (Dependencies.FIREBASE_STORAGE)
-
-    // retrofit
-    api "com.squareup.retrofit2:retrofit:2.9.0"
-
-    // JSON Parsing
-    api "com.google.code.gson:gson:2.9.0"
-    api "com.squareup.retrofit2:converter-gson:2.9.0"
-    api "com.squareup.okhttp3:logging-interceptor:4.2.1"
 
 }

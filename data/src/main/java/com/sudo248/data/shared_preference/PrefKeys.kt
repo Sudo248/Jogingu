@@ -20,7 +20,6 @@ object TargetKeys{
 
 object UserKeys{
     const val userId = "user_id"
-    const val userToken = "user_token"
     const val firstName = "first_name"
     const val lastName = "last_name"
     const val city = "city"

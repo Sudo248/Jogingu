@@ -96,16 +96,6 @@ class SharedPref @Inject constructor(
         return prefs.getLong(TargetKeys.timeStart, 0L)
     }
 
-    fun setToken(token: String) {
-        val editor = prefs.edit()
-        editor.putString(UserKeys.userToken, token)
-        editor.apply()
-    }
-
-    fun getToken(): String? {
-        return prefs.getString(UserKeys.userToken, null)
-    }
-
     suspend fun setTarget(target: Target) {
         synchronized(prefs) {
             setDistanceTarget(target.distance)

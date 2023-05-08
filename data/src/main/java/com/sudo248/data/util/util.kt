@@ -5,8 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
 import android.widget.ImageView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.sudo248.data.R
 import com.sudo248.data.local.database.models.RunDB
 import com.sudo248.domain.entities.Run
@@ -60,14 +58,5 @@ fun RunDB.toRunInStatistic(): RunInStatistic {
     )
 }
 
-inline fun <reified T> convertToString(item: T): String {
-    val type = object : TypeToken<T>() {}.type
-    return Gson().toJson(item, type)
-}
-
-inline fun <reified T> convertFromString(item: String): T {
-    val type = object : TypeToken<T>() {}.type
-    return Gson().fromJson<T>(item, type)
-}
 
 

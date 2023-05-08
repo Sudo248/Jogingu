@@ -118,7 +118,7 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun loadImageFromDevice(pathImage: String): Flow<DataState<ByteArray>> = flow {
         emit(DataState.Loading)
         try {
-            TODO("Load image from device")
+
         } catch (e: Exception) {
             emit(DataState.Error("${e.message}"))
         }

@@ -64,16 +64,6 @@
 
         <service android:name=".service.NotificationService" />
 
-        <service android:name=".service.FirebaseService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-<!--        <receiver-->
-<!--            android:name=".receiver.NotificationReceiver"/>-->
-
         <receiver android:name=".receiver.AlarmReceiver"/>
 
         <meta-data

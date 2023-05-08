@@ -1,15 +1,11 @@
 package com.sudo248.jogingu.service
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Lifecycle
@@ -21,8 +17,6 @@ import com.sudo248.jogingu.common.Constant.ACTION_FINISH
 import com.sudo248.jogingu.common.Constant.ACTION_PAUSE
 import com.sudo248.jogingu.common.Constant.ACTION_RUNNING
 import com.sudo248.jogingu.common.Constant.ACTION_START
-import com.sudo248.jogingu.common.Constant.NOTIFICATION_RUNNING_CHANNEL_ID
-import com.sudo248.jogingu.common.Constant.NOTIFICATION_RUNNING_CHANNEL_NAME
 import com.sudo248.jogingu.common.Constant.NOTIFICATION_RUNNING_ID
 import com.sudo248.jogingu.common.RunState
 import com.sudo248.jogingu.util.TimeUtil
@@ -32,8 +26,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.util.TimerTask
-import java.util.Timer
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 

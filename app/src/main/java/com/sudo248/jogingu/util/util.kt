@@ -4,8 +4,6 @@ import android.graphics.Bitmap
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.sudo248.jogingu.R
 import com.sudo248.jogingu.common.Constant.HOUR_DURATION
 import com.sudo248.jogingu.common.Constant.MINUTE_DURATION
@@ -42,16 +40,6 @@ fun ImageView.loadImageFromUrl(url: String?, isShowLoading: Boolean = true) {
         )
         .error(R.drawable.ic_error)
         .into(this)
-}
-
-inline fun <reified T> convertToString(item: T): String {
-    val type = object : TypeToken<T>() {}.type
-    return Gson().toJson(item, type)
-}
-
-inline fun <reified T> convertFromString(item: String): T {
-    val type = object : TypeToken<T>() {}.type
-    return Gson().fromJson<T>(item, type)
 }
 
 
